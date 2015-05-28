@@ -69,7 +69,7 @@ alias lla="ls -al"
 alias tree="tree -C"
 
 ## set up a directory
-alias setup="cp -r ~/projects/_template/* ."
+alias setupdir="cp -r ~/projects/_template/* ."
 
 
 ## ============================================================================
