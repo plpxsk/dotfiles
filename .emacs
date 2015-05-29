@@ -286,6 +286,10 @@
 (global-set-key (kbd "C-x r f") 'find-file-read-only)
 
 
+;; I hit this too often. default is C-x k
+(global-set-key (kbd "C-x C-k") 'ido-kill-buffer)
+		
+
 
 
 
