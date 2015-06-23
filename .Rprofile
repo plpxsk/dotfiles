@@ -10,7 +10,7 @@
 options(device="quartz")
 ## number of columns in R output (at least in ESS)
 ## default on my setup was around 80
-options("width"=100)
+options("width"=110)
 
 ## get thee to a temp directory for play
 go.tempo <- function() setwd("~/tempo")

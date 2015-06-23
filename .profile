@@ -39,7 +39,7 @@ alias em="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
 alias vi="vim"
 
 alias gits="git status"
-
+alias gitb="git branch"
 
 ## ============================================================================
 ## Utilities (includes default behavior edits)
