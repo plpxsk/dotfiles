@@ -47,11 +47,12 @@
 ;; sas mode is uppercase.. and lisp is case sensitive !!! !! !!
 (setq load-path (append load-path (list "~/.emacs.d/lisp")))
 (setq load-path (append load-path (list "~/.emacs.d/elpa")))
-(setq load-path (append load-path (list "~/.emacs.d/elpa/popup-20141215.349/")))
+(setq load-path (append load-path (list "~/.emacs.d/elpa/popup-20150609.2145/")))
+
 
 ;;(setq load-path (append load-path (list )))
 (setq load-path
-      (append load-path (list "~/.emacs.d/elpa/auto-complete-20141228.633/"))
+      (append load-path (list "~/.emacs.d/elpa/auto-complete-20150618.1949/"))
       )
 
 
@@ -73,7 +74,7 @@
 
 
 ;; web-mode
-(setq load-path (append load-path (list "~/.emacs.d/elpa/web-mode-8.0.4/")))
+(setq load-path (append load-path (list "~/.emacs.d/elpa/web-mode-20150618.1109/")))
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -309,16 +310,60 @@
 ;; ============================================================================
 
 ;; COLOR-THEME-SOLARIZED
-(add-to-list 'custom-theme-load-path
-	     "~/.emacs.d/elpa/color-theme-solarized-20140408.1309")
-(load-theme 'solarized-dark t)
+;; (1) TWO options:  bbatsov or below
+;; https://github.com/bbatsov/solarized-emacs
+
+;; (load-theme 'solarized t)
+;; (set-frame-parameter nil 'background-mode 'light)
+;; (setq frame-background-mode 'dark)
+
+
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/color-theme-solarized-20150619.1734")
+(load-theme 'solarized t)
 
 
 (defun lightit ()
   "Quickly switch to light theme."
   (interactive)
-  (load-theme 'solarized-light t)
+  (set-frame-parameter nil 'background-mode 'light)
+  ;; (set-terminal-parameter frame 'background-mode light)
+  (enable-theme 'solarized)
   )
+
+
+
+(defun darkit ()
+  "Quickly switch to dark theme."
+  (interactive)
+  (set-frame-parameter nil 'background-mode 'dark)
+  ;; (set-terminal-parameter frame 'background-mode light)
+  (enable-theme 'solarized)
+  )
+
+
+(darkit)
+
+
+;; (add-hook 'after-make-frame-functions
+;;           (lambda (frame)
+;;             (let ((mode (if (display-graphic-p frame) 'dark 'light)))
+;;               (set-frame-parameter frame 'background-mode mode)
+;;               (set-terminal-parameter frame 'background-mode mode))
+;;             (enable-theme 'solarized)))
+
+
+
+
+;;(setq load-path (append load-path (list "~/.emacs.d/elpa/color-theme-20080305.34")))
+;; (color-theme-initialize)
+
+
+
+
+;; (load-theme 'solarized-dark t)
+;; (load-theme 'solarized-dark t)
+
 
 
 
@@ -344,8 +389,8 @@
 ;; pushing code to R sometimes significantly adds to runtime, and may be unstable
 ;; http://stackoverflow.com/questions/2770523/how-can-i-background-the-r-process-in-ess-emacs
 (setq ess-eval-visibly-p 'nowait)
-(put 'dired-find-alternate-file 'disabled nil)
 
 (provide '.emacs)
 
 ;;; .emacs ends here
+(put 'dired-find-alternate-file 'disabled nil)
