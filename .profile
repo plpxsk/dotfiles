@@ -35,7 +35,8 @@ PS1='\[\e[1m\]\W\$ \[\e[0m\]'
 ## Applications
 ## ============================================================================
 #alias emacs="/usr/local/Cellar/emacs/24.3/Emacs.app/Contents/MacOS/Emacs -nw"
-alias em="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
+# alias em="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
+alias em="emacs"
 alias vi="vim"
 
 alias gits="git status"
@@ -44,12 +45,6 @@ alias gitb="git branch"
 ## ============================================================================
 ## Utilities (includes default behavior edits)
 ## ============================================================================
-# why wouldn't you have this..
-function c()
-{
- builtin cd "$*" && ls && echo "" && pwd
-}
-
 alias src="source ~/.profile"
 alias alter="emacs ~/.profile"
 
@@ -71,6 +66,13 @@ alias tree="tree -C"
 ## set up a directory
 alias setupdir="cp -r ~/projects/_template/* ."
 
+
+# why wouldn't you have this..
+# needs to be after 'll' definition
+function c()
+{
+ builtin cd "$*" && ls -go && echo "" && pwd
+}
 
 ## ============================================================================
 ## Navigation

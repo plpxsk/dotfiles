@@ -47,7 +47,7 @@
 ;; sas mode is uppercase.. and lisp is case sensitive !!! !! !!
 (setq load-path (append load-path (list "~/.emacs.d/lisp")))
 (setq load-path (append load-path (list "~/.emacs.d/elpa")))
-(setq load-path (append load-path (list "~/.emacs.d/elpa/popup-20150609.2145/")))
+(setq load-path (append load-path (list "~/.emacs.d/elpa/popup-20150626.711/")))
 
 
 ;;(setq load-path (append load-path (list )))
@@ -64,6 +64,13 @@
 ;; (add-to-list 'ac-modes 'SAS-mode)
 (add-to-list 'ac-modes 'markdown-mode)
 
+;; delay autocomplete
+(setq ac-delay 0.8)
+;; delay appearance of menu; t=immediate
+(setq ac-auto-show-menu 1.5)
+
+
+
 ;;(global-auto-complete-mode t)
 ;; http://stackoverflow.com/questions/8095715/emacs-auto-complete-mode-at-startup
 
@@ -74,7 +81,7 @@
 
 
 ;; web-mode
-(setq load-path (append load-path (list "~/.emacs.d/elpa/web-mode-20150618.1109/")))
+(setq load-path (append load-path (list "~/.emacs.d/elpa/web-mode-20150628.1144/")))
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -123,13 +130,7 @@
 ;;(setq-default ispell-program-name "aspell")
 (setq-default ispell-program-name "/usr/local/bin/aspell")
 
-(defun flyit ()
-  "Quickly flyspell."
-  (interactive)
-  (flyspell-mode)
-  (flyspell-buffer)
-  )
-  
+
 
 
 ;; use this for markdown, after running `brew install markdown`
