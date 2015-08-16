@@ -1,4 +1,3 @@
-;;; .emacs --- xx my init file
 ;; ============================================================================
 ;; WHAT         .emacs init head file
 ;; HOW          has links to other files, see "contents"
@@ -24,8 +23,6 @@
 ;; EMACS LOAD PATHS (need to be at top) and MODES
 ;; ============================================================================
 ;; confirm emacs quit
-;;; Code:
-
 (setq confirm-kill-emacs 'yes-or-no-p)
 
 
@@ -110,7 +107,7 @@
       )
 
 
-;; load some files at startup
+;; open some files at startup
 (pop-to-buffer (find-file "~/.emacs.d/sxratch.txt"))
 
 ;; from emacs manual - Emacs Menu's 'save for future' items go here
@@ -159,7 +156,7 @@
 ;; (setq frame-title-format '(buffer-file-name "%f" ("%b")))
 
 
-;; use color fonts
+;; use color fonts - seems to be on by default
 ;;(global-font-lock-mode t)
 
 ;; Show column number at bottom of screen
@@ -171,7 +168,7 @@
 ;; remove scroll
 (scroll-bar-mode -1)
 
-; ;use mouse wheel - not needed on windows
+;; use mouse wheel - on by default
 ;; (mouse-wheel-mode t)
 
 ;; remove menu bar ("file", "help", etc)
@@ -192,7 +189,6 @@
 ;; replace highlighted text with typed text
 ;; and enable C-d to delete highlighted text
 (delete-selection-mode t)
-
 
 ;; Autosave every 500 typed characters
 (setq auto-save-interval 500)
@@ -314,6 +310,7 @@
 ;; (1) TWO options:  bbatsov or below
 ;; https://github.com/bbatsov/solarized-emacs
 
+;; had some trouble with using newer solarized recently...
 ;; (load-theme 'solarized t)
 ;; (set-frame-parameter nil 'background-mode 'light)
 ;; (setq frame-background-mode 'dark)
@@ -345,7 +342,7 @@
 
 (darkit)
 
-
+;; previous experiments with updating solarized:
 ;; (add-hook 'after-make-frame-functions
 ;;           (lambda (frame)
 ;;             (let ((mode (if (display-graphic-p frame) 'dark 'light)))
@@ -353,18 +350,11 @@
 ;;               (set-terminal-parameter frame 'background-mode mode))
 ;;             (enable-theme 'solarized)))
 
-
-
-
 ;;(setq load-path (append load-path (list "~/.emacs.d/elpa/color-theme-20080305.34")))
 ;; (color-theme-initialize)
 
-
-
-
 ;; (load-theme 'solarized-dark t)
 ;; (load-theme 'solarized-dark t)
-
 
 
 
@@ -374,7 +364,7 @@
 ;; ESS: EMACS SPEAKS STATISTICS
 ;; ==============================
 
-;; save time at startup by loading on-demand - now load
+;; save time at startup by loading on-demand (obsolete with SSD's...)
 (defun loader-ess ()
   "Load ess for syntax highlighting."
   (interactive)

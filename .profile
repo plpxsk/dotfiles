@@ -68,7 +68,6 @@ alias setupdir="cp -r ~/projects/_template/* ."
 
 
 # why wouldn't you have this..
-# needs to be after 'll' definition
 function c()
 {
  builtin cd "$*" && ls -go && echo "" && pwd
