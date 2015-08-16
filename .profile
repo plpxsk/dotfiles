@@ -5,7 +5,7 @@
 ## CONTENTS (headings in this file)
 ##   Customizatons
 ##   Applications    (including application-specific aliases)
-##   Utilities       (including default behavior edits)
+##   Utilities
 ##   Navigation
 
 ##   Scratch
@@ -43,7 +43,7 @@ alias gits="git status"
 alias gitb="git branch"
 
 ## ============================================================================
-## Utilities (includes default behavior edits)
+## 
 ## ============================================================================
 alias src="source ~/.profile"
 alias alter="emacs ~/.profile"
