@@ -42,6 +42,7 @@
 
 ;; need to add autocomlete AND popup to load path.
 ;; sas mode is uppercase.. and lisp is case sensitive !!! !! !!
+(setq load-path (append load-path (list "~/.emacs.d")))
 (setq load-path (append load-path (list "~/.emacs.d/lisp")))
 (setq load-path (append load-path (list "~/.emacs.d/elpa")))
 (setq load-path (append load-path (list "~/.emacs.d/elpa/popup-20150626.711/")))
@@ -127,11 +128,35 @@
 ;;(setq-default ispell-program-name "aspell")
 (setq-default ispell-program-name "/usr/local/bin/aspell")
 
-
-
-
 ;; use this for markdown, after running `brew install markdown`
 (custom-set-variables '(markdown-command "/usr/local/bin/markdown"))
+
+
+
+;; key-chords; pure magic
+;; "like aliases in unix"
+;; space-chord just adds function space-chord-define-global
+;; http://emacswiki.org/emacs/key-chord.el
+;; see its header for details
+;; use C-h k to find the function name (the last part in key-chord-define-global)
+(require 'key-chord)
+(require 'space-chord)                
+(key-chord-mode 1)
+(key-chord-define-global "df" 'keyboard-quit)
+(key-chord-define-global "df" 'minibuffer-keyboard-quit)
+ 
+(key-chord-define-global "sf" 'isearch-forward)
+(key-chord-define-global "fb" 'isearch-backward)
+ 
+(key-chord-define-global "bb" 'ido-switch-buffer)
+(key-chord-define-global "xb" 'list-buffers)
+(key-chord-define-global "kk" 'ido-kill-buffer)
+(space-chord-define-global "f" 'ido-find-file)
+(key-chord-define-global "SS" 'save-buffer)
+ 
+(space-chord-define-global "o" 'other-window)
+
+
 
 
 ;; ============================================================================
