@@ -42,7 +42,6 @@
 
 ;; need to add autocomlete AND popup to load path.
 ;; sas mode is uppercase.. and lisp is case sensitive !!! !! !!
-(setq load-path (append load-path (list "~/.emacs.d")))
 (setq load-path (append load-path (list "~/.emacs.d/lisp")))
 (setq load-path (append load-path (list "~/.emacs.d/elpa")))
 (setq load-path (append load-path (list "~/.emacs.d/elpa/popup-20150626.711/")))
