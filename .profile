@@ -43,7 +43,7 @@ alias gits="git status"
 alias gitb="git branch"
 
 ## ============================================================================
-## 
+## Utilities 
 ## ============================================================================
 alias src="source ~/.profile"
 alias alter="emacs ~/.profile"
