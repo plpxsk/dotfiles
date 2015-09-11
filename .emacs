@@ -143,7 +143,8 @@
 (key-chord-mode 1)
 (key-chord-define-global "df" 'keyboard-quit)
 (key-chord-define-global "df" 'minibuffer-keyboard-quit)
- 
+(key-chord-define-global "hj" 'undo) 
+
 (key-chord-define-global "sf" 'isearch-forward)
 (key-chord-define-global "fb" 'isearch-backward)
  
