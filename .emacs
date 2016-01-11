@@ -15,6 +15,7 @@
 ;;
 ;; NOTES
 ;;	can omit ".el" when loading .el files
+;;      edit default font in customize - faces - basic face - default face
 ;; ============================================================================
 
 
@@ -62,9 +63,9 @@
 (add-to-list 'ac-modes 'markdown-mode)
 
 ;; delay autocomplete
-(setq ac-delay 0.8)
+(setq ac-delay 0.2)
 ;; delay appearance of menu; t=immediate
-(setq ac-auto-show-menu 1.5)
+(setq ac-auto-show-menu 0.7)
 
 
 
@@ -107,8 +108,6 @@
       )
 
 
-;; open some files at startup
-(pop-to-buffer (find-file "~/.emacs.d/sxratch.txt"))
 
 ;; from emacs manual - Emacs Menu's 'save for future' items go here
 (setq custom-file "~/.emacs.d/init.el")
@@ -119,7 +118,9 @@
 (setq exec-path (append exec-path '("/usr/local/bin")))
 ;; for latex
 ;; (setq exec-path (append exec-path '("/usr/texbin")))
-(setenv "PATH" (concat "/usr/texbin" ":" (getenv "PATH")))
+;;(setenv "PATH" (concat "/usr/texbin" ":" (getenv "PATH"))) 
+(setenv "PATH" (concat "/Library/TeX/texbin/" ":" (getenv "PATH")))
+
 
 
 
@@ -139,22 +140,29 @@
 ;; see its header for details
 ;; use C-h k to find the function name (the last part in key-chord-define-global)
 (require 'key-chord)
-(require 'space-chord)                
+;;(require 'space-chord)                
 (key-chord-mode 1)
-(key-chord-define-global "df" 'keyboard-quit)
-(key-chord-define-global "df" 'minibuffer-keyboard-quit)
+(key-chord-define-global "dg" 'keyboard-quit)
+(key-chord-define-global "dg" 'minibuffer-keyboard-quit)
 (key-chord-define-global "hj" 'undo) 
 
-(key-chord-define-global "sf" 'isearch-forward)
-(key-chord-define-global "fb" 'isearch-backward)
+;;(key-chord-define-global "sf" 'isearch-forward)
+;;(key-chord-define-global "fb" 'isearch-backward)
  
 (key-chord-define-global "bb" 'ido-switch-buffer)
 (key-chord-define-global "xb" 'list-buffers)
 (key-chord-define-global "kk" 'ido-kill-buffer)
-(space-chord-define-global "f" 'ido-find-file)
+;;(space-chord-define-global "f" 'ido-find-file)
+(key-chord-define-global "ZZ" 'ido-find-file)
 (key-chord-define-global "SS" 'save-buffer)
  
-(space-chord-define-global "o" 'other-window)
+;;(space-chord-define-global "o" 'other-window)
+
+
+
+;; open some files at startup
+(pop-to-buffer (find-file "~/.emacs.d/sxratch.txt"))
+
 
 
 
@@ -174,6 +182,10 @@
 	(width . 88) (height . 57)
 	)
 )
+
+
+(set-face-attribute 'default nil :height 100)
+
 
 ;; change title bar display to show buffer name and file location
 (setq frame-title-format "%b - %+ %f")
@@ -393,7 +405,7 @@
 (defun loader-ess ()
   "Load ess for syntax highlighting."
   (interactive)
-  (load "~/.emacs.d/ess-14.09/lisp/ess-site")
+  (load "~/.emacs.d/ess-15.09/lisp/ess-site")
   (require 'ess-site)
   )
 
