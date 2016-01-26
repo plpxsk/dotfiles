@@ -50,18 +50,3 @@ lsoss <- function(..., n=10) {
     .ls.objects(..., order.by="Size", decreasing=TRUE, head=TRUE)
 }
 
-
-
-## Describe data - need psych() package
-dd.dd <- function(data){
-  describe(data)[,c(1:5,8:10)]  
-}
-
-dd.ddb <- function(data, group){
-  t1 <- describeBy(data, group=data$group)
-  print(summary(data$group))
-  dimm <- dim(t1)
-  for (i in 1:dimm){
-    print(t1[[i]][,c(1:5,8:10)])
-  }
-}

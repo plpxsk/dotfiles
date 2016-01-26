@@ -30,7 +30,6 @@
 PS1='\[\e[1m\]\W\$ \[\e[0m\]'
 
 
-
 ## ============================================================================
 ## Applications
 ## ============================================================================
@@ -41,6 +40,15 @@ alias vi="vim"
 
 alias gits="git status"
 alias gitb="git branch"
+
+
+## PYTHON
+## pip installed in root [sudo] but ipython installed with --user
+## so need the below to access `ipython`
+alias ipython="python -m IPython"
+
+
+
 
 ## ============================================================================
 ## Utilities 
@@ -84,13 +92,18 @@ alias bbbbb="c ../../../../.."
 
 
 ## CUSTOM LOCATIONS
+alias icloud="c ~/Library/Mobile Documents/com~apple~CloudDocs"
 alias tempo="c ~/tempo"
 # pax = /bin/pax, some archiving utility
 alias pax="c ~/github/pavopax.github.io"
 alias gg="c ~/github"
 alias msd="c ~/github/msd2015"
+alias simulation="c ~/Dropbox/cbar-px/simulation-paper"
 
 
+## don't remember; possibly  for local [non-sudo] [i]python installation 
+# EDIT: I think this is now added by default, so commented-out
+# export PATH=/usr/local/bin:$PATH 
 
 
 
@@ -118,5 +131,5 @@ alias msd="c ~/github/msd2015"
 # alias mkdir="mkdir -p"
 
 
-## don't remember:
-export PATH=/usr/local/bin:$PATH
+
+
