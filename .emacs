@@ -26,6 +26,10 @@
 ;; confirm emacs quit
 (setq confirm-kill-emacs 'yes-or-no-p)
 
+;; PACKAGE MANAGEMENT
+;; required for ELPA packages
+(require 'package)
+(package-initialize)
 
 ;; IDO-MODE
 ;; enhanced behavior for opening files and switching buffers, etc
@@ -284,8 +288,8 @@
 (global-set-key (kbd "C-z") 'undo)
 
 ;; easy to top, bottom
-(global-set-key "\M-," 'beginning-of-buffer)
-(global-set-key "\M-." 'end-of-buffer)
+;; (global-set-key "\M-," 'beginning-of-buffer)
+;; (global-set-key "\M-." 'end-of-buffer)
 
 ;; cycle through buffers
 ;; (global-set-key (kbd "<C-tab>") 'bury-buffer)
