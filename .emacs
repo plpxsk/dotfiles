@@ -45,12 +45,12 @@
 ;; sas mode is uppercase.. and lisp is case sensitive !!! !! !!
 (setq load-path (append load-path (list "~/.emacs.d/lisp")))
 (setq load-path (append load-path (list "~/.emacs.d/elpa")))
-(setq load-path (append load-path (list "~/.emacs.d/elpa/popup-20150626.711/")))
+(setq load-path (append load-path (list "~/.emacs.d/elpa/popup-20151222.1339/")))
 
 
 ;;(setq load-path (append load-path (list )))
 (setq load-path
-      (append load-path (list "~/.emacs.d/elpa/auto-complete-20150618.1949/"))
+      (append load-path (list "~/.emacs.d/elpa/auto-complete-20160107.8/"))
       )
 
 
@@ -79,7 +79,7 @@
 
 
 ;; web-mode
-(setq load-path (append load-path (list "~/.emacs.d/elpa/web-mode-20150628.1144/")))
+(setq load-path (append load-path (list "~/.emacs.d/elpa/web-mode-20160212.538/")))
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -160,9 +160,6 @@
 
 
 
-;; open some files at startup
-(pop-to-buffer (find-file "~/.emacs.d/sxratch.txt"))
-
 
 
 
@@ -184,7 +181,7 @@
 )
 
 
-(set-face-attribute 'default nil :height 100)
+;;(set-face-attribute 'default nil :height 100)
 
 
 ;; change title bar display to show buffer name and file location
@@ -351,10 +348,7 @@
 ;; (load-theme 'solarized t)
 ;; (set-frame-parameter nil 'background-mode 'light)
 ;; (setq frame-background-mode 'dark)
-
-
-
-(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/color-theme-solarized-20150619.1734")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/color-theme-solarized-20160219.924")
 (load-theme 'solarized t)
 
 
@@ -422,3 +416,8 @@
 
 ;;; .emacs ends here
 (put 'dired-find-alternate-file 'disabled nil)
+
+
+;; open some files at startup
+(pop-to-buffer (find-file "~/.emacs.d/sxratch.txt"))
+

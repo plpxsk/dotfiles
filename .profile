@@ -25,8 +25,7 @@
 ## Customizations
 ## ============================================================================
 # prompt
-# to see your current prompt, type:
-# echo $PS1
+# to see your current prompt, type: echo $PS1
 PS1='\[\e[1m\]\W\$ \[\e[0m\]'
 
 
@@ -40,6 +39,8 @@ alias vi="vim"
 
 alias gits="git status"
 alias gitb="git branch"
+alias gitr="git reflog"
+alias gitcam="git commit -am"
 
 
 ## PYTHON
@@ -67,6 +68,7 @@ alias ll='ls -go && echo "" && pwd'
 alias lll="ls -l"
 alias lld="ls -l | grep 'dr'"
 alias lla="ls -al"
+alias lls="ls -CF"
 
 ## tree installed using 'brew install tree'
 alias tree="tree -C"
@@ -103,7 +105,9 @@ alias simulation="c ~/Dropbox/cbar-px/simulation-paper"
 
 ## don't remember; possibly  for local [non-sudo] [i]python installation 
 # EDIT: I think this is now added by default, so commented-out
-# export PATH=/usr/local/bin:$PATH 
+#
+export PATH=/usr/local/bin:$PATH
+
 
 
 
