@@ -27,9 +27,19 @@
 (setq confirm-kill-emacs 'yes-or-no-p)
 
 ;; PACKAGE MANAGEMENT
+;; http://stackoverflow.com/questions/19142142/emacs-auto-complete-mode-not-working
 ;; required for ELPA packages
 (require 'package)
 (package-initialize)
+
+(setq package-archives
+      '(
+	("gnu" . "http://elpa.gnu.org/packages/")
+	("marmalade" . "http://marmalade-repo.org/packages/")
+	("melpa" . "http://melpa.milkbox.net/packages/")
+	)
+      )
+
 
 ;; IDO-MODE
 ;; enhanced behavior for opening files and switching buffers, etc
@@ -45,17 +55,17 @@
 ;; use M-s to immediately search dirs
 (setq ido-auto-merge-delay-time 3)
 
-;; need to add autocomlete AND popup to load path.
+
 ;; sas mode is uppercase.. and lisp is case sensitive !!! !! !!
 (setq load-path (append load-path (list "~/.emacs.d/lisp")))
 (setq load-path (append load-path (list "~/.emacs.d/elpa")))
-(setq load-path (append load-path (list "~/.emacs.d/elpa/popup-20151222.1339/")))
+;;(setq load-path (append load-path (list "~/.emacs.d/elpa/popup-20151222.1339/")))
 
 
 ;;(setq load-path (append load-path (list )))
-(setq load-path
-      (append load-path (list "~/.emacs.d/elpa/auto-complete-20160107.8/"))
-      )
+;; (setq load-path
+;;       (append load-path (list "~/.emacs.d/elpa/auto-complete-20160107.8/"))
+;;       )
 
 
 
@@ -83,7 +93,7 @@
 
 
 ;; web-mode
-(setq load-path (append load-path (list "~/.emacs.d/elpa/web-mode-20160212.538/")))
+;;(setq load-path (append load-path (list "~/.emacs.d/elpa/web-mode-20160212.538/")))
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -100,16 +110,6 @@
 
 
 
-;; packagage control
-;; http://stackoverflow.com/questions/19142142/emacs-auto-complete-mode-not-working
-;; (package-initialize)
-(setq package-archives
-      '(
-	("gnu" . "http://elpa.gnu.org/packages/")
-	("marmalade" . "http://marmalade-repo.org/packages/")
-	("melpa" . "http://melpa.milkbox.net/packages/")
-	)
-      )
 
 
 
@@ -324,8 +324,6 @@
 
 ;; I hit this too often. default is C-x k
 (global-set-key (kbd "C-x C-k") 'ido-kill-buffer)
-		
-
 
 
 
@@ -333,8 +331,6 @@
 ;; EMACS: load ADDITIONAL FILE with custom functions and shortcuts
 ;; ============================================================================
 (load "~/.pinit")
-
-
 
 
 
@@ -352,7 +348,7 @@
 ;; (load-theme 'solarized t)
 ;; (set-frame-parameter nil 'background-mode 'light)
 ;; (setq frame-background-mode 'dark)
-(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/color-theme-solarized-20160219.924")
+;;(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/color-theme-solarized-20160219.924")
 (load-theme 'solarized t)
 
 
