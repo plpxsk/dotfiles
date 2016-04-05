@@ -67,7 +67,7 @@
 (add-to-list 'ac-modes 'markdown-mode)
 
 ;; delay autocomplete
-(setq ac-delay 0.2)
+(setq ac-delay 0.3)
 ;; delay appearance of menu; t=immediate
 (setq ac-auto-show-menu 0.7)
 
@@ -186,13 +186,12 @@
 (setq initial-frame-alist
       '(
 	(top . 0) (left . 0)
-	(width . 88) (height . 57)
+	(width . 110) (height . 65)
 	)
 )
 
-
+(setq default-frame-alist '( (left . 0) (top . 0) (height . 65) (width . 100) ))
 ;;(set-face-attribute 'default nil :height 100)
-
 
 ;; change title bar display to show buffer name and file location
 (setq frame-title-format "%b - %+ %f")
