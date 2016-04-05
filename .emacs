@@ -55,19 +55,9 @@
 ;; use M-s to immediately search dirs
 (setq ido-auto-merge-delay-time 3)
 
-
 ;; sas mode is uppercase.. and lisp is case sensitive !!! !! !!
 (setq load-path (append load-path (list "~/.emacs.d/lisp")))
 (setq load-path (append load-path (list "~/.emacs.d/elpa")))
-;;(setq load-path (append load-path (list "~/.emacs.d/elpa/popup-20151222.1339/")))
-
-
-;;(setq load-path (append load-path (list )))
-;; (setq load-path
-;;       (append load-path (list "~/.emacs.d/elpa/auto-complete-20160107.8/"))
-;;       )
-
-
 
 (require 'auto-complete-config)
 (ac-config-default)
@@ -81,19 +71,16 @@
 ;; delay appearance of menu; t=immediate
 (setq ac-auto-show-menu 0.7)
 
-
-
 ;;(global-auto-complete-mode t)
 ;; http://stackoverflow.com/questions/8095715/emacs-auto-complete-mode-at-startup
 
 ;; load autocomplete
 ;;(add-to-list 'ac-dictionary-directories "h:/.emacs.d/auto-complete/dict")
-;; add keyboard cut
-;; (define-key ac-mode-map (kbd "C-TAB") 'auto-complete)
+;; add keyboard cut to get TAB mode
+(define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
 
 
 ;; web-mode
-;;(setq load-path (append load-path (list "~/.emacs.d/elpa/web-mode-20160212.538/")))
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -107,11 +94,6 @@
 ;; RMD, md as markdown
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . markdown-mode))
-
-
-
-
-
 
 ;; from emacs manual - Emacs Menu's 'save for future' items go here
 (setq custom-file "~/.emacs.d/init.el")
@@ -135,10 +117,8 @@
 ;; use this for markdown, after running `brew install markdown`
 (custom-set-variables '(markdown-command "/usr/local/bin/markdown"))
 
-
-
-;; key-chords; pure magic
-;; "like aliases in unix"
+;; KEY-CHORDS
+;; pure magic :"like aliases in unix"
 ;; space-chord just adds function space-chord-define-global
 ;; http://emacswiki.org/emacs/key-chord.el
 ;; see its header for details
@@ -163,8 +143,34 @@
 ;;(space-chord-define-global "o" 'other-window)
 
 
+;; install package: `fill-column-indicator`
+(define-globalized-minor-mode
+ global-fci-mode fci-mode (lambda () (fci-mode 1)))
+;;(global-fci-mode 0)
 
 
+
+;; MORE PYTHON MAGIC
+(autoload 'python-mode "python-mode" "Python Mode." t)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+
+;; http://www.jesshamrick.com/2012/09/18/emacs-as-a-python-ide/
+; use IPython
+;; (setq-default py-shell-name "ipython")
+;; (setq-default py-which-bufname "IPython")
+; use the wx backend, for both mayavi and matplotlib
+;; (setq py-python-command-args
+;;   '("--gui=wx" "--pylab=wx" "-colors" "Linux"))
+;; (setq py-force-py-shell-name-p t)
+
+;; ; switch to the interpreter after executing code
+;; (setq py-shell-switch-buffers-on-execute-p t)
+;; (setq py-switch-buffers-on-execute-p t)
+;; ; don't split windows
+;; (setq py-split-windows-on-execute-p nil)
+;; ; try to automagically figure out indentation
+;; (setq py-smart-indentation t)
 
 
 
@@ -276,6 +282,12 @@
 ;; http://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files
 (setq backup-directory-alist `(("." . "~/.backups")))
 (setq backup-by-copying t)
+
+
+
+;; set fill column
+(setq-default fill-column 79)
+
 
 
 
