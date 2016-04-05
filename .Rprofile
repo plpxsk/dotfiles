@@ -13,7 +13,11 @@ options(device="quartz")
 options("width"=110)
 
 ## get thee to a temp directory for play
-go.tempo <- function() setwd("~/tempo")
+# go.tempo <- function() setwd("~/tempo")
+
+h <- function(x) head(x)
+g <- function(x) glimpse(x)
+s <- function(x) summary(x)
 
 
 ## lsos from stack overflow

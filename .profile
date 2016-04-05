@@ -101,7 +101,7 @@ alias pax="c ~/github/pavopax.github.io"
 alias gg="c ~/github"
 alias msd="c ~/github/msd2015"
 alias simulation="c ~/Dropbox/cbar-px/simulation-paper"
-
+alias tdi="c ~/Dropbox/projects/tdi-projects-dropbox"
 
 ## don't remember; possibly  for local [non-sudo] [i]python installation 
 # EDIT: I think this is now added by default, so commented-out
