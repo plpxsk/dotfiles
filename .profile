@@ -40,13 +40,13 @@ alias vi="vim"
 alias gits="git status"
 alias gitb="git branch"
 alias gitr="git reflog"
-alias gitcam="git commit -am"
+#alias gitcam="git commit -am"
 
 
 ## PYTHON
 ## pip installed in root [sudo] but ipython installed with --user
 ## so need the below to access `ipython`
-alias ipython="python -m IPython"
+#alias ipython="python -m IPython"
 
 
 
@@ -105,10 +105,16 @@ alias tdi="c ~/Dropbox/projects/tdi-projects-dropbox"
 
 ## don't remember; possibly  for local [non-sudo] [i]python installation 
 # EDIT: I think this is now added by default, so commented-out
-#
-export PATH=/usr/local/bin:$PATH
+# export PATH=/usr/local/bin:$PATH
 
+# PG
+# http://postgresapp.com/documentation/cli-tools.html
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+# https://devcenter.heroku.com/articles/heroku-postgresql#local-setup
+# PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH:$PATH"
 
+# for testing my heroku web app (TDI_
+export DATABASE_URL="postgres://pawel@localhost:5432/wb_indicators" 
 
 
 ## ============================================================================
@@ -135,5 +141,18 @@ export PATH=/usr/local/bin:$PATH
 # alias mkdir="mkdir -p"
 
 
+# install Java, scala, spark:
+# http://genomegeek.blogspot.com/2014/11/how-to-install-apache-spark-on-mac-os-x.html
+export JAVA_HOME=$(/usr/libexec/java_home)
+export SCALA_HOME=/usr/local/bin/scala  
+export SPARK_HOME=/Users/pawel/spark-1.6.1
+
+export PATH=$PATH:$SCALA_HOME/bin 
+
+alias pyspark="~/spark-1.6.1/bin/pyspark"
+
+export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
 
 
+# added by Anaconda2 4.0.0 installer
+export PATH="/Users/pawel/anaconda/bin:$PATH"
