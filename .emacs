@@ -1,7 +1,7 @@
 ;; ============================================================================
 ;; WHAT         .emacs init head file
 ;; HOW          has links to other files, see "contents"
-;; AUTHOR       [AMA!] Pawel Paczuski [pavopax.com]
+;; AUTHOR       [AMA!] Paul Paczuski [pavopax.com]
 ;;
 ;; CONTENTS
 ;;  EMACS LOAD PATHS (need to be at top) and MODES
@@ -17,8 +17,6 @@
 ;;	can omit ".el" when loading .el files
 ;;      edit default font in customize - faces - basic face - default face
 ;; ============================================================================
-
-
 
 ;; ============================================================================
 ;; EMACS LOAD PATHS (need to be at top) and MODES
@@ -77,8 +75,10 @@
 ;; load autocomplete
 ;;(add-to-list 'ac-dictionary-directories "h:/.emacs.d/auto-complete/dict")
 ;; add keyboard cut to get TAB mode
+;; this is actually emacs' auto-complete, so it is also for company-mode (?)
 (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
 
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; web-mode
 (require 'web-mode)
@@ -106,7 +106,6 @@
 ;; (setq exec-path (append exec-path '("/usr/texbin")))
 ;;(setenv "PATH" (concat "/usr/texbin" ":" (getenv "PATH"))) 
 (setenv "PATH" (concat "/Library/TeX/texbin/" ":" (getenv "PATH")))
-
 
 
 
@@ -150,15 +149,36 @@
 
 
 
+;; PYTHON:
+;; (defun ipython ()
+;;     (interactive)
+;;     (term "/Users/pawel/anaconda/bin/ipython"))
+
+(setq python-shell-interpreter "/Users/pawel/anaconda/bin/python")
+
+;; use ELPY
+;; https://github.com/jorgenschaefer/elpy
+
+(elpy-enable)
+(setq elpy-rpc-python-command "/Users/pawel/anaconda/bin/python")
+;;(elpy-use-ipython)
+
+;; don't need this?
+;;(setq elpy-rpc-python-command "/Users/pawel/anaconda/bin/python")
+
+
+
 ;; MORE PYTHON MAGIC
-(autoload 'python-mode "python-mode" "Python Mode." t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+
+;; (require 'python-mode)
+;; (autoload 'python-mode "python-mode" "Python Mode." t)
+;; (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+;; (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
 ;; http://www.jesshamrick.com/2012/09/18/emacs-as-a-python-ide/
 ; use IPython
-;; (setq-default py-shell-name "ipython")
-;; (setq-default py-which-bufname "IPython")
+;; (setq-default py-shell-name "python")
+;;(setq-default py-which-bufname "IPython")
 ; use the wx backend, for both mayavi and matplotlib
 ;; (setq py-python-command-args
 ;;   '("--gui=wx" "--pylab=wx" "-colors" "Linux"))
@@ -261,7 +281,7 @@
 (global-hl-line-mode 1)
 
 ;; truncate long lines
-;; (setq default-truncate-lines t)
+(setq default-truncate-lines t)
 ;; make side by side buffer function the same as the main window
 (setq truncate-partial-width-windows nil)
 ;; toggle with F12
@@ -271,6 +291,7 @@
 (setq confirm-kill-emacs 'yes-or-no-p)
 
 ;; "ctrl - left click" buffer menu increase number of items
+(setq mouse-buffer-menu-maxlen 40)
 (setq mouse-buffer-menu-mode-mult 50)
 
 (put 'set-goal-column 'disabled nil)
@@ -382,7 +403,7 @@
   )
 
 
-(darkit)
+;;(darkit)
 
 ;; previous experiments with updating solarized:
 ;; (add-hook 'after-make-frame-functions
@@ -405,7 +426,6 @@
 ;; ==============================
 ;; ESS: EMACS SPEAKS STATISTICS
 ;; ==============================
-
 ;; save time at startup by loading on-demand (obsolete with SSD's...)
 (defun loader-ess ()
   "Load ess for syntax highlighting."
@@ -417,6 +437,11 @@
 (global-set-key (kbd "C-c s") 'loader-ess)
 
 (loader-ess)
+
+;; create a new frame for each help instance
+;; but all help buffers go into one frame 
+(setq ess-help-own-frame t)
+(setq ess-help-own-frame 'one)
 
 ;; evaluate code invisibly
 ;; pushing code to R sometimes significantly adds to runtime, and may be unstable
