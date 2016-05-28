@@ -434,8 +434,6 @@
   (require 'ess-site)
   )
 
-(global-set-key (kbd "C-c s") 'loader-ess)
-
 (loader-ess)
 
 ;; create a new frame for each help instance
