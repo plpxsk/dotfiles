@@ -37,7 +37,7 @@ PS1='\[\e[1m\]\W\$ \[\e[0m\]'
 alias em="emacs"
 alias vi="vim"
 
-alias gits="git status"
+alias gits="git status --untracked-files=no"
 alias gitb="git branch"
 alias gitr="git reflog"
 #alias gitcam="git commit -am"
@@ -102,6 +102,7 @@ alias gg="c ~/github"
 alias msd="c ~/github/msd2015"
 alias simulation="c ~/Dropbox/cbar-px/simulation-paper"
 alias tdi="c ~/Dropbox/projects/tdi-projects-dropbox"
+alias flatiron="c ~/Dropbox/PROJECTS/flatiron-challenge"
 
 ## don't remember; possibly  for local [non-sudo] [i]python installation 
 # EDIT: I think this is now added by default, so commented-out
@@ -113,8 +114,10 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 # https://devcenter.heroku.com/articles/heroku-postgresql#local-setup
 # PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH:$PATH"
 
-# for testing my heroku web app (TDI_
-export DATABASE_URL="postgres://pawel@localhost:5432/wb_indicators" 
+# for testing my heroku web app (TDI)
+# original usnews one:
+#export DATABASE_URL="postgres://pawel@localhost:5432/wb_indicators" 
+export DATABASE_URL="postgres://pawel@localhost:5432/indicators" 
 
 
 ## ============================================================================

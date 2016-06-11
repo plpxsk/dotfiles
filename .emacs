@@ -454,4 +454,5 @@
 
 ;; open some files at startup
 (pop-to-buffer (find-file "~/.emacs.d/sxratch.txt"))
+(pop-to-buffer (find-file "~/code-temp/rscratch.R"))
 
