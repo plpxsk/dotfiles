@@ -12,5 +12,8 @@ As well as:
 * `.vimrc` - (bare-bones) Vim initialization file
 
 
+The file `.gitignore` is to manage this repo.
+
+
 
 
