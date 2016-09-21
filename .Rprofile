@@ -12,13 +12,16 @@ options(device="quartz")
 ## default on my setup was around 80
 options("width"=110)
 
+options(max.print = 300)
+
 ## get thee to a temp directory for play
 # go.tempo <- function() setwd("~/tempo")
 
 h <- function(x) head(x)
 g <- function(x) glimpse(x)
 s <- function(x) summary(x)
-
+l <- function(x) length(x)
+u <- function(x) unique(x)
 
 ## lsos from stack overflow
 .ls.objects <- function (pos = 1, pattern, order.by,

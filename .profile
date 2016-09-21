@@ -57,6 +57,8 @@ alias gitr="git reflog"
 alias src="source ~/.profile"
 alias alter="emacs ~/.profile"
 
+alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
+
 # deletes emacs backup files and similar
 alias cleanem="sh ~/c/init-files/cleanem.sh"
 
@@ -76,6 +78,8 @@ alias tree="tree -C"
 ## set up a directory
 alias setupdir="cp -r ~/projects/_template/* ."
 
+# https://coderwall.com/p/be5gga/git-autocompletion-in-os-x-terminal
+source ~/.git-completion.bash
 
 # why wouldn't you have this..
 function c()
@@ -99,10 +103,8 @@ alias tempo="c ~/tempo"
 # pax = /bin/pax, some archiving utility
 alias pax="c ~/github/pavopax.github.io"
 alias gg="c ~/github"
-alias msd="c ~/github/msd2015"
-alias simulation="c ~/Dropbox/cbar-px/simulation-paper"
-alias tdi="c ~/Dropbox/projects/tdi-projects-dropbox"
-alias flatiron="c ~/Dropbox/PROJECTS/flatiron-challenge"
+
+alias sshdo="ssh vagrant@159.203.126.48"
 
 ## don't remember; possibly  for local [non-sudo] [i]python installation 
 # EDIT: I think this is now added by default, so commented-out
