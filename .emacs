@@ -382,15 +382,14 @@
 ;; (set-frame-parameter nil 'background-mode 'light)
 ;; (setq frame-background-mode 'dark)
 ;;(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/color-theme-solarized-20160219.924")
+(customize-set-variable 'frame-background-mode 'dark)
 (load-theme 'solarized t)
-
 
 (defun lightit ()
   "Quickly switch to light theme."
   (interactive)
-  (set-frame-parameter nil 'background-mode 'light)
-  ;; (set-terminal-parameter frame 'background-mode light)
-  (enable-theme 'solarized)
+  (customize-set-variable 'frame-background-mode 'light)
+  (load-theme 'solarized t)
   )
 
 
@@ -398,14 +397,10 @@
 (defun darkit ()
   "Quickly switch to dark theme."
   (interactive)
-  (set-frame-parameter nil 'background-mode 'dark)
-  ;; (set-terminal-parameter frame 'background-mode light)
-  (enable-theme 'solarized)
+  (customize-set-variable 'frame-background-mode 'dark)
+  (load-theme 'solarized t)
   )
 
-
-;; start with dark mode
-(darkit)
 
 ;; previous experiments with updating solarized:
 ;; (add-hook 'after-make-frame-functions
