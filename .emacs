@@ -308,7 +308,8 @@
 ;; set fill column
 (setq-default fill-column 79)
 
-
+;; slower mouse scroll (macOS trackpad)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
 
 
 ;; =====================
@@ -403,7 +404,8 @@
   )
 
 
-;;(darkit)
+;; start with dark mode
+(darkit)
 
 ;; previous experiments with updating solarized:
 ;; (add-hook 'after-make-frame-functions
@@ -453,7 +455,6 @@
 
 
 ;; open some files at startup
-(pop-to-buffer (find-file "~/.emacs.d/sxratch.txt"))
 (pop-to-buffer (find-file "~/code-temp/scratch.R"))
 (pop-to-buffer (find-file "~/code-temp/scratch.py"))
-
+(pop-to-buffer (find-file "~/.emacs.d/sxratch.txt"))
