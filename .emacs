@@ -382,6 +382,8 @@
 ;; (set-frame-parameter nil 'background-mode 'light)
 ;; (setq frame-background-mode 'dark)
 ;;(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/color-theme-solarized-20160219.924")
+
+;; https://github.com/sellout/emacs-color-theme-solarized/issues/167
 (customize-set-variable 'frame-background-mode 'dark)
 (load-theme 'solarized t)
 

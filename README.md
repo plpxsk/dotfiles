@@ -9,6 +9,7 @@ This repository stores my (mostly) up-to-date initialization files:
 As well as:
 
 * `pinit.el` - supplementary Emacs functions
+* `.emacs.d/init.el` - Emacs customization
 * `.vimrc` - (bare-bones) Vim initialization file
 
 
