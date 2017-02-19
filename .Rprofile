@@ -1,29 +1,27 @@
-## -*- mode: R -*- ============================================================
-## WHAT         R init file
-## HOW          
-## NOTES        
-## AUTHOR       [AMA!] Pawel Paczuski [pavopax.com]  
-## ============================================================================
+## R initialization file
+## Author: [AMA!] Paul Paczuski [pavopax.com]  
 
 
 ## I seem to need this to get graphics to work on Mac OS X
-options(device="quartz")
-## number of columns in R output (at least in ESS)
-## default on my setup was around 80
+## disable if using jupyter r kernel to prevent flashing window
+## options(device="quartz")
+
+## number of columns in R output (at least in ESS) (default ~80)
 options("width"=110)
 
+## less default printing
 options(max.print = 300)
 
-## get thee to a temp directory for play
-# go.tempo <- function() setwd("~/tempo")
-
+## utility functions
 h <- function(x) head(x)
 g <- function(x) glimpse(x)
 s <- function(x) summary(x)
 l <- function(x) length(x)
 u <- function(x) unique(x)
+adf <- function(x) as.data.frame(x)
 
-## lsos from stack overflow
+## lsos()
+## https://github.com/nfultz/stackoverflow/blob/master/R/lsos.R
 .ls.objects <- function (pos = 1, pattern, order.by,
                         decreasing=FALSE, head=FALSE, n=5) {
     napply <- function(names, fn) sapply(names, function(x)
@@ -56,4 +54,3 @@ lsos <- function(..., n=10) {
 lsoss <- function(..., n=10) {
     .ls.objects(..., order.by="Size", decreasing=TRUE, head=TRUE)
 }
-
