@@ -7,12 +7,14 @@
  '(custom-safe-themes
    (quote
     ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
- '(frame-background-mode nil)
+ '(frame-background-mode (quote dark))
  '(inhibit-startup-screen t)
  '(markdown-command "/usr/local/bin/markdown")
  '(package-selected-packages
    (quote
-    (ace-window web-mode smooth-scrolling scala-mode2 python-mode pymacs pos-tip pandoc-mode matlab-mode markdown-mode fill-column-indicator elpy ein color-theme-solarized auto-complete)))
+    (jedi ace-window web-mode smooth-scrolling scala-mode2 python-mode pymacs pos-tip pandoc-mode matlab-mode fill-column-indicator elpy ein color-theme-solarized auto-complete)))
+ '(python-indent-guess-indent-offset nil)
+ '(python-indent-offset 2)
  '(safe-local-variable-values (quote ((Model . markdown))))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
