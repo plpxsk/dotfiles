@@ -104,7 +104,12 @@ alias tempo="c ~/tempo"
 alias pax="c ~/github/pavopax.github.io"
 alias gg="c ~/github"
 
-alias sshdo="ssh vagrant@159.203.126.48"
+alias sshdo="ssh vagrant@45.55.49.207" # my box
+alias sshdoadmin="ssh vagrant@45.55.51.239" # fellow admin box
+
+alias tdi-icloud="c /Users/pawel/Library/Mobile Documents/com~apple~CloudDocs/projects/tdi-teaching-2017"
+
+alias ssh_spark_20gb="ssh -i ~/.aws/my-key.pem ubuntu@ec2-107-21-74-38.compute-1.amazonaws.com"
 
 ## don't remember; possibly  for local [non-sudo] [i]python installation 
 # EDIT: I think this is now added by default, so commented-out
@@ -122,42 +127,27 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 export DATABASE_URL="postgres://pawel@localhost:5432/indicators" 
 
 
-## ============================================================================
-## Scratch
-## ============================================================================
-
-
-# function ll()
-# {
-#     builtin ls -go "$*" && echo "" && pwd
-# }
-
-# function ll()
-# {
-#     /usr/bin/ls "$*" -go && echo "" && pwd
-# }
-
-
-# function mcd() {
-#   mkdir -p "$1" && cd "$1";
-# }
-
-# also create intermediate directories
-# alias mkdir="mkdir -p"
-
+# AWS
+complete -C '/Users/pawel/anaconda/bin/aws_completer' aws
 
 # install Java, scala, spark:
 # http://genomegeek.blogspot.com/2014/11/how-to-install-apache-spark-on-mac-os-x.html
 export JAVA_HOME=$(/usr/libexec/java_home)
 export SCALA_HOME=/usr/local/bin/scala  
 export SPARK_HOME=/Users/pawel/spark-1.6.1
-
 export PATH=$PATH:$SCALA_HOME/bin 
 
 alias pyspark="~/spark-1.6.1/bin/pyspark"
 
 export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
 
+export PATH=$PATH:~/apache-maven-3.3.9/bin
 
 # added by Anaconda2 4.0.0 installer
 export PATH="/Users/pawel/anaconda/bin:$PATH"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/pawel/.sdkman"
+[[ -s "/Users/pawel/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/pawel/.sdkman/bin/sdkman-init.sh"
