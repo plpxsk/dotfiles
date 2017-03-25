@@ -28,15 +28,17 @@
 ;; http://stackoverflow.com/questions/19142142/emacs-auto-complete-mode-not-working
 ;; required for ELPA packages
 (require 'package)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (package-initialize)
 
-(setq package-archives
-      '(
-	("gnu" . "http://elpa.gnu.org/packages/")
-	("marmalade" . "http://marmalade-repo.org/packages/")
-	("melpa" . "http://melpa.milkbox.net/packages/")
-	)
-      )
+;; (setq package-archives
+;;       '(
+;; 	("gnu" . "http://elpa.gnu.org/packages/")
+;; 	("marmalade" . "http://marmalade-repo.org/packages/")
+;; 	("melpa" . "http://melpa.milkbox.net/packages/")
+;; 	)
+;;       )
 
 
 ;; IDO-MODE
@@ -60,7 +62,7 @@
 (require 'auto-complete-config)
 (ac-config-default)
 ;; (add-to-list 'ac-modes 'sas-mode)
-;; (add-to-list 'ac-modes 'ess-mode)
+(add-to-list 'ac-modes 'ess-mode)
 ;; (add-to-list 'ac-modes 'SAS-mode)
 (add-to-list 'ac-modes 'markdown-mode)
 
@@ -69,7 +71,7 @@
 ;; delay appearance of menu; t=immediate
 (setq ac-auto-show-menu 0.7)
 
-;;(global-auto-complete-mode t)
+(global-auto-complete-mode 0)
 ;; http://stackoverflow.com/questions/8095715/emacs-auto-complete-mode-at-startup
 
 ;; load autocomplete
@@ -91,9 +93,26 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
-;; RMD, md as markdown
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.Rmd\\'" . markdown-mode))
+;; POLYMODE
+(setq load-path (append '("~/.emacs.d/polymode/"  "~/.emacs.d/polymode/modes") load-path))
+
+;; MARKDOWN
+
+;; use this for markdown, after running `brew install markdown`
+;; (custom-set-variables '(markdown-command "/usr/local/bin/markdown"))
+(custom-set-variables '(markdown-command "/usr/local/bin/pandoc"))
+
+
+(require 'poly-R)
+(require 'poly-markdown)
+(add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
+
+;;; R modes
+(add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
+(add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
+(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
+
 
 ;; from emacs manual - Emacs Menu's 'save for future' items go here
 (setq custom-file "~/.emacs.d/init.el")
@@ -102,10 +121,12 @@
 ;; append to exec path
 ;; for, eg pandoc	$  which pandoc		$ /usr/local/bin/pandoc
 (setq exec-path (append exec-path '("/usr/local/bin")))
+(setq exec-path (append exec-path '("/Users/pawel/anaconda/bin"))) ;for flake8
 ;; for latex
 ;; (setq exec-path (append exec-path '("/usr/texbin")))
 ;;(setenv "PATH" (concat "/usr/texbin" ":" (getenv "PATH"))) 
 (setenv "PATH" (concat "/Library/TeX/texbin/" ":" (getenv "PATH")))
+(setenv "PATH" (concat "/Users/pawel/anaconda/bin" ":" (getenv "PATH"))) ;for flake8
 
 
 
@@ -113,8 +134,6 @@
 ;;(setq-default ispell-program-name "aspell")
 (setq-default ispell-program-name "/usr/local/bin/aspell")
 
-;; use this for markdown, after running `brew install markdown`
-(custom-set-variables '(markdown-command "/usr/local/bin/markdown"))
 
 ;; KEY-CHORDS
 ;; pure magic :"like aliases in unix"
@@ -122,23 +141,15 @@
 ;; http://emacswiki.org/emacs/key-chord.el
 ;; see its header for details
 ;; use C-h k to find the function name (the last part in key-chord-define-global)
-(require 'key-chord)
-;;(require 'space-chord)                
-(key-chord-mode 1)
-(key-chord-define-global "dg" 'keyboard-quit)
-(key-chord-define-global "dg" 'minibuffer-keyboard-quit)
-(key-chord-define-global "hj" 'undo) 
 
-;;(key-chord-define-global "sf" 'isearch-forward)
-;;(key-chord-define-global "fb" 'isearch-backward)
- 
-(key-chord-define-global "bb" 'ido-switch-buffer)
-(key-chord-define-global "xb" 'list-buffers)
-(key-chord-define-global "kk" 'ido-kill-buffer)
-;;(space-chord-define-global "f" 'ido-find-file)
-(key-chord-define-global "ZZ" 'ido-find-file)
-(key-chord-define-global "SS" 'save-buffer)
- 
+;; DISABLING for performance reasons
+;; (require 'key-chord)
+;;(require 'space-chord)                
+;; (key-chord-mode 1)
+;; (key-chord-define-global "bb" 'ido-switch-buffer)
+;; (key-chord-define-global "kk" 'ido-kill-buffer)
+
+;;(space-chord-define-global "f" 'ido-find-file) 
 ;;(space-chord-define-global "o" 'other-window)
 
 
@@ -153,6 +164,11 @@
 ;; (defun ipython ()
 ;;     (interactive)
 ;;     (term "/Users/pawel/anaconda/bin/ipython"))
+
+;; use 2 spaces for python indent
+;; (custom-set-variables
+;;  '(python-guess-indent nil)
+;;  '(python-indent 2))
 
 (setq python-shell-interpreter "/Users/pawel/anaconda/bin/python")
 
@@ -281,7 +297,8 @@
 (global-hl-line-mode 1)
 
 ;; truncate long lines
-(setq default-truncate-lines t)
+;; (setq default-truncate-lines t)
+
 ;; make side by side buffer function the same as the main window
 (setq truncate-partial-width-windows nil)
 ;; toggle with F12
@@ -359,6 +376,11 @@
 (global-set-key (kbd "C-x C-k") 'ido-kill-buffer)
 
 
+;; hide other windows with macOS CMD-OPT-h
+;; https://github.com/syl20bnr/spacemacs/issues/7464
+;; https://github.com/syl20bnr/spacemacs/pull/7536/files
+(global-set-key (kbd "M-s-h") 'ns-do-hide-others)
+(global-set-key [142607065] 'ns-do-hide-others)
 
 ;; ============================================================================
 ;; EMACS: load ADDITIONAL FILE with custom functions and shortcuts
@@ -453,5 +475,9 @@
 
 ;; open some files at startup
 (pop-to-buffer (find-file "~/code-temp/scratch.R"))
+(pop-to-buffer (find-file "~/CODE/CODESAVERS/R-codesaver.R"))
+(pop-to-buffer (find-file "~/CODE/CODESAVERS/python-codesaver.py"))
 (pop-to-buffer (find-file "~/code-temp/scratch.py"))
 (pop-to-buffer (find-file "~/.emacs.d/sxratch.txt"))
+
+(put 'erase-buffer 'disabled nil)
