@@ -1,6 +1,6 @@
-## R initialization file
-## Author: [AMA!] Paul Paczuski [pavopax.com]  
-
+# COMMON R-profile
+# Paul Paczuski 
+# https://github.com/pavopax/initialization-files
 
 ## I seem to need this to get graphics to work on Mac OS X
 ## disable if using jupyter r kernel to prevent flashing window
