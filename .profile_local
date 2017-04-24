@@ -1,0 +1,2 @@
+# to see your current prompt, type: echo $PS1
+PS1='\[\e[1m\][BEE]\W\$ \[\e[0m\]'
