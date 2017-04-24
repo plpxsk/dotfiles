@@ -40,3 +40,7 @@ Packages to install
   * more in `.emacs`
   
 
+# Misc
+
+Change Emacs dock icon. Use `Emacs.icns` and
+[follow the rest of these instructions](https://apple.stackexchange.com/a/276579).
