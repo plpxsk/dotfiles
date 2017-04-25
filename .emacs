@@ -475,9 +475,7 @@
 
 ;; open some files at startup
 (pop-to-buffer (find-file "~/code-temp/scratch.R"))
-(pop-to-buffer (find-file "~/CODE/CODESAVERS/R-codesaver.R"))
-(pop-to-buffer (find-file "~/CODE/CODESAVERS/python-codesaver.py"))
 (pop-to-buffer (find-file "~/code-temp/scratch.py"))
-(pop-to-buffer (find-file "~/.emacs.d/sxratch.txt"))
+(pop-to-buffer (find-file "~/icloud/CODE/CODESAVERS/sxratch.txt"))
 
 (put 'erase-buffer 'disabled nil)
