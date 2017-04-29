@@ -35,6 +35,8 @@ alias gitr="git reflog"
 ## brew install tree
 alias tree="tree -C"
 
+alias juno="jupyter notebook &"
+
 
 # ============================================================================
 # Load
