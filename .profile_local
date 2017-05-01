@@ -1,2 +1,4 @@
 # to see your current prompt, type: echo $PS1
 PS1='\[\e[1m\][BEE]\W\$ \[\e[0m\]'
+
+alias trng="c /home/bceuser/paczuskp/projects/turing--NSCLC-efficacy-q4"
