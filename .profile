@@ -53,3 +53,6 @@ fi
 if [ -f ~/.profile_private ]; then
     . ~/.profile_private
 fi
+
+# color output
+export CLICOLOR=1
