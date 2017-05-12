@@ -36,7 +36,7 @@ Use Python 2 kernel in Jupyter: http://ipython.readthedocs.io/en/stable/install/
 
 Packages to install
 
-  * markdown-mode
+  * `exec-path-from-shell`
   * more in `.emacs`
   
 
