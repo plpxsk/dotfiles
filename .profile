@@ -29,6 +29,7 @@ alias bbbb="c ../../../.."
 alias bbbbb="c ../../../../.."
 
 alias gits="git status --untracked-files=no"
+alias gitsu="git status"
 alias gitb="git branch"
 alias gitr="git reflog"
 
@@ -37,6 +38,9 @@ alias tree="tree -C"
 
 alias juno="jupyter notebook &"
 
+function knit() {
+    R -e "rmarkdown::render('$1')"
+}
 
 # ============================================================================
 # Load
