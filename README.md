@@ -1,6 +1,7 @@
 Quick Start
 ===============================================================================
-This repository stores my (mostly) up-to-date initialization files:
+This repository stores my (mostly) up-to-date initialization files. I maintain
+a few branches for my boxen.
 
 
 
