@@ -1,7 +1,7 @@
 # to see your current prompt, type: echo $PS1
 PS1='\[\e[1m\][BEE]\W\$ \[\e[0m\]'
 
-alias trng="c /home/bceuser/paczuskp/projects/turing--NSCLC-efficacy-q4"
+source ~/.git-flow-completion.bash
 
-# http://stackoverflow.com/a/16104473/3217870
-unset SSH_ASKPASS
+PATH=$PATH:$HOME/local/bin
+export PATH
