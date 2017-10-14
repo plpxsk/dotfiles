@@ -42,10 +42,19 @@ Use Python 2 kernel in Jupyter: http://ipython.readthedocs.io/en/stable/install/
 Packages to install
 
   * `exec-path-from-shell`
+  * `flycheck`
+  * `magit`
   * more in `.emacs`
   
+[Run R from SSH session](https://www.r-bloggers.com/run-a-remote-r-session-in-emacs-emacs-ess-r-ssh/)
 
 # Misc
 
 Change Emacs dock icon. Use `Emacs.icns` and
 [follow the rest of these instructions](https://apple.stackexchange.com/a/276579).
+
+# References
+
+https://github.com/whomwah/qlstephen
+
+https://github.com/toland/qlmarkdown
