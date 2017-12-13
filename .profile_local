@@ -1,6 +1,9 @@
 # to see your current prompt, type: echo $PS1
 PS1='\[\e[1m\][BEE]\W\$ \[\e[0m\]'
 
+# installed manually
+alias tmux="~/local/bin/tmux"
+
 source ~/.git-flow-completion.bash
 
 PATH=$PATH:$HOME/local/bin
