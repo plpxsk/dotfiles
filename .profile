@@ -25,8 +25,6 @@ function c()
 alias b="c ../"
 alias bb="c ../.."
 alias bbb="c ../../.."
-alias bbbb="c ../../../.."
-alias bbbbb="c ../../../../.."
 
 ## brew install tree
 alias tree="tree -C"
