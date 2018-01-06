@@ -4,6 +4,15 @@ This repository stores my (mostly) up-to-date initialization files.
 
 I maintain a few branches for my boxen.
 
+# Usage
+
+See set up instructions below. Then you can use:
+
+  * `fd` for find
+  * `ag` instead of `git grep`
+  * `tldr` instead of `man`
+
+
 # Setting up coding environment on new mac
 
 ## Start here
@@ -24,6 +33,9 @@ Install brew cask for mac apps: https://caskroom.github.io
 
 	# https://github.com/sharkdp/fd/
 	brew install fd
+	
+	# https://github.com/ggreer/the_silver_searcher
+	brew install the_silver_searcher
 
 
 ## Python
@@ -52,6 +64,8 @@ Packages to install
 
 Change Emacs dock icon. Use `Emacs.icns` and
 [follow the rest of these instructions](https://apple.stackexchange.com/a/276579).
+
+Safari - Vimtastic https://github.com/guyht/vimari
 
 # References
 

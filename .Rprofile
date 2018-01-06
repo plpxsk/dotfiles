@@ -7,10 +7,10 @@
 ## options(device="quartz")
 
 ## number of columns in R output (at least in ESS) (default ~80)
-options("width"=110)
+options("width"=120)
 
 ## less default printing
-options(max.print = 300)
+options(max.print = 2000)
 
 ## utility functions
 h <- function(x) head(x)
