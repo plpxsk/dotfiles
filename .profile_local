@@ -3,6 +3,7 @@ PS1='\[\e[1m\][BEE]\W\$ \[\e[0m\]'
 
 # installed manually
 alias tmux="~/local/bin/tmux"
+alias raan="c /opt/bee/analyses/RAAN"
 
 source ~/.git-flow-completion.bash
 
