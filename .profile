@@ -25,13 +25,6 @@ function c()
 alias b="c ../"
 alias bb="c ../.."
 alias bbb="c ../../.."
-alias bbbb="c ../../../.."
-alias bbbbb="c ../../../../.."
-
-alias gits="git status --untracked-files=no"
-alias gitsu="git status"
-alias gitb="git branch"
-alias gitr="git reflog"
 
 ## brew install tree
 alias tree="tree -C"
