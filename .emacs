@@ -45,16 +45,18 @@
 ;; M-x package-install RET auto-complete RET
 (require 'auto-complete-config)
 
-;; http://stackoverflow.com/questions/8095715/emacs-auto-complete-mode-at-startup
-(global-auto-complete-mode 0)
 
 (ac-config-default)
 ;; (add-to-list 'ac-modes 'sas-mode)
-(add-to-list 'ac-modes 'ess-mode)
+;; (add-to-list 'ac-modes 'ess-mode)
 ;; (add-to-list 'ac-modes 'SAS-mode)
-(add-to-list 'ac-modes 'markdown-mode)
-(add-to-list 'ac-modes 'r-mode)
-(add-to-list 'ac-modes 'ess-s-mode)
+;; (add-to-list 'ac-modes 'markdown-mode)
+;; (add-to-list 'ac-modes 'r-mode)
+;; (add-to-list 'ac-modes 'ess-s-mode)
+
+;; http://stackoverflow.com/questions/8095715/emacs-auto-complete-mode-at-startup
+(global-auto-complete-mode 0)
+
 
 ;; delay autocomplete
 (setq ac-delay 0.3)
@@ -119,6 +121,15 @@
 ;; use magit instead of built-in VC
 ;; (setq vc-handled-backends nil)
 
+
+
+;; yasnippet!
+;; append to default so dont lose it
+
+(setq yas-snippet-dirs (append yas-snippet-dirs
+                               '("~/.emacs.d/snippets")))
+
+(yas-global-mode 1)
 
 ;; ============================================================================
 ;; Navigation + Keyboard
