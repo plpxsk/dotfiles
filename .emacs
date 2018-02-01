@@ -100,6 +100,16 @@
 (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
 (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
 
+;; Turn off click-follows-link in Markdown mode.
+(defun disable-goto-addr ()
+  (setq-local mouse-1-click-follows-link nil)
+  ; turn middle clicks into the default action, normally pasting the primary
+  ; selection.
+  (define-key markdown-mode-mouse-map [mouse-2] nil)
+)
+(add-hook 'markdown-mode-hook 'disable-goto-addr)
+
+
 ;; PYTHON
 
 ;; use ELPY, install: https://github.com/jorgenschaefer/elpy
