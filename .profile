@@ -29,8 +29,6 @@ alias bbb="c ../../.."
 ## brew install tree
 alias tree="tree -C"
 
-alias juno="jupyter notebook &"
-
 function knit() {
     R -e "rmarkdown::render('$1')"
 }
