@@ -72,6 +72,19 @@ Packages to install
   
 [Run R from SSH session](https://www.r-bloggers.com/run-a-remote-r-session-in-emacs-emacs-ess-r-ssh/)
 
+# Make touchbar usable
+
+![touchbar](touchbar.jpg)
+
+Requires [Better Touch Tool](https://boastr.net).
+
+My configuration is saved in `touchbar-preset.json`, customized but based on:
+
+1. Great instructions here:
+   [vas3k.com/blog/touchbar/](http://vas3k.com/blog/touchbar/)
+2. `Fn` key customizations from "You can still access the control strip" at
+   [alexw.me/2017/01/what-if-you-could-customize-your-new-touch-bar/](https://alexw.me/2017/01/what-if-you-could-customize-your-new-touch-bar/)
+
 # Misc
 
 Change Emacs dock icon. Use `Emacs.icns` and
