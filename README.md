@@ -78,7 +78,7 @@ Packages to install
 
 Requires [Better Touch Tool](https://boastr.net).
 
-My configuration is saved in `touchbar-preset.json`, customized but based on:
+My custom configuration is saved in `touchbar-preset.json` (can import to BTT), and is based on:
 
 1. Great instructions here:
    [vas3k.com/blog/touchbar/](http://vas3k.com/blog/touchbar/)
