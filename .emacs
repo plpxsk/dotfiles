@@ -178,7 +178,7 @@
 ;; (global-set-key "\M-." 'end-of-buffer)
 
 ;; faster  C-x 1 || C-x 2
-(global-set-key [f1] 'delete-other-windows)
+;; (global-set-key [f1] 'delete-other-windows)
 (global-set-key [f2] 'split-window-below)
 (global-set-key [f3] 'split-window-right)
 
@@ -243,6 +243,17 @@
        )
 (global-set-key (kbd "C-c b") 'insert-comblk)
 
+(defun rmd-init ()
+  "Initialize R markdown notebook with default header."
+       (interactive)
+       (insert "---\n")
+       (insert "title: ''\n")
+       (insert "output: github_document\n")
+       (insert "---")
+       (forward-line -3)
+       (forward-char 12)
+       )  
+
 ;; https://magit.vc/manual/magit/Getting-Started.html#Getting-Started
 ;; (global-set-key (kbd "C-x g") 'magit-status)
 ;; (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
@@ -299,7 +310,7 @@
 (setq message-log-max 500)
 
 ;; line numbers
-(global-linum-mode)
+;; (global-linum-mode)
 
 ;; Highlight the current line
 (global-hl-line-mode 1)
@@ -381,4 +392,3 @@
 (pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/R-codesaver.R"))
 (pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/python-codesaver.py"))
 (pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/sxratch.txt"))
-(pop-to-buffer (find-file"~/code-temp/scratch.R"))
