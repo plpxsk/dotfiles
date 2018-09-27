@@ -1,15 +1,16 @@
 Quick Start
 ===============================================================================
-`master` is for my primary box (MacBook Pro). Other branches are for other boxen.
+`master` is for my primary box (MacBook Pro). Other branches are for other
+boxen.
 
 I sometimes also have a non-committed `.profile_private` which I merge in
 `.profile`.
 
-Better command-line:
+# Better command-line tools
 
-  * `fd` for find
-  * `ag` instead of `git grep`
-  * `tldr` instead of `man`
+  * `tldr` instead of `man` 
+  * `fd` to find files
+  * `ag` to search file contents
 
 (Install instructions below)
 
@@ -78,7 +79,8 @@ Packages to install
 
 Requires [Better Touch Tool](https://boastr.net).
 
-My custom configuration is saved in `touchbar-preset.json` (can import to BTT), and is based on:
+My custom configuration is saved in `touchbar-preset.json` (can import to BTT),
+and is based on:
 
 1. Great instructions here:
    [vas3k.com/blog/touchbar/](http://vas3k.com/blog/touchbar/)
@@ -87,8 +89,8 @@ My custom configuration is saved in `touchbar-preset.json` (can import to BTT), 
 
 # Misc
 
-Change Emacs dock icon. Use `Emacs.icns` and
-[follow the rest of these instructions](https://apple.stackexchange.com/a/276579).
+Change Emacs dock icon. Use `Emacs.icns` and [follow the rest of these
+instructions](https://apple.stackexchange.com/a/276579).
 
 Safari - Vimtastic https://github.com/guyht/vimari
 
