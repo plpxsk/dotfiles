@@ -6,13 +6,10 @@
 ## disable if using jupyter r kernel to prevent flashing window
 ## options(device="quartz")
 
-## number of columns in R output (at least in ESS) (default ~80)
 options("width"=120)
-
-## less default printing
 options(max.print = 2000)
 
-## utility functions
+## utility functions (only used in R console)
 h <- function(x) head(x)
 g <- function(x) glimpse(x)
 s <- function(x) summary(x)
