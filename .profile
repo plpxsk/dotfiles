@@ -17,6 +17,11 @@ alias lld="ls -l | grep 'dr'"
 alias lla="ls -al"
 alias lls="ls -CF"
 
+alias gits="git status"
+alias gitsu="git status --untracked-files=no"
+alias gitb="git branch"
+alias gitr="git reflog"
+
 function c()
 {
  builtin cd "$*" && ls -go && echo "" && pwd
