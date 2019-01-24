@@ -11,6 +11,8 @@ alias lm='less -M'
 
 alias f='open -a Finder ./'                 # macOS only
 
+alias be='bundle exec'
+
 alias ll='ls -go && echo "" && pwd'
 alias lll="ls -l"
 alias lld="ls -l | grep 'dr'"
@@ -38,6 +40,7 @@ function knit() {
     R -e "rmarkdown::render('$1')"
 }
 
+
 # ============================================================================
 # Load
 # ============================================================================
@@ -56,3 +59,4 @@ fi
 
 # color output
 export CLICOLOR=1
+
