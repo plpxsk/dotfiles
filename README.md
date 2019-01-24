@@ -16,7 +16,7 @@ I sometimes also have a non-committed `.profile_private` which I merge in
 
 # Setting up coding environment on new mac
 
-*NOTE: This guide is a work in progress. Contact me anytime to clarify.*
+*NOTE: This guide is a work in progress. Contact me to clarify.*
 
 ## Start here
 
