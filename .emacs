@@ -41,6 +41,7 @@
 ;; sas mode is uppercase.. and lisp is case sensitive !!! !! !!
 (setq load-path (append load-path (list "~/.emacs.d/lisp")))
 (setq load-path (append load-path (list "~/.emacs.d/elpa")))
+(setq load-path (append load-path (list "~/.emacs.d/pipenv/pipenv")))
 
 ;; M-x package-install RET auto-complete RET
 (require 'auto-complete-config)
@@ -128,9 +129,6 @@
 ;; M-x flycheck-mode
 ;; (global-flycheck-mode)
 
-;; use magit instead of built-in VC
-;; (setq vc-handled-backends nil)
-
 
 
 ;; yasnippet!
@@ -193,6 +191,10 @@
 ;; cmd-b to switch buffers
 (global-set-key (kbd "s-b") 'ido-switch-buffer)
 
+;; cmd-o to open files with ido instead of GUI (default)
+(global-set-key (kbd "s-o") 'ido-find-file)
+
+
 ;; default is F11
 (global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)
 ;; errors:
@@ -254,9 +256,24 @@
        (forward-char 12)
        )  
 
+;; git, other VC
+
+;; working: kill  window after push
+;; (defun my-kill-vc-hook ()
+;;   (kill-buffer ediff-buffer-A)
+;;   (kill-buffer ediff-buffer-B)
+;;   (kill-buffer ediff-buffer-C))
+
+;; (add-hook 'vc-push 'keyboard-quit)
+
 ;; https://magit.vc/manual/magit/Getting-Started.html#Getting-Started
 ;; (global-set-key (kbd "C-x g") 'magit-status)
 ;; (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
+;; use magit instead of built-in VC
+;; (setq vc-handled-backends nil)
+
+
+
 
 ;; ============================================================================
 ;; Look + Behavior
@@ -387,6 +404,15 @@
 ;; pushing code to R sometimes significantly adds to runtime, and may be unstable
 ;; http://stackerflow.com/questions/2770523/how-can-i-background-the-r-process-in-ess-emacs
 (setq ess-eval-visibly-p 'nowait)
+
+;; add shortcuts for an R workflow
+(load "~/.emacs.d/.emacs_private")
+(defun rr-remote ()
+  "Set up remote R (shortcut)"
+  (interactive)
+  (ess-remote "R")
+  )
+
 
 ;; load some files
 (pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/R-codesaver.R"))
