@@ -58,6 +58,11 @@
 ;; http://stackoverflow.com/questions/8095715/emacs-auto-complete-mode-at-startup
 (global-auto-complete-mode 0)
 
+;; use tab for completion instead of return
+(define-key ac-completing-map "\t" 'ac-complete)
+(define-key ac-completing-map "\r" nil)
+(define-key ac-completing-map [tab] 'ac-complete)
+(define-key ac-completing-map [return] nil)
 
 ;; delay autocomplete
 (setq ac-delay 0.3)
@@ -385,10 +390,15 @@
 (require 'ess-site)
 (put 'dired-find-alternate-file 'disabled nil)
 
-;; create a new frame for each help instance
-;; but all help buffers go into one frame 
-(setq ess-help-own-frame t)
+(setq ess-ask-for-ess-directory nil)
+
+(setq ess-help-own-frame nil)
 (setq ess-help-own-frame 'one)
+
+;; don't auto scroll to bottom inn ess process buffers
+(setq comint-scroll-to-bottom-on-input nil)
+(setq comint-scroll-to-bottom-on-output nil)
+;; (setq comint-move-point-for-output nil)
 
 
 
@@ -403,15 +413,12 @@
 ;; evaluate code invisibly
 ;; pushing code to R sometimes significantly adds to runtime, and may be unstable
 ;; http://stackerflow.com/questions/2770523/how-can-i-background-the-r-process-in-ess-emacs
-(setq ess-eval-visibly-p 'nowait)
+(setq ess-eval-visibly-p 'no)
 
-;; add shortcuts for an R workflow
-(load "~/.emacs.d/.emacs_private")
-(defun rr-remote ()
-  "Set up remote R (shortcut)"
-  (interactive)
-  (ess-remote "R")
-  )
+
+(load "~/.emacs.d/.emacs_local")
+
+
 
 
 ;; load some files
