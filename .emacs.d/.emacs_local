@@ -1,12 +1,14 @@
 ;; # -*- mode: lisp-interaction -*-
+
+;; also see https://emacs.stackexchange.com/a/47432/11872
 (defun bee-shell ()
   "Load command-line R on BEE server"
   (interactive)
     (shell)
     (rename-buffer "RR-bee")
-    (process-send-string "RR-bee" "ssh bee\n")
-    (process-send-string "RR-bee" "R\n")
-    (ess-remote "R")
+    (comint-send-string "RR-bee" "ssh bee\n")
+    (comint-send-string "RR-bee" "R\n")
+    (ess-remote "*shell*" "R")
     )
 
 ;; (defun bee-shell ()
