@@ -6,11 +6,17 @@
 ## disable if using jupyter r kernel to prevent flashing window
 ## options(device="quartz")
 
+local({
+  r <- getOption("repos")
+  r["CRAN"] <- "https://cran.cnr.berkeley.edu/"
+  options(repos = r)
+})
+
 ## number of columns in R output (at least in ESS) (default ~80)
 options("width"=110)
 
 ## less default printing
-options(max.print = 300)
+options(max.print = 1000)
 
 ## utility functions
 h <- function(x) head(x)

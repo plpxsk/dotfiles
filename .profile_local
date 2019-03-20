@@ -1,9 +1,14 @@
+# -*- mode: shell-script -*-
 # to see your current prompt, type: echo $PS1
 PS1='\[\e[1m\][BEE]\W\$ \[\e[0m\]'
 
 # installed manually
-alias tmux="~/local/bin/tmux"
+# alias tmux="~/local/bin/tmux"
 alias raan="c /opt/bee/analyses/RAAN"
+alias shiny="c /opt/bee/shiny"
+alias analyses="cd /opt/bee/analyses"
+alias cin="cd /opt/bee/analyses/CIN"
+alias data="cd /opt/bee/data/pd_biometrics"
 
 source ~/.git-flow-completion.bash
 
