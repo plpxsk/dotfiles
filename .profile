@@ -1,6 +1,6 @@
 # COMMON PROFILE
 # Paul Paczuski 
-# https://github.com/pavopax/initialization-files
+# https://github.com/pavopax/dotfiles
 
 # ============================================================================
 # Link
@@ -11,11 +11,11 @@ alias lm='less -M'
 
 alias f='open -a Finder ./'                 # macOS only
 
-alias ll='ls -go && echo "" && pwd'
-alias lll="ls -l"
-alias lld="ls -l | grep 'dr'"
-alias lla="ls -al"
-alias lls="ls -CF"
+alias ll='ls -hgo && echo "" && pwd'
+alias lll="ls -lh"
+alias lld="ls -lh | grep 'dr'"
+alias lla="ls -alh"
+alias lls="ls -CFh"
 
 function c()
 {
