@@ -15,10 +15,23 @@
 
 ;; package management
 ;; http://stackoverflow.com/questions/19142142/emacs-auto-complete-mode-not-working
-;; required for ELPA packages
+;; https://github.com/melpa/melpa
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl "http" "https")))
+  (when no-ssl (warn "\
+Your version of Emacs does not support SSL connections,
+which is unsafe because it allows man-in-the-middle attacks.
+There are two things you can do about this warning:
+1. Install an Emacs version that does support SSL and be safe.
+2. Remove this warning from your init file so you won't see it again."))
+  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
+  ;;(add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (when (< emacs-major-version 24)
+    ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
 
 
@@ -39,30 +52,31 @@
 (setq-default ispell-program-name "/usr/local/bin/aspell")
 
 ;; sas mode is uppercase.. and lisp is case sensitive !!! !! !!
-(setq load-path (append load-path (list "~/.emacs.d/lisp")))
-(setq load-path (append load-path (list "~/.emacs.d/elpa")))
-(setq load-path (append load-path (list "~/.emacs.d/pipenv/pipenv")))
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+(add-to-list 'load-path "~/.emacs.d/elpa/")
 
 ;; M-x package-install RET auto-complete RET
 (require 'auto-complete-config)
 
 
 (ac-config-default)
-;; (add-to-list 'ac-modes 'sas-mode)
-;; (add-to-list 'ac-modes 'ess-mode)
-;; (add-to-list 'ac-modes 'SAS-mode)
-;; (add-to-list 'ac-modes 'markdown-mode)
-;; (add-to-list 'ac-modes 'r-mode)
-;; (add-to-list 'ac-modes 'ess-s-mode)
+(add-to-list 'ac-modes 'sas-mode)
+(add-to-list 'ac-modes 'ess-mode)
+(add-to-list 'ac-modes 'SAS-mode)
+(add-to-list 'ac-modes 'markdown-mode)
+(add-to-list 'ac-modes 'r-mode)
+(add-to-list 'ac-modes 'ess-s-mode)
 
 ;; http://stackoverflow.com/questions/8095715/emacs-auto-complete-mode-at-startup
 (global-auto-complete-mode 0)
 
 ;; use tab for completion instead of return
 (define-key ac-completing-map "\t" 'ac-complete)
-(define-key ac-completing-map "\r" nil)
 (define-key ac-completing-map [tab] 'ac-complete)
-(define-key ac-completing-map [return] nil)
+
+;; edit: go back to using ret in tooltip with ac mode
+(define-key ac-completing-map "\r" 'ac-complete)
+(define-key ac-completing-map [return] 'ac-complete)
 
 ;; delay autocomplete
 (setq ac-delay 0.3)
@@ -75,7 +89,8 @@
 ;; this is actually emacs' auto-complete, so it is also for company-mode (?)
 (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
 
-(add-hook 'after-init-hook 'global-company-mode)
+
+
 
 ;; web-mode
 ;; M-x package-install RET web-mode RED
@@ -121,14 +136,56 @@
 ;; use ELPY, install: https://github.com/jorgenschaefer/elpy
 ;; (I installed jedi instead of rope)
 (elpy-enable)
+
+(setq python-indent-guess-indent-offset-verbose nil)
+
+;; python dir is file location, not .git location
+(setq elpy-shell-use-project-root nil)
+
+;; use ipython. jupyter console didn't pick up virtualenv
+;; https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
+;; UPDATE: SLOW. use plain python
+;; (setq python-shell-interpreter "ipython"
+;;       python-shell-interpreter-args "-i --simple-prompt")
+
+;; flycheck over flymake per https://realpython.com/emacs-the-best-python-editor/
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+;; (add-hook 'after-init-hook 'global-company-mode)
+
+;; new python shell for each process
+;; (add-hook 'elpy-mode-hook (lambda () (elpy-shell-toggle-dedicated-shell 1)))
+
+;; trying to fix company errors
+;; company-call-backend-raw: Company: backend company-capf error "Invalid
+;; search bound (wrong side of point)" with args (prefix)
+;; (add-hook 'python-mode-hook
+;;             (lambda ()
+;;               (set (make-local-variable 'company-backends) '(elpy-company-backend))))
+
+
+
+
 ;;(setq elpy-rpc-backend "jedi")
+;; (setq python-shell-interpreter "/usr/local/bin/python3")
+
 
 ;; in "Virtual Envs" menu, show me conda envs
-(setenv "WORKON_HOME" "~/miniconda3/envs")
+;; update: now using virtualenvwrapper 
+(setenv "WORKON_HOME" "~/Envs")
+
+;; pipenv/elpy
+;; https://github.com/jorgenschaefer/elpy/issues/1217
+;; (setenv "WORKON_HOME" "~/.local/share/virtualenvs")
 
 
 ;; DO NOT use, will overwrite virtual envs (conda)
 ;; (setq python-shell-interpreter "/Users/paczuskp/miniconda3/bin/python")
+
+
+;; (add-hook 'python-mode-hook 'pipenv-mode)
 
 ;; quite distracting when enabled at all times
 ;; M-x flycheck-mode
@@ -138,11 +195,10 @@
 
 ;; yasnippet!
 ;; append to default so dont lose it
+;; (setq yas-snippet-dirs (append yas-snippet-dirs
+;;                                '("~/.emacs.d/snippets")))
 
-(setq yas-snippet-dirs (append yas-snippet-dirs
-                               '("~/.emacs.d/snippets")))
-
-(yas-global-mode 1)
+;; (yas-global-mode 1)
 
 ;; ============================================================================
 ;; Navigation + Keyboard
@@ -390,7 +446,7 @@
 (require 'ess-site)
 (put 'dired-find-alternate-file 'disabled nil)
 
-(setq ess-ask-for-ess-directory nil)
+;; (setq ess-ask-for-ess-directory t)
 
 (setq ess-help-own-frame nil)
 (setq ess-help-own-frame 'one)
@@ -412,16 +468,13 @@
 
 ;; evaluate code invisibly
 ;; pushing code to R sometimes significantly adds to runtime, and may be unstable
-;; http://stackerflow.com/questions/2770523/how-can-i-background-the-r-process-in-ess-emacs
+;; https://stackoverflow.com/q/2770523/3217870
 (setq ess-eval-visibly-p 'no)
-
 
 (load "~/.emacs.d/.emacs_local")
 
 
-
-
 ;; load some files
 (pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/R-codesaver.R"))
-(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/python-codesaver.py"))
-(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/sxratch.txt"))
+;; (pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/python-codesaver.py"))
+(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/sxratch.md"))
