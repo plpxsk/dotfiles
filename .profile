@@ -14,7 +14,7 @@ alias f='open -a Finder ./'                 # macOS only
 alias be='bundle exec'
 
 alias ll='ls -go && echo "" && pwd'
-alias lll="ls -l"
+alias lll="ls -lh"
 alias lld="ls -l | grep 'dr'"
 alias lla="ls -al"
 alias lls="ls -CF"
@@ -37,7 +37,7 @@ alias bbb="c ../../.."
 alias tree="tree -C"
 
 function knit() {
-    R -e "rmarkdown::render('$1')"
+    R -e "rmarkdown::render('$1', 'all')"
 }
 
 
