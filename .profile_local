@@ -7,3 +7,11 @@ alias juno="jupyter notebook &"
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home
 
+
+# homebrew/python
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+# paul: for virtualenvwrapper
+# ! PUT AFTER export PATH to python
+source /usr/local/bin/virtualenvwrapper.sh
+export WORKON_HOME=~/Envs
