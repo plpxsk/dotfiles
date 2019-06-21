@@ -133,14 +133,15 @@ There are two things you can do about this warning:
 
 ;; PYTHON
 
+;; PYTHON OLD BELOW
 ;; use ELPY, install: https://github.com/jorgenschaefer/elpy
 ;; (I installed jedi instead of rope)
-(elpy-enable)
+;; (elpy-enable)
 
-(setq python-indent-guess-indent-offset-verbose nil)
+;; (setq python-indent-guess-indent-offset-verbose nil)
 
 ;; python dir is file location, not .git location
-(setq elpy-shell-use-project-root nil)
+;; (setq elpy-shell-use-project-root nil)
 
 ;; use ipython. jupyter console didn't pick up virtualenv
 ;; https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
@@ -149,9 +150,9 @@ There are two things you can do about this warning:
 ;;       python-shell-interpreter-args "-i --simple-prompt")
 
 ;; flycheck over flymake per https://realpython.com/emacs-the-best-python-editor/
-(when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
+;; (when (require 'flycheck nil t)
+;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 ;; (add-hook 'after-init-hook 'global-company-mode)
 
@@ -174,7 +175,7 @@ There are two things you can do about this warning:
 
 ;; in "Virtual Envs" menu, show me conda envs
 ;; update: now using virtualenvwrapper 
-(setenv "WORKON_HOME" "~/Envs")
+;; (setenv "WORKON_HOME" "~/Envs")
 
 ;; pipenv/elpy
 ;; https://github.com/jorgenschaefer/elpy/issues/1217
