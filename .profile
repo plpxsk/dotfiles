@@ -13,7 +13,7 @@ alias f='open -a Finder ./'                 # macOS only
 
 alias be='bundle exec'
 
-alias ll='ls -go && echo "" && pwd'
+alias ll='ls -gho && echo "" && pwd'
 alias lll="ls -lh"
 alias lld="ls -l | grep 'dr'"
 alias lla="ls -al"
