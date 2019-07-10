@@ -32,6 +32,7 @@ There are two things you can do about this warning:
   (when (< emacs-major-version 24)
     ;; For important compatibility libraries like cl-lib
     (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
+
 (package-initialize)
 
 
@@ -89,9 +90,6 @@ There are two things you can do about this warning:
 ;; this is actually emacs' auto-complete, so it is also for company-mode (?)
 (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
 
-
-
-
 ;; web-mode
 ;; M-x package-install RET web-mode RED
 (require 'web-mode)
@@ -130,18 +128,30 @@ There are two things you can do about this warning:
 )
 (add-hook 'markdown-mode-hook 'disable-goto-addr)
 
+;; ============================================================================
+;; PYTHON IDE
+;; ============================================================================
 
-;; PYTHON
+;; https://github.com/jorgenschaefer/elpy/wiki/Installation
+(advice-add 'python-mode :before 'elpy-enable)
+
+(require 'py-autopep8)
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
+(setq python-indent-guess-indent-offset-verbose nil)
+
+;; python dir is file location, not .git location
+(setq elpy-shell-use-project-root nil)
+
+
 
 ;; PYTHON OLD BELOW
 ;; use ELPY, install: https://github.com/jorgenschaefer/elpy
 ;; (I installed jedi instead of rope)
-;; (elpy-enable)
 
-;; (setq python-indent-guess-indent-offset-verbose nil)
 
-;; python dir is file location, not .git location
-;; (setq elpy-shell-use-project-root nil)
+
+
 
 ;; use ipython. jupyter console didn't pick up virtualenv
 ;; https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
@@ -166,10 +176,7 @@ There are two things you can do about this warning:
 ;;             (lambda ()
 ;;               (set (make-local-variable 'company-backends) '(elpy-company-backend))))
 
-
-
-
-;;(setq elpy-rpc-backend "jedi")
+(setq elpy-rpc-backend "jedi")
 ;; (setq python-shell-interpreter "/usr/local/bin/python3")
 
 
