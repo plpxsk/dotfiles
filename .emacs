@@ -69,7 +69,7 @@ There are two things you can do about this warning:
 (add-to-list 'ac-modes 'ess-s-mode)
 
 ;; http://stackoverflow.com/questions/8095715/emacs-auto-complete-mode-at-startup
-(global-auto-complete-mode 0)
+; (global-auto-complete-mode 0)
 
 ;; use tab for completion instead of return
 (define-key ac-completing-map "\t" 'ac-complete)
