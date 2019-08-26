@@ -1,7 +1,7 @@
 # -*- mode: shell-script -*-
 
 # to see your current prompt, type: echo $PS1
-PS1='\[\e[1m\]\W\$ \[\e[0m\]'
+PS1='\[\e[1m\][HPC]\W\$ \[\e[0m\]'
 
 alias juno="jupyter notebook &"
 
