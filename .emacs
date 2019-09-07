@@ -61,15 +61,13 @@ There are two things you can do about this warning:
 
 
 (ac-config-default)
-;; use company mode in python buffer
-
-
 (add-to-list 'ac-modes 'sas-mode)
 (add-to-list 'ac-modes 'ess-mode)
 (add-to-list 'ac-modes 'SAS-mode)
 (add-to-list 'ac-modes 'markdown-mode)
 (add-to-list 'ac-modes 'r-mode)
 (add-to-list 'ac-modes 'ess-s-mode)
+
 
 (setq ac-modes (delete 'python-mode ac-modes))
 
@@ -148,11 +146,6 @@ There are two things you can do about this warning:
 
 ;; python dir is file location, not .git location
 (setq elpy-shell-use-project-root nil)
-
-
-;; python dir is file location, not .git location
-(setq elpy-shell-use-project-root nil)
-
 
 
 ;; PYTHON OLD BELOW
