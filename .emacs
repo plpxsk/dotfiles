@@ -61,8 +61,9 @@ There are two things you can do about this warning:
 
 
 (ac-config-default)
-;; http://stackoverflow.com/questions/8095715/emacs-auto-complete-mode-at-startup
-;; (global-auto-complete-mode 0)
+;; use company mode in python buffer
+
+
 (add-to-list 'ac-modes 'sas-mode)
 (add-to-list 'ac-modes 'ess-mode)
 (add-to-list 'ac-modes 'SAS-mode)
@@ -70,9 +71,10 @@ There are two things you can do about this warning:
 (add-to-list 'ac-modes 'r-mode)
 (add-to-list 'ac-modes 'ess-s-mode)
 
-;; use company mode in python buffer
 (setq ac-modes (delete 'python-mode ac-modes))
 
+;; http://stackoverflow.com/questions/8095715/emacs-auto-complete-mode-at-startup
+;; (global-auto-complete-mode 0)
 
 ;; use tab for completion instead of return
 (define-key ac-completing-map "\t" 'ac-complete)
@@ -142,6 +144,11 @@ There are two things you can do about this warning:
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
 (setq python-indent-guess-indent-offset-verbose nil)
+
+
+;; python dir is file location, not .git location
+(setq elpy-shell-use-project-root nil)
+
 
 ;; python dir is file location, not .git location
 (setq elpy-shell-use-project-root nil)
