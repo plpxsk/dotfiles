@@ -1,0 +1,1 @@
+echo "Loading empty .bashrc"
