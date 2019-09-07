@@ -14,9 +14,9 @@ I sometimes also have a non-committed `.profile_private` which I merge in
 
 (Install instructions below)
 
-# Setting up coding environment on new mac
+# Setting up coding environment on new Mac
 
-*NOTE: This guide is a work in progress. Contact me to clarify.*
+*NOTE: This guide is a work in progress.*
 
 ## Start here
 
@@ -44,7 +44,7 @@ Install brew cask for mac applications (non-cli): https://caskroom.github.io
 	
 ## Other
 
-install npm in some way. then:
+Install npm in some way. then:
 
 
 	npm install -g tldr
@@ -73,7 +73,9 @@ Packages to install
   
 [Run R from SSH session](https://www.r-bloggers.com/run-a-remote-r-session-in-emacs-emacs-ess-r-ssh/)
 
-# Make touchbar usable
+# Improving touchbar 
+
+*Note: recently disabled, didn't find it too useful.*
 
 ![touchbar](touchbar.jpg)
 
