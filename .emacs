@@ -61,6 +61,8 @@ There are two things you can do about this warning:
 
 
 (ac-config-default)
+;; http://stackoverflow.com/questions/8095715/emacs-auto-complete-mode-at-startup
+;; (global-auto-complete-mode 0)
 (add-to-list 'ac-modes 'sas-mode)
 (add-to-list 'ac-modes 'ess-mode)
 (add-to-list 'ac-modes 'SAS-mode)
@@ -68,8 +70,9 @@ There are two things you can do about this warning:
 (add-to-list 'ac-modes 'r-mode)
 (add-to-list 'ac-modes 'ess-s-mode)
 
-;; http://stackoverflow.com/questions/8095715/emacs-auto-complete-mode-at-startup
-; (global-auto-complete-mode 0)
+;; use company mode in python buffer
+(setq ac-modes (delete 'python-mode ac-modes))
+
 
 ;; use tab for completion instead of return
 (define-key ac-completing-map "\t" 'ac-complete)
