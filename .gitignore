@@ -1,0 +1,12 @@
+# ignore all files
+*
+
+# except these
+!.gitignore
+!.emacs
+!.profile
+!.Rprofile
+!.vimrc
+!README.md
+!.pinit.el
+.Rproj.user
