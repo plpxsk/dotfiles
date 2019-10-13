@@ -7,3 +7,7 @@ alias juno="jupyter notebook &"
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home
 
+echo "NOTE:"
+echo "Load R with:"
+# echo "ml R/3.5.3-intel-2018b"
+echo "ml R/3.5.1-goolf-1.7.20"
