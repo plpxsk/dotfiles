@@ -11,3 +11,5 @@
 	s = status
 	b = branch
 	r = reflog
+[credential]
+	helper = osxkeychain
