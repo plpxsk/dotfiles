@@ -1,5 +1,10 @@
-[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
+###########################################################################
+# gRED Linux Environment Bash Profile
+# Version 3.0.0 Released 20171110
+###########################################################################
 
-# paul: manually add this to the END of the path, so that I still have my system python first
-# `conda init` can also add a bunch of things here
-export PATH=$PATH:~/miniconda3/bin
+if test -z "$_HOMEBASHRC" ; then 
+	# loop detection
+	readonly _HOMEBASHRC=true
+	test -r $HOME/.bashrc  && . $HOME/.bashrc
+fi
