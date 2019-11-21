@@ -459,14 +459,13 @@ There are two things you can do about this warning:
 
 ;; (setq ess-ask-for-ess-directory t)
 
-(setq ess-help-own-frame nil)
-(setq ess-help-own-frame 'one)
+;; (setq ess-help-own-frame nil)
+;; (setq ess-help-own-frame 'one)
 
 ;; don't auto scroll to bottom inn ess process buffers
-(setq comint-scroll-to-bottom-on-input nil)
-(setq comint-scroll-to-bottom-on-output nil)
+;; (setq comint-scroll-to-bottom-on-input nil)
+;; (setq comint-scroll-to-bottom-on-output nil)
 ;; (setq comint-move-point-for-output nil)
-
 
 
 ;; remap <- key
