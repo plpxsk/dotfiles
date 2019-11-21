@@ -8,3 +8,6 @@ if test -z "$_HOMEBASHRC" ; then
 	readonly _HOMEBASHRC=true
 	test -r $HOME/.bashrc  && . $HOME/.bashrc
 fi
+
+echo "Loading .bash_profile"
+

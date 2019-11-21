@@ -1,18 +1,4 @@
 # -*- mode: shell-script -*-
 
 # to see your current prompt, type: echo $PS1
-PS1='\[\e[1m\]\W\$ \[\e[0m\]'
-
-
-alias juno="jupyter lab &"
-
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home
-
-
-# homebrew/python
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-
-# paul: for virtualenvwrapper
-# ! PUT AFTER export PATH to python
-source /usr/local/bin/virtualenvwrapper.sh
-export WORKON_HOME=~/Envs
+PS1='\[\e[1m\][rosa]\W\$ \[\e[0m\]'

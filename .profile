@@ -60,3 +60,4 @@ fi
 # color output
 export CLICOLOR=1
 
+echo "loading .profile"
