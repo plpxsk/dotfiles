@@ -1,3 +1,4 @@
+echo "Loading .bash_profile"
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
 # paul: manually add this to the END of the path, so that I still have my system python first

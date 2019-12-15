@@ -1,3 +1,4 @@
+echo "Loading .profile_local"
 # -*- mode: shell-script -*-
 
 # to see your current prompt, type: echo $PS1

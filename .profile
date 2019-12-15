@@ -1,3 +1,4 @@
+echo "Loading .profile"
 # COMMON PROFILE
 # Paul Paczuski 
 # https://github.com/pavopax/initialization-files
