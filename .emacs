@@ -145,7 +145,11 @@ There are two things you can do about this warning:
 
 
 ;; python dir is file location, not .git location
-(setq elpy-shell-use-project-root nil)
+;; (setq elpy-shell-use-project-root nil)
+
+
+;; see .profile_local
+(setenv "WORKON_HOME" "~/Envs")
 
 
 ;; PYTHON OLD BELOW
@@ -184,8 +188,6 @@ There are two things you can do about this warning:
 
 
 ;; in "Virtual Envs" menu, show me conda envs
-;; update: now using virtualenvwrapper 
-;; (setenv "WORKON_HOME" "~/Envs")
 
 ;; pipenv/elpy
 ;; https://github.com/jorgenschaefer/elpy/issues/1217
