@@ -23,11 +23,11 @@
 
 
 (defun rescomp-1-shell ()
-  "Load command-line R 3.5.1 on rescomp"
+  "Load command-line R.1 on rescomp"
   (interactive)
   (shell)
   (rename-buffer "RR-rescomp")
-  (comint-send-string "RR-rescomp" "ssh rescomp\n")
+  (comint-send-string "RR-rescomp" "ssh rosalind.gene.com\n")
   ;; (comint-send-string "RR-rescomp" "module load apps/R/3.5.1-Bioc-3.7-prd/prd\n")
   ;; (comint-send-string "RR-rescomp" "R\n")
   ;; (ess-remote "*shell*" "R")
@@ -37,7 +37,7 @@
 (defun rescomp-2-r-load()
   "Load R in rescomp shell"
   (interactive)
-  (comint-send-string "RR-rescomp" "module load apps/R/prd\n")
+  (comint-send-string "RR-rescomp" "module load R\n")
   (comint-send-string "RR-rescomp" "R\n")
   (ess-remote "*shell*" "R")
   )
