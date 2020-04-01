@@ -9,12 +9,13 @@
 options("width"=120)
 options(max.print = 2000)
 
-## local({
-##   r <- getOption("repos")
-##   r["CRAN"] <- "https://cran.cnr.berkeley.edu/"
-##   options(repos = r)
-## })
-options(repos='http://cran.rstudio.com/')
+local({
+  r <- getOption("repos")
+  ##r["CRAN"] <- "https://cran.cnr.berkeley.edu/"
+  r["CRAN"] <- "http://cran.rstudio.com/"
+  options(repos = r)
+})
+
 
 ## utility functions (only used in R console)
 h <- function(x) head(x)
