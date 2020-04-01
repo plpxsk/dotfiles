@@ -27,7 +27,7 @@ alias gitr="git reflog"
 
 function c()
 {
- builtin cd "$*" && ls -go && echo "" && pwd
+ builtin cd "$*" && ls -gho && echo "" && pwd
 }
 
 alias b="c ../"
