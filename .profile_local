@@ -1,17 +1,19 @@
-echo "Loading .profile_local"
 # -*- mode: shell-script -*-
+echo "Loading .profile_local"
 
 # to see your current prompt, type: echo $PS1
 PS1='\[\e[1m\]\W\$ \[\e[0m\]'
-
 
 alias juno="jupyter lab &"
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home
 
-
 # homebrew/python
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+# cmake, when needed
+# downloaded from https://cmake.org/download/
+# PATH="/Applications/CMake.app/Contents/bin":"$PATH"
 
 # paul: for virtualenvwrapper
 # ! PUT AFTER export PATH to python
