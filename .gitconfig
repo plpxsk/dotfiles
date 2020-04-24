@@ -14,4 +14,8 @@
 [push]
 	default = simple
 [credential]
-	helper = cache --timeout 7200
+	helper = cache --timeout 999999
+
+# https://stackoverflow.com/a/56757026/3217870
+[completion]
+	commands = -check-mailmap
