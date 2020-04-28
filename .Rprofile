@@ -9,6 +9,7 @@
 options("width"=120)
 options(max.print = 2000)
 
+## applies to emacs only
 local({
   r <- getOption("repos")
   ##r["CRAN"] <- "https://cran.cnr.berkeley.edu/"
