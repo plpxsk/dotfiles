@@ -83,7 +83,7 @@ There are two things you can do about this warning:
 (define-key ac-completing-map [return] 'ac-complete)
 
 ;; delay autocomplete
-(setq ac-delay 0.3)
+(setq ac-delay 0.5)
 ;; delay appearance of menu; t=immediate
 (setq ac-auto-show-menu 0.7)
 
@@ -481,7 +481,7 @@ There are two things you can do about this warning:
 ;; evaluate code invisibly
 ;; pushing code to R sometimes significantly adds to runtime, and may be unstable
 ;; https://stackoverflow.com/q/2770523/3217870
-(setq ess-eval-visibly-p 'no)
+(setq ess-eval-visibly-p 'nil)
 
 (load "~/.emacs.d/.emacs_local")
 
