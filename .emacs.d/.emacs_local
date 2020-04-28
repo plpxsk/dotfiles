@@ -11,8 +11,8 @@
     (ess-remote "*shell*" "R")
     )
 
-(defun pred-R-shell ()
-  "Load command-line R on pRED HPC server"
+(defun pred-1-shell ()
+  "Step 1 to load command-line R on pRED HPC server"
   (interactive)
     (shell)
     (rename-buffer "RR-pred")
@@ -20,6 +20,16 @@
     ;; (comint-send-string "RR-pred" "R\n")
     ;; (ess-remote "*shell*" "R")
     )
+
+(defun pred-2-r-load ()
+  "Step 2 to load command-line R on pRED HPC server"
+  (interactive)
+  (comint-send-string "RR-pred" "ml R/3.5.1-goolf-1.7.20\n")
+  (comint-send-string "RR-pred" "R\n")
+  (ess-remote "*shell*" "R")
+  )
+
+
 
 
 (defun rescomp-1-shell ()
