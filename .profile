@@ -79,7 +79,7 @@ alias tree="tree -C"
 alias setupdir="cp -r ~/projects/_template/* ."
 
 # https://coderwall.com/p/be5gga/git-autocompletion-in-os-x-terminal
-source ~/.git-completion.bash
+# source ~/.git-completion.bash
 
 # why wouldn't you have this..
 function c()
@@ -128,7 +128,7 @@ export DATABASE_URL="postgres://pawel@localhost:5432/indicators"
 
 
 # AWS
-complete -C '/Users/pawel/anaconda/bin/aws_completer' aws
+# complete -C '/Users/pawel/anaconda/bin/aws_completer' aws
 
 # install Java, scala, spark:
 # http://genomegeek.blogspot.com/2014/11/how-to-install-apache-spark-on-mac-os-x.html
