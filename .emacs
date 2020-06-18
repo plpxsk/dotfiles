@@ -170,13 +170,13 @@
 ;;  '(python-guess-indent nil)
 ;;  '(python-indent 2))
 
-(setq python-shell-interpreter "/Users/pawel/anaconda/bin/python")
+(setq python-shell-interpreter "/usr/local/opt/python/libexec/bin/python")
 
 ;; use ELPY
 ;; https://github.com/jorgenschaefer/elpy
 
 (elpy-enable)
-(setq elpy-rpc-python-command "/Users/pawel/anaconda/bin/python")
+(setq elpy-rpc-python-command "/usr/local/opt/python/libexec/bin/python")
 ;;(elpy-use-ipython)
 
 ;; don't need this?
