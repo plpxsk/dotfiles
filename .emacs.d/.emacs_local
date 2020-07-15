@@ -11,7 +11,7 @@
     (ess-remote "*shell*" "R")
     )
 
-(defun pred-1-shell ()
+(defun pred1-shell ()
   "Step 1 to load command-line R on pRED HPC server"
   (interactive)
     (shell)
@@ -21,18 +21,18 @@
     ;; (ess-remote "*shell*" "R")
     )
 
-(defun pred-2-r-load ()
+(defun pred2-r-load ()
   "Step 2 to load command-line R on pRED HPC server"
   (interactive)
   (comint-send-string "RR-pred" "ml R/3.5.1-goolf-1.7.20\n")
+  ;; run via interactive job of 6 hours (default is 2)
+  ;; added Thu May  7 11:49:41 EDT 2020
+  (comint-send-string "RR-pred" "interactive -t 360 -m 24G\n")
   (comint-send-string "RR-pred" "R\n")
   (ess-remote "*shell*" "R")
   )
 
-
-
-
-(defun rescomp-1-shell ()
+(defun rescomp1-shell ()
   "Load command-line R.1 on rescomp"
   (interactive)
   (shell)
@@ -44,10 +44,13 @@
   )
 
 
-(defun rescomp-2-r-load()
+(defun rescomp2-r-load()
   "Load R in rescomp shell"
   (interactive)
   (comint-send-string "RR-rescomp" "module load R\n")
+  ;; run interactive job
+  ;; added Thu May  7 11:49:41 EDT 2020
+  (comint-send-string "RR-rescomp" "interactive\n")
   (comint-send-string "RR-rescomp" "R\n")
   (ess-remote "*shell*" "R")
   )
