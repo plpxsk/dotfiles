@@ -7,7 +7,7 @@
     (shell)
     (rename-buffer "RR-bee")
     (comint-send-string "RR-bee" "ssh bee\n")
-    (comint-send-string "RR-bee" "R\n")
+    (comint-send-string "RR-bee" "R-3.6.1\n")
     (ess-remote "*shell*" "R")
     )
 
