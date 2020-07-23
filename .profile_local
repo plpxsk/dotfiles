@@ -1,12 +1,5 @@
 # -*- mode: shell-script -*-
 
 # to see your current prompt, type: echo $PS1
-PS1='\[\e[1m\][HPC]\W\$ \[\e[0m\]'
-
-export PATH=/pstore/home/paczuskp/.local/bin:$PATH
-
-echo "NOTE:"
-echo "Load R with:"
-# echo "ml R/3.5.3-intel-2018b"
-echo "ml R/3.5.1-goolf-1.7.20"
+PS1='\[\e[1m\][Apollo]\W\$ \[\e[0m\]'
 
