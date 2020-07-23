@@ -44,10 +44,10 @@
 (setq load-path (append load-path (list "~/.emacs.d/pipenv/pipenv")))
 
 ;; M-x package-install RET auto-complete RET
-(require 'auto-complete-config)
+;; (require 'auto-complete-config)
 
 
-(ac-config-default)
+;; (ac-config-default)
 ;; (add-to-list 'ac-modes 'sas-mode)
 ;; (add-to-list 'ac-modes 'ess-mode)
 ;; (add-to-list 'ac-modes 'SAS-mode)
@@ -56,64 +56,64 @@
 ;; (add-to-list 'ac-modes 'ess-s-mode)
 
 ;; http://stackoverflow.com/questions/8095715/emacs-auto-complete-mode-at-startup
-(global-auto-complete-mode 0)
+;; (global-auto-complete-mode 0)
 
 ;; use tab for completion instead of return
-(define-key ac-completing-map "\t" 'ac-complete)
-(define-key ac-completing-map "\r" nil)
-(define-key ac-completing-map [tab] 'ac-complete)
-(define-key ac-completing-map [return] nil)
+;; (define-key ac-completing-map "\t" 'ac-complete)
+;; (define-key ac-completing-map "\r" nil)
+;; (define-key ac-completing-map [tab] 'ac-complete)
+;; (define-key ac-completing-map [return] nil)
 
 ;; delay autocomplete
-(setq ac-delay 0.3)
+;; (setq ac-delay 0.3)
 ;; delay appearance of menu; t=immediate
-(setq ac-auto-show-menu 0.7)
+;; (setq ac-auto-show-menu 0.7)
 
 ;; load autocomplete
 ;;(add-to-list 'ac-dictionary-directories "h:/.emacs.d/auto-complete/dict")
 ;; add keyboard cut to get TAB mode
 ;; this is actually emacs' auto-complete, so it is also for company-mode (?)
-(define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
+;; (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
 
-(add-hook 'after-init-hook 'global-company-mode)
+;; (add-hook 'after-init-hook 'global-company-mode)
 
 ;; web-mode
 ;; M-x package-install RET web-mode RED
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+;; (require 'web-mode)
+;; (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 ;; MARKDOWN
 ;; `brew install markdown`
-(custom-set-variables '(markdown-command "/usr/local/bin/pandoc"))
+;; (custom-set-variables '(markdown-command "/usr/local/bin/pandoc"))
 ;; POLYMODE
 ;; https://github.com/vspinu/polymode
-(setq load-path (append
-'("~/.emacs.d/polymode/" "~/.emacs.d/polymode/modes") load-path))
+;; (setq load-path (append
+;; '("~/.emacs.d/polymode/" "~/.emacs.d/polymode/modes") load-path))
 
-(require 'poly-R)
-(require 'poly-markdown)
-(add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
+;; (require 'poly-R)
+;; (require 'poly-markdown)
+;; (add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
 
 ;;; R modes
-(add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
-(add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
-(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
+;; (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
+;; (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
+;; (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
 
 ;; Turn off click-follows-link in Markdown mode.
-(defun disable-goto-addr ()
-  (setq-local mouse-1-click-follows-link nil)
-  ; turn middle clicks into the default action, normally pasting the primary
-  ; selection.
-  (define-key markdown-mode-mouse-map [mouse-2] nil)
-)
-(add-hook 'markdown-mode-hook 'disable-goto-addr)
+;; (defun disable-goto-addr ()
+;;   (setq-local mouse-1-click-follows-link nil)
+;;   ; turn middle clicks into the default action, normally pasting the primary
+;;   ; selection.
+;;   (define-key markdown-mode-mouse-map [mouse-2] nil)
+;; )
+;; (add-hook 'markdown-mode-hook 'disable-goto-addr)
 
 
 ;; PYTHON
@@ -416,12 +416,12 @@
 (setq ess-eval-visibly-p 'no)
 
 
-(load "~/.emacs.d/.emacs_local")
+;; (load "~/.emacs.d/.emacs_local")
 
 
 
 
 ;; load some files
-(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/R-codesaver.R"))
-(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/python-codesaver.py"))
-(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/sxratch.txt"))
+;; (pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/R-codesaver.R"))
+;; (pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/python-codesaver.py"))
+;; (pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/sxratch.txt"))
