@@ -11,6 +11,7 @@ alias rm="rm -i"
 alias lm='less -M'
 
 alias f='open -a Finder ./'                 # macOS only
+alias e='open -a Emacs'			    # macOS only
 
 alias be='bundle exec'
 
