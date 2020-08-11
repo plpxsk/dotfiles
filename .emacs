@@ -119,10 +119,22 @@
 (custom-set-variables '(markdown-command "/usr/local/bin/pandoc"))
 
 ;; POLYMODE
-;; https://github.com/vspinu/polymode
-;; (setq load-path (append
-;; '("~/.emacs.d/polymode/" "~/.emacs.d/polymode/modes") load-path))
+;; installed via package-install
+;; polymode
+;; poly-R
 
+(defun polymode-insert-new-chunk ()
+  (interactive)
+  (insert "\n```{r}\n")
+  (save-excursion
+    (newline)
+    (insert "```\n")
+    (previous-line)))
+
+(define-key polymode-mode-map (kbd "M-n M-i") 'polymode-insert-new-chunk)
+
+
+;; '("~/.emacs.d/polymode/" "~/.emacs.d/polymode/modes") load-path))
 ;; (require 'poly-R)
 ;; (require 'poly-markdown)
 ;; (add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
