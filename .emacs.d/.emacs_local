@@ -27,7 +27,7 @@
   (comint-send-string "RR-pred" "ml R/3.5.1-goolf-1.7.20\n")
   ;; run via interactive job of 6 hours (default is 2)
   ;; added Thu May  7 11:49:41 EDT 2020
-  (comint-send-string "RR-pred" "interactive -t 360 -m 24G\n")
+  (comint-send-string "RR-pred" "interactive -t 360 -c 2 -m 24G\n")
   (comint-send-string "RR-pred" "R\n")
   (ess-remote "*shell*" "R")
   )

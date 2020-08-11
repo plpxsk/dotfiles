@@ -17,23 +17,33 @@
 ;; http://stackoverflow.com/questions/19142142/emacs-auto-complete-mode-not-working
 ;; https://github.com/melpa/melpa
 (require 'package)
-(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
-                    (not (gnutls-available-p))))
-       (proto (if no-ssl "http" "https")))
-  (when no-ssl (warn "\
-Your version of Emacs does not support SSL connections,
-which is unsafe because it allows man-in-the-middle attacks.
-There are two things you can do about this warning:
-1. Install an Emacs version that does support SSL and be safe.
-2. Remove this warning from your init file so you won't see it again."))
-  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
-  ;;(add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
-  (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
-  (when (< emacs-major-version 24)
-    ;; For important compatibility libraries like cl-lib
-    (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
-
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
+
+
+
+
+;; below as of August 2020. Updated above
+;; (require 'package)
+;; (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+;;                     (not (gnutls-available-p))))
+;;        (proto (if no-ssl "http" "https")))
+;;   (when no-ssl (warn "\
+;; Your version of Emacs does not support SSL connections,
+;; which is unsafe because it allows man-in-the-middle attacks.
+;; There are two things you can do about this warning:
+;; 1. Install an Emacs version that does support SSL and be safe.
+;; 2. Remove this warning from your init file so you won't see it again."))
+;;   ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
+;;   ;;(add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+;;   (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+;;   (when (< emacs-major-version 24)
+;;     ;; For important compatibility libraries like cl-lib
+;;     (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
+;; (package-initialize)
 
 
 ;; ============================================================================
@@ -47,7 +57,6 @@ There are two things you can do about this warning:
 
 ;; https://www.emacswiki.org/emacs/ExecPath
 ;; (setq exec-path (append exec-path '("/usr/local/bin")))
-
 
 ;; use this for spell check, after running `brew install aspell --with-lang-en`
 (setq-default ispell-program-name "/usr/local/bin/aspell")
@@ -108,19 +117,20 @@ There are two things you can do about this warning:
 ;; MARKDOWN
 ;; `brew install markdown`
 (custom-set-variables '(markdown-command "/usr/local/bin/pandoc"))
+
 ;; POLYMODE
 ;; https://github.com/vspinu/polymode
-(setq load-path (append
-'("~/.emacs.d/polymode/" "~/.emacs.d/polymode/modes") load-path))
+;; (setq load-path (append
+;; '("~/.emacs.d/polymode/" "~/.emacs.d/polymode/modes") load-path))
 
-(require 'poly-R)
-(require 'poly-markdown)
-(add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
+;; (require 'poly-R)
+;; (require 'poly-markdown)
+;; (add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
+;; ;;; R modes
+;; (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
+;; (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
+;; (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
 
-;;; R modes
-(add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
-(add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
-(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
 
 ;; Turn off click-follows-link in Markdown mode.
 (defun disable-goto-addr ()
@@ -143,22 +153,28 @@ There are two things you can do about this warning:
 
 (setq python-indent-guess-indent-offset-verbose nil)
 
+(eval-after-load "elpy"
+  '(progn
+     (define-key elpy-mode-map (kbd "<S-return>") 'elpy-shell-send-statement-and-step)
+     ;; doesn't work??
+     ;; (setq elpy-rpc-pythonpath "/usr/local/opt/python/libexec/bin/python")
+     ;; (setq elpy-rpc-virtualenv-path 'system)
+
+     ;; 
+     ;; (when (require 'flycheck nil t)
+     ;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+     ;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
+     ))
 
 ;; python dir is file location, not .git location
 ;; (setq elpy-shell-use-project-root nil)
 
-
 ;; see .profile_local
 (setenv "WORKON_HOME" "~/Envs")
-
 
 ;; PYTHON OLD BELOW
 ;; use ELPY, install: https://github.com/jorgenschaefer/elpy
 ;; (I installed jedi instead of rope)
-
-
-
-
 
 ;; use ipython. jupyter console didn't pick up virtualenv
 ;; https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
@@ -246,8 +262,20 @@ There are two things you can do about this warning:
 (global-set-key (kbd "C-z") 'undo)
 
 ;; easy to top, bottom
+;; disabled. using defaults. these conflict with python jump to function or sg
 ;; (global-set-key "\M-," 'beginning-of-buffer)
 ;; (global-set-key "\M-." 'end-of-buffer)
+
+
+;; quickly jump between windows
+;; https://emacs.stackexchange.com/a/3471
+(defun prev-window ()
+  (interactive)
+  (other-window -1))
+
+(global-set-key (kbd "C-.") #'other-window)
+(global-set-key (kbd "C-,") #'prev-window)
+
 
 ;; faster  C-x 1 || C-x 2
 ;; (global-set-key [f1] 'delete-other-windows)
@@ -470,13 +498,16 @@ There are two things you can do about this warning:
 ;; (setq comint-move-point-for-output nil)
 
 
-;; remap <- key
+;; remap "<-" key
 ;; (setq ess-smart-S-assign-key (kbd "M--"))
 ;; (ess-toggle-S-assign nil)
 ;; (ess-toggle-S-assign nil)
 
 (global-set-key (kbd "M--")  (lambda () (interactive) (insert " <- ")))
 (ess-toggle-underscore nil)
+
+(eval-after-load "ess-mode"
+  '(define-key ess-mode-map (kbd "<S-return>") 'ess-eval-region-or-line-and-step))
 
 ;; evaluate code invisibly
 ;; pushing code to R sometimes significantly adds to runtime, and may be unstable
