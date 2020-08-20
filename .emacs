@@ -131,7 +131,14 @@
     (insert "```\n")
     (previous-line)))
 
-(define-key polymode-mode-map (kbd "M-n M-i") 'polymode-insert-new-chunk)
+
+;; TODO: enable key only when loading polymode. How?
+;; (define-key polymode-mode-map (kbd "M-n M-i") 'polymode-insert-new-chunk)
+
+;; (add-hook 'polymode-mode-hook '(define-key polymode-mode-map (kbd "M-n M-i") 'polymode-insert-new-chunk))
+
+;; works globally but doesnt actually work in polymode:
+;; (global-set-key (kbd "M-n M-i") 'polymode-insert-new-chunk)
 
 
 ;; '("~/.emacs.d/polymode/" "~/.emacs.d/polymode/modes") load-path))
