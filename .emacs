@@ -486,7 +486,11 @@
 
 ;; SOLARIZED
 ;; https://github.com/bbatsov/solarized-emacs
-(load-theme 'solarized-dark)
+;; first, load options
+(setq solarized-high-contrast-mode-line t)
+;; then, load theme
+(load-theme 'solarized-dark t)
+
 
 (defun lightit ()
   "Quickly switch to light theme."
