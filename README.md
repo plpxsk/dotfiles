@@ -42,6 +42,10 @@ Install brew cask for mac applications (non-cli): https://caskroom.github.io
 	# https://github.com/ggreer/the_silver_searcher
 	brew install the_silver_searcher
 	
+	# inconsolata font
+	brew tap homebrew/cask-fonts                  # you only have to do this once!
+	brew cask install font-inconsolata
+	
 ## Other
 
 Install npm in some way. then:
