@@ -1,5 +1,4 @@
 ;; -*- mode: lisp -*-
-
 ;; Default .Emacs
 ;; Paul Paczuski / pavopax.com
 
@@ -10,24 +9,101 @@
 ;; confirm emacs quit
 (setq confirm-kill-emacs 'yes-or-no-p)
 
-;; from emacs manual - Emacs Menu's 'save for future' items go here
-;; instead of polluting the present file
-(setq custom-file "~/.emacs.d/init.el")
-(load custom-file)
-
 ;; package management
 ;; https://github.com/melpa/melpa
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
-;; and `package-pinned-packages`. Most users will not need or want to do this.
-;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
 
 ;; ============================================================================
-;; Navigation + Keyboard
+;; 1) Look + Behavior
 ;; ============================================================================
+;; Remove the toolbar
+(tool-bar-mode -1)
+
+;; remove scroll
+(scroll-bar-mode -1)
+
+(setq initial-frame-alist
+      '(
+	(top . 0) (left . 0)
+	(width . 110) (height . 65)
+	)
+)
+
+(setq default-frame-alist '( (left . 0) (top . 0) (height . 65) (width . 100) ))
+
+;;(set-face-attribute 'default nil :height 100)
+
+;; change title bar display to show buffer name and file location
+(setq frame-title-format "%b - %+ %f")
+;; or file name if available, otherwise buffer name
+;; (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+
+;; Show column number at bottom of screen
+(column-number-mode 1)
+
+;; disable the bell/alarm completely
+(setq ring-bell-function 'ignore)
+
+;; disable system beep (eg, during C-g), and replace with visual
+(setq visible-bell 1)
+
+;; Turn highlighting on (when marking region with C-SPC)
+;; default on?
+;; (transient-mark-mode t)
+
+;; replace highlighted text with typed text
+;; and enable C-d to delete highlighted text
+(delete-selection-mode t)
+
+;; Autosave every 500 typed characters
+(setq auto-save-interval 500)
+
+;; Autosave after 5 seconds of idle time
+(setq auto-save-timeout 5)		;set low, in case freezes and have to kill
+
+;; increase messages log size
+(setq message-log-max 500)
+
+;; line numbers
+;; (global-linum-mode)
+
+;; Highlight the current line
+(global-hl-line-mode 1)
+
+;; truncate long lines
+;; (setq default-truncate-lines t)
+
+;; make side by side buffer function the same as the main window
+;; (setq truncate-partial-width-windows nil)
+;; toggle with F12
+(global-set-key (kbd "<f12>") 'toggle-truncate-lines)
+
+;; show matching paren in color (in addition to highlight)
+(show-paren-mode t)
+
+;; "ctrl - left click" buffer menu increase number of items
+(setq mouse-buffer-menu-maxlen 40)
+(setq mouse-buffer-menu-mode-mult 50)
+
+(put 'set-goal-column 'disabled nil)
+
+
+;; put backup files in separate location
+;; http://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files
+(setq backup-directory-alist `(("." . "~/.backups")))
+(setq backup-by-copying t)
+
+;; set fill column
+(setq-default fill-column 79)
+
+
+;; ============================================================================
+;; 2) Navigation + Keyboard
+;; ============================================================================
+
 ;; IDO-MODE
 ;; enhanced behavior for opening files and switching buffers, etc
 ;; http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/
@@ -139,92 +215,14 @@
 
 
 ;; ============================================================================
-;; Look + Behavior
+;; 3) Final
 ;; ============================================================================
-;; Remove the toolbar
-(tool-bar-mode -1)
-
-;; remove scroll
-(scroll-bar-mode -1)
-
-(setq initial-frame-alist
-      '(
-	(top . 0) (left . 0)
-	(width . 110) (height . 65)
-	)
-)
-
-(setq default-frame-alist '( (left . 0) (top . 0) (height . 65) (width . 100) ))
-
-;;(set-face-attribute 'default nil :height 100)
-
-;; change title bar display to show buffer name and file location
-(setq frame-title-format "%b - %+ %f")
-;; or file name if available, otherwise buffer name
-;; (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-
-;; Show column number at bottom of screen
-(column-number-mode 1)
-
-;; disable the bell/alarm completely
-(setq ring-bell-function 'ignore)
-
-;; disable system beep (eg, during C-g), and replace with visual
-(setq visible-bell 1)
-
-;; Turn highlighting on (when marking region with C-SPC)
-;; default on?
-;; (transient-mark-mode t)
-
-;; replace highlighted text with typed text
-;; and enable C-d to delete highlighted text
-(delete-selection-mode t)
-
-;; Autosave every 500 typed characters
-(setq auto-save-interval 500)
-
-;; Autosave after 5 seconds of idle time
-(setq auto-save-timeout 5)		;set low, in case freezes and have to kill
-
-;; increase messages log size
-(setq message-log-max 500)
-
-;; line numbers
-;; (global-linum-mode)
-
-;; Highlight the current line
-(global-hl-line-mode 1)
-
-;; truncate long lines
-;; (setq default-truncate-lines t)
-
-;; make side by side buffer function the same as the main window
-;; (setq truncate-partial-width-windows nil)
-;; toggle with F12
-(global-set-key (kbd "<f12>") 'toggle-truncate-lines)
-
-;; show matching paren in color (in addition to highlight)
-(show-paren-mode t)
-
-;; "ctrl - left click" buffer menu increase number of items
-(setq mouse-buffer-menu-maxlen 40)
-(setq mouse-buffer-menu-mode-mult 50)
-
-(put 'set-goal-column 'disabled nil)
-
-
-;; put backup files in separate location
-;; http://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files
-(setq backup-directory-alist `(("." . "~/.backups")))
-(setq backup-by-copying t)
-
-;; set fill column
-(setq-default fill-column 79)
 
 ;; SOLARIZED
 ;; the only package required for .emacs.lite
 ;; M-x package-install solarized-theme
 ;; https://github.com/bbatsov/solarized-emacs
+
 ;; first, load options
 (setq solarized-high-contrast-mode-line t)
 ;; then, load theme
