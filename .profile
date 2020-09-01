@@ -47,9 +47,6 @@ function knit() {
 # Load
 # ============================================================================
 
-# git autocomplete is available by default in zsh. replaces bash-completion
-autoload -Uz compinit && compinit
-
 # local settings (checkout from different git branch)
 if [ -f ~/.profile_local ]; then
     . ~/.profile_local
