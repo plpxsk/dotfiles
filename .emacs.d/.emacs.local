@@ -1,11 +1,6 @@
 ;; -*- mode: lisp -*-
 ;; LOAD THIS FILE in ~/.emacs
 
-;; from emacs manual - Emacs Menu's 'save for future' items go here
-;; instead of polluting the present file
-(setq custom-file "~/.emacs.d/init.el")
-(load custom-file)
-
 ;; SOLARIZED
 ;; the only package required for .emacs.lite
 ;; M-x package-install solarized-theme

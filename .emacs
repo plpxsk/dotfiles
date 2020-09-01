@@ -9,6 +9,12 @@
 ;; confirm emacs quit
 (setq confirm-kill-emacs 'yes-or-no-p)
 
+;; from emacs manual - Emacs Menu's 'save for future' items go here
+;; instead of polluting the present file
+(setq custom-file (concat user-emacs-directory "init.el"))
+(when (file-exists-p custom-file)
+  (load custom-file))
+
 ;; package management
 ;; https://github.com/melpa/melpa
 (require 'package)
