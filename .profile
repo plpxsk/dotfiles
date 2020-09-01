@@ -46,8 +46,9 @@ function knit() {
 # ============================================================================
 # Load
 # ============================================================================
-# brew install git bash-completion
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+# git autocomplete is available by default in zsh. replaces bash-completion
+autoload -Uz compinit && compinit
 
 # local settings (checkout from different git branch)
 if [ -f ~/.profile_local ]; then
