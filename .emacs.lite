@@ -1,6 +1,6 @@
 ;; -*- mode: lisp -*-
 ;; LIGHTWEIGHT default .emacs
-;; should work on any box after unloading .emacs.local (see bottom)
+;; should work on any box - just make sure last line is commented out (see bottom)
 ;; Paul Paczuski / https://github.com/pavopax/dotfiles
 
 ;; ============================================================================
@@ -215,32 +215,6 @@
 
 
 ;; ============================================================================
-;; 3) Final
+;; 3) Load box-specific customizations
 ;; ============================================================================
-
-;; SOLARIZED
-;; the only package required for .emacs.lite
-;; M-x package-install solarized-theme
-;; https://github.com/bbatsov/solarized-emacs
-
-;; first, load options
-(setq solarized-high-contrast-mode-line t)
-;; then, load theme
-(load-theme 'solarized-dark t)
-
-
-(defun lightit ()
-  "Quickly switch to light theme."
-  (interactive)
-  (load-theme 'solarized-light t)
-  )
-
-(defun darkit ()
-  "Quickly switch to dark theme."
-  (interactive)
-  (load-theme 'solarized-dark t)
-  )
-
-;; ============================================================================
-;; 4) Load box-specific customizations
-;; ============================================================================
+;; (load "~/.emacs.d/.emacs_local")
