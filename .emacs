@@ -218,3 +218,4 @@
 ;; 3) Load box-specific customizations
 ;; ============================================================================
 (load "~/.emacs.d/.emacs.local")
+(load "~/.emacs.d/.emacs.functions.local")
