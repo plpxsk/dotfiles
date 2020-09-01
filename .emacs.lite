@@ -1,7 +1,7 @@
 ;; -*- mode: lisp -*-
-;; Default .Emacs
-;; Paul Paczuski / pavopax.com
-
+;; LIGHTWEIGHT default .emacs
+;; should work on any box after unloading .emacs.local (see bottom)
+;; Paul Paczuski / https://github.com/pavopax/dotfiles
 
 ;; ============================================================================
 ;; Up-front matter
@@ -240,3 +240,7 @@
   (interactive)
   (load-theme 'solarized-dark t)
   )
+
+;; ============================================================================
+;; 4) Load box-specific customizations
+;; ============================================================================
