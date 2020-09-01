@@ -200,7 +200,7 @@
        (forward-line -1)
        (forward-char 3)			;NICE!!!!!!
        )
-(global-set-key (kbd "C-c b") 'insert-comblk)
+;; (global-set-key (kbd "C-c b") 'insert-comblk)
 
 (defun rmd-init ()
   "Initialize R markdown notebook with default header."
