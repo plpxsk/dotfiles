@@ -1,0 +1,30 @@
+;; -*- mode: lisp -*-
+;; LOAD THIS FILE in ~/.emacs
+
+;; from emacs manual - Emacs Menu's 'save for future' items go here
+;; instead of polluting the present file
+(setq custom-file "~/.emacs.d/init.el")
+(load custom-file)
+
+;; SOLARIZED
+;; the only package required for .emacs.lite
+;; M-x package-install solarized-theme
+;; https://github.com/bbatsov/solarized-emacs
+
+;; first, load options
+(setq solarized-high-contrast-mode-line t)
+;; then, load theme
+(load-theme 'solarized-dark t)
+
+
+(defun lightit ()
+  "Quickly switch to light theme."
+  (interactive)
+  (load-theme 'solarized-light t)
+  )
+
+(defun darkit ()
+  "Quickly switch to dark theme."
+  (interactive)
+  (load-theme 'solarized-dark t)
+  )
