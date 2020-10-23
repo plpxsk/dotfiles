@@ -69,14 +69,19 @@ First, install plug in manager: https://github.com/tmux-plugins/tpm
 
 Then install tmux resurrect, etc
 
-## Python
+## Python 
 
-Manage Python 2 vs 3 kernels with conda
-
-Default is Python 3
+Manage python with Brew
 
 Use Python 2 kernel in Jupyter:
 http://ipython.readthedocs.io/en/stable/install/kernel_install.html
+
+### Virtual envs
+
+Current notes:
+
+  * Put /venv in project folder
+  * Run jupyter after activating venv?
 
 
 ## R

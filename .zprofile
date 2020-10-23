@@ -9,6 +9,6 @@ select-word-style bash
 autoload -Uz compinit && compinit
 
 ## ============================================================================
-## global shell
+## load cross-platform dotfiles
 ## ============================================================================
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
