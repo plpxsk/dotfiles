@@ -1,4 +1,4 @@
-;; -*- mode: lisp -*-
+;; -*- mode: emacs-lisp -*-
 ;; LIGHTWEIGHT default .emacs
 ;; should work on any box - just make sure last line is commented out (see bottom)
 ;; Paul Paczuski / https://github.com/pavopax/dotfiles
@@ -9,6 +9,7 @@
 ;; confirm emacs quit
 (setq confirm-kill-emacs 'yes-or-no-p)
 
+;; must load this in .emacs (?)
 ;; from emacs manual - Emacs Menu's 'save for future' items go here
 ;; instead of polluting the present file
 (setq custom-file (concat user-emacs-directory "init.el"))
@@ -104,7 +105,8 @@
 
 ;; set fill column
 (setq-default fill-column 79)
-
+;; requires emacs version 27+
+(setq global-display-fill-column-indicator-mode 1)
 
 ;; ============================================================================
 ;; 2) Navigation + Keyboard
@@ -116,6 +118,9 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
+
+;; use `a` to open files
+(put 'dired-find-alternate-file 'disabled nil)
 
 ;; don't ask to create new buffer with C-x b  ; choices: always, prompt, never
 (setq ido-create-new-buffer 'never)
@@ -206,7 +211,7 @@
        (forward-line -1)
        (forward-char 3)			;NICE!!!!!!
        )
-;; (global-set-key (kbd "C-c b") 'insert-comblk)
+(global-set-key (kbd "C-c b") 'insert-comblk)
 
 (defun rmd-init ()
   "Initialize R markdown notebook with default header."
@@ -225,3 +230,4 @@
 ;; ============================================================================
 (load "~/.emacs.d/.emacs.local")
 (load "~/.emacs.d/.emacs.functions.local")
+

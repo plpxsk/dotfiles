@@ -1,25 +1,97 @@
-;; -*- mode: lisp -*-
+;; -*- mode: emacs-lisp -*-
 ;; LOAD THIS FILE in ~/.emacs
 
-;; SOLARIZED
-;; the only package required for .emacs.lite
+;; ============================================================================
+;; Theme Zenburn/Solarized
+;; ============================================================================
+
+;; M-x package-install zenburn-them
+;; https://github.com/bbatsov/zenburn-emacs
+(load-theme 'zenburn t)
+
 ;; M-x package-install solarized-theme
 ;; https://github.com/bbatsov/solarized-emacs
 
-;; first, load options
-(setq solarized-high-contrast-mode-line t)
-;; then, load theme
-(load-theme 'solarized-dark t)
+;; first, load options, then load theme
+;; (setq solarized-high-contrast-mode-line t)
+;; (load-theme 'solarized-dark t)
+;; (defun lightit ()
+;;   "Quickly switch to light theme."
+;;   (interactive)
+;;   (load-theme 'solarized-light t)
+;;   )
+
+;; (defun darkit ()
+;;   "Quickly switch to dark theme."
+;;   (interactive)
+;;   (load-theme 'solarized-dark t)
+;;   )
+
+;; ============================================================================
+;; Paths, Settings
+;; ============================================================================
+;; M-x package install RET exec-path-from-shell RET
+;; https://github.com/purcell/exec-path-from-shell
+;; needed to find `R` location for ESS, etc
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 
 
-(defun lightit ()
-  "Quickly switch to light theme."
-  (interactive)
-  (load-theme 'solarized-light t)
-  )
+;; Turn off click-follows-link in Markdown mode.
+(defun disable-goto-addr ()
+  (setq-local mouse-1-click-follows-link nil)
+  ; turn middle clicks into the default action, normally pasting the primary
+  ; selection.
+  (define-key markdown-mode-mouse-map [mouse-2] nil)
+)
+(add-hook 'markdown-mode-hook 'disable-goto-addr)
 
-(defun darkit ()
-  "Quickly switch to dark theme."
-  (interactive)
-  (load-theme 'solarized-dark t)
-  )
+
+;; https://github.com/magnars/expand-region.el
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+
+;; ============================================================================
+;; ESS 
+;; ============================================================================
+;; https://ess.r-project.org/index.php?Section=download
+(add-to-list 'load-path "~/.emacs.d/ess-18.10.2/lisp/")
+(require 'ess-site)
+
+(setq ess-ask-for-ess-directory t)
+
+;; (setq ess-help-own-frame nil)
+;; (setq ess-help-own-frame 'one)
+
+;; don't auto scroll to bottom inn ess process buffers
+;; (setq comint-scroll-to-bottom-on-input nil)
+;; (setq comint-scroll-to-bottom-on-output nil)
+;; (setq comint-move-point-for-output nil)
+
+;; remap "<-" key
+(setq ess-smart-S-assign-key (kbd "M--"))
+(ess-toggle-S-assign nil)
+(ess-toggle-S-assign nil)
+
+(global-set-key (kbd "M--")  (lambda () (interactive) (insert " <- ")))
+(ess-toggle-underscore nil)
+
+(eval-after-load "ess-mode"
+  '(define-key ess-mode-map (kbd "<S-return>") 'ess-eval-region-or-line-and-step))
+
+;; evaluate code invisibly
+;; pushing code to R sometimes significantly adds to runtime, and may be unstable
+;; https://stackoverflow.com/q/2770523/3217870
+(setq ess-eval-visibly-p 'nil)
+
+
+;; ============================================================================
+;; MISC
+;; ============================================================================
+;; use this for spell check, after running `brew install aspell`
+(setq-default ispell-program-name "/usr/local/bin/aspell")
+
+;; load some files
+(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/R-codesaver.R"))
+(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/sxratch.md"))
