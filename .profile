@@ -58,5 +58,6 @@ if [ -f ~/.profile_private ]; then
 fi
 
 # color output
+# works in multiple shells
 export CLICOLOR=1
 
