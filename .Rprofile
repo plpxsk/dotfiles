@@ -13,7 +13,7 @@ options(max.print = 2000)
 local({
   r <- getOption("repos")
   ##r["CRAN"] <- "https://cran.cnr.berkeley.edu/"
-  r["CRAN"] <- "http://cran.rstudio.com/"
+  r["CRAN"] <- "https://cran.rstudio.com/"
   options(repos = r)
 })
 
