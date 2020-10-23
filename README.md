@@ -18,13 +18,20 @@ I sometimes also have a non-committed `.profile_private` which I merge in
 
 *NOTE: This guide is a work in progress.*
 
-## Start here
+On macOS Terminal, new shell runs dotfiles in this order, per current setup:
 
-Install Python, jupyter with **miniconda**
+	.zprofile (manually loads .profile
+	.profile (manually loads .profile_local)
+	.profile_local
+	.zshrc
+	
+## Start here
 
 Install brew: https://brew.sh
 
 Install brew cask for mac applications (non-cli): https://caskroom.github.io
+
+Install Python with brew
 
 ## brew
 
@@ -41,6 +48,8 @@ Install brew cask for mac applications (non-cli): https://caskroom.github.io
 	# the `ag` shortcut
 	# https://github.com/ggreer/the_silver_searcher
 	brew install the_silver_searcher
+
+	brew install tldr
 	
 	# inconsolata font
 	brew tap homebrew/cask-fonts                  # you only have to do this once!
@@ -54,6 +63,12 @@ Install npm in some way. then:
 	npm install -g tldr
 
 
+## Tmux
+
+First, install plug in manager: https://github.com/tmux-plugins/tpm
+
+Then install tmux resurrect, etc
+
 ## Python
 
 Manage Python 2 vs 3 kernels with conda
@@ -64,7 +79,25 @@ Use Python 2 kernel in Jupyter:
 http://ipython.readthedocs.io/en/stable/install/kernel_install.html
 
 
+## R
+
+Install R including CLI.
+
 ## Emacs
+
+!! macOS Catalina Problems: spotlight switching and desktop file access. Resolve:
+
+1. Install from https://emacsformacosx.com
+1. Then OPEN emacs for the first time, to overcome the "unsigned package" dialog and so that next steps work. Otherwise you may get a "Emacs package is corrupted" or similar error..
+1. Carefully rename some files inside the package contents
+
+  * mv the `*_10` not the `*_14` binary (on my setup)
+  * See [this link](https://spin.atomicobject.com/2019/12/12/fixing-emacs-macos-catalina/)
+
+1. Now, you can try opening desktop files. Maybe it will prompt for access. If not, go into macOS security and privacy settings per above link and add disk access for Emacs
+
+Start with `.emacs` (from `.emacs.lite`) then install packages from
+`.emacs.d/.emacs.local` as needed.
 
 	M-x package-install RET my_package_name
 
@@ -76,6 +109,15 @@ Packages to install
   * more in `.emacs`
   
 [Run R from SSH session](https://www.r-bloggers.com/run-a-remote-r-session-in-emacs-emacs-ess-r-ssh/)
+
+### ESS for Emacs
+
+1. Download zip
+1. Move to .emacs.d
+1. Source in .emacs.local
+
+
+
 
 # Improving touchbar 
 
