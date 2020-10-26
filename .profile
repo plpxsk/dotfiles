@@ -11,13 +11,21 @@ alias rm="rm -i"
 alias lm='less -M'
 
 alias f='open -a Finder ./'                 # macOS only
-alias e='open -a Emacs'			    # macOS only
+# doens't work correctly with Emacs GUI, see README
+# alias e='open -a Emacs'			    # macOS only
 
 alias be='bundle exec'
 
-alias ll='ls -gho && echo "" && pwd'
-alias lll="ls -lh"
-alias lld="ls -l | grep 'dr'"
+# for aliases with parameters like $1, need to create functions
+
+ll() {
+    ls -l $1 && echo "" && pwd
+}
+
+lld() {
+    ls -l $1 | grep 'dr'
+}
+
 alias lla="ls -al"
 alias lls="ls -CF"
 
@@ -26,9 +34,9 @@ alias gitsu="git status --untracked-files=no"
 alias gitb="git branch"
 alias gitr="git reflog"
 
-function c()
-{
- builtin cd "$*" && ls -gho && echo "" && pwd
+
+c() {
+ builtin cd "$*" && ll
 }
 
 alias b="c ../"
