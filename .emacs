@@ -18,9 +18,22 @@
 
 ;; package management
 ;; https://github.com/melpa/melpa
+
+;; NEXT TIME:
+;; use `use-package`?
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
+
+;; If there are no archived package contents, refresh them
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+;; M-x package install RET exec-path-from-shell RET
+;; https://github.com/purcell/exec-path-from-shell
+;; needed to find `R` location for ESS, etc
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 
 
 ;; ============================================================================
@@ -195,6 +208,86 @@
 (global-set-key (kbd "M-s-h") 'ns-do-hide-others)
 (global-set-key [142607065] 'ns-do-hide-others)
 
+
+;; Turn off click-follows-link in Markdown mode.
+(defun disable-goto-addr ()
+  (setq-local mouse-1-click-follows-link nil)
+  ; turn middle clicks into the default action, normally pasting the primary
+  ; selection.
+  (define-key markdown-mode-mouse-map [mouse-2] nil)
+)
+(add-hook 'markdown-mode-hook 'disable-goto-addr)
+
+
+;; https://github.com/magnars/expand-region.el
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+
+;; use this for spell check, after running `brew install aspell`
+(setq-default ispell-program-name "/usr/local/bin/aspell")
+
+
+;; ============================================================================
+;; 3) More functions
+;; ============================================================================
+
+;; also see https://emacs.stackexchange.com/a/47432/11872
+(defun bee-shell ()
+  "Load command-line R on BEE server"
+  (interactive)
+    (shell)
+    (rename-buffer "RR-bee")
+    (comint-send-string "RR-bee" "ssh bee\n")
+    (comint-send-string "RR-bee" "R-3.6.1\n")
+    (ess-remote "*shell*" "R")
+    )
+
+(defun pred1-shell ()
+  "Step 1 to load command-line R on pRED HPC server"
+  (interactive)
+    (shell)
+    (rename-buffer "RR-pred")
+    (comint-send-string "RR-pred" "ssh pred\n")
+    ;; (comint-send-string "RR-pred" "R\n")
+    ;; (ess-remote "*shell*" "R")
+    )
+
+(defun pred2-r-load ()
+  "Step 2 to load command-line R on pRED HPC server"
+  (interactive)
+  (comint-send-string "RR-pred" "ml R/3.5.1-goolf-1.7.20\n")
+  ;; run via interactive job of 6 hours (default is 2)
+  ;; added Thu May  7 11:49:41 EDT 2020
+  (comint-send-string "RR-pred" "interactive -t 360 -c 2 -m 24G\n")
+  (comint-send-string "RR-pred" "R\n")
+  (ess-remote "*shell*" "R")
+  )
+
+(defun rescomp1-shell ()
+  "Load command-line R.1 on rescomp"
+  (interactive)
+  (shell)
+  (rename-buffer "RR-rescomp")
+  (comint-send-string "RR-rescomp" "ssh rosalind.gene.com\n")
+  ;; (comint-send-string "RR-rescomp" "module load apps/R/3.5.1-Bioc-3.7-prd/prd\n")
+  ;; (comint-send-string "RR-rescomp" "R\n")
+  ;; (ess-remote "*shell*" "R")
+  )
+
+
+(defun rescomp2-r-load()
+  "Load R in rescomp shell"
+  (interactive)
+  (comint-send-string "RR-rescomp" "module load R\n")
+  ;; run interactive job
+  ;; added Thu May  7 11:49:41 EDT 2020
+  (comint-send-string "RR-rescomp" "interactive\n")
+  (comint-send-string "RR-rescomp" "R\n")
+  (ess-remote "*shell*" "R")
+  )
+
+
 (defun flyit ()
   "Quickly flyspell."
   (interactive)
@@ -226,8 +319,88 @@
 
 
 ;; ============================================================================
-;; 3) Load box-specific customizations
+;; 4) Theme
 ;; ============================================================================
-(load "~/.emacs.d/.emacs.local")
-(load "~/.emacs.d/.emacs.functions.local")
 
+;; M-x package-install zenburn-them
+;; https://github.com/bbatsov/zenburn-emacs
+;; (load-theme 'zenburn t)
+
+;; M-x package-install solarized-theme
+;; https://github.com/bbatsov/solarized-emacs
+;; first, load options, then load theme
+
+(setq solarized-high-contrast-mode-line t)
+(load-theme 'solarized-dark t)
+
+(defun lightit ()
+  "Quickly switch to light theme."
+  (interactive)
+  (load-theme 'solarized-light t)
+  )
+
+(defun darkit ()
+  "Quickly switch to dark theme."
+  (interactive)
+  (load-theme 'solarized-dark t)
+  )
+
+
+;; ============================================================================
+;; 5) ESS
+;; ============================================================================
+;; https://ess.r-project.org/index.php?Section=download
+(add-to-list 'load-path "~/.emacs.d/ess-18.10.2/lisp/")
+(require 'ess-site)
+
+(setq ess-ask-for-ess-directory t)
+
+;; (setq ess-help-own-frame nil)
+;; (setq ess-help-own-frame 'one)
+
+;; don't auto scroll to bottom inn ess process buffers
+;; (setq comint-scroll-to-bottom-on-input nil)
+;; (setq comint-scroll-to-bottom-on-output nil)
+;; (setq comint-move-point-for-output nil)
+
+;; remap "<-" key
+(setq ess-smart-S-assign-key (kbd "M--"))
+(ess-toggle-S-assign nil)
+(ess-toggle-S-assign nil)
+
+(global-set-key (kbd "M--")  (lambda () (interactive) (insert " <- ")))
+(ess-toggle-underscore nil)
+
+(eval-after-load "ess-mode"
+  '(define-key ess-mode-map (kbd "<S-return>") 'ess-eval-region-or-line-and-step))
+
+;; evaluate code invisibly
+;; pushing code to R sometimes significantly adds to runtime, and may be unstable
+;; https://stackoverflow.com/q/2770523/3217870
+(setq ess-eval-visibly-p 'nil)
+
+
+;; ============================================================================
+;; 6) Python Elpy
+;; ============================================================================
+
+;; this changes EMACS python mode, which is then used by elpy as "interactive
+;; python" (see elpy-config)
+;; put it before elpy (?)
+;; (setq python-shell-interpreter "python3"
+;;       python-shell-interpreter-args "-i")
+
+;; https://realpython.com/emacs-the-best-python-editor/
+;; install package `elpy`
+(elpy-enable)
+
+;; (setq elpy-rpc-python-command "python3")
+
+;; don't require virtualenv right away
+;; (setq elpy-rpc-virtualenv-path 'current)
+
+;; ============================================================================
+;; Last
+;; ============================================================================
+(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/R-codesaver.R"))
+(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/sxratch.md"))
