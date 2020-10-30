@@ -29,6 +29,29 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
+
+;; list and install packages
+;; https://realpython.com/emacs-the-best-python-editor/
+;; also install
+(defvar myPackages
+  '(exec-path-from-shell
+    flycheck
+    py-autopep8
+    magit
+    )
+  )
+
+;; manually installed into ~/.emacs.d/
+;; ess
+;; https://github.com/technomancy/find-file-in-project
+
+
+;; ;; installing manually for now
+;; (mapc #'(lambda (package)
+;; 	  (unless (package-installed-p package)
+;; 	    (package-install package)))
+;;       myPackages)
+
 ;; M-x package install RET exec-path-from-shell RET
 ;; https://github.com/purcell/exec-path-from-shell
 ;; needed to find `R` location for ESS, etc
@@ -387,17 +410,29 @@
 ;; this changes EMACS python mode, which is then used by elpy as "interactive
 ;; python" (see elpy-config)
 ;; put it before elpy (?)
-;; (setq python-shell-interpreter "python3"
-;;       python-shell-interpreter-args "-i")
+(setq python-shell-interpreter "python3"
+      python-shell-interpreter-args "-i")
 
 ;; https://realpython.com/emacs-the-best-python-editor/
 ;; install package `elpy`
 (elpy-enable)
 
-;; (setq elpy-rpc-python-command "python3")
+(setq elpy-rpc-python-command "/usr/local/bin/python3")
 
-;; don't require virtualenv right away
-;; (setq elpy-rpc-virtualenv-path 'current)
+;; install flycheck above
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+
+(require 'py-autopep8)
+(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+
+
+;; installed manually
+;; https://github.com/technomancy/find-file-in-project
+(add-to-list 'load-path "~/.emacs.d/find-file-in-project/")
+(require 'find-file-in-project)
 
 ;; ============================================================================
 ;; Last
