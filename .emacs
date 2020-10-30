@@ -241,6 +241,14 @@
 )
 (add-hook 'markdown-mode-hook 'disable-goto-addr)
 
+;; enable yasnippet minor mode in Rmd/md/polymode markdown)
+;; create/use snippets:
+;; http://joaotavora.github.io/yasnippet/snippet-development.html
+;; M-x yas-new-snippet
+;; then save with C-c C-c
+;; M-x yas-visit-snippet-file, key binding: C-c & C-v
+(add-hook 'markdown-mode-hook 'yas-minor-mode)
+
 
 ;; https://github.com/magnars/expand-region.el
 (require 'expand-region)
@@ -328,17 +336,6 @@
        (forward-char 3)			;NICE!!!!!!
        )
 (global-set-key (kbd "C-c b") 'insert-comblk)
-
-(defun rmd-init ()
-  "Initialize R markdown notebook with default header."
-       (interactive)
-       (insert "---\n")
-       (insert "title: ''\n")
-       (insert "output: github_document\n")
-       (insert "---")
-       (forward-line -3)
-       (forward-char 12)
-       )  
 
 
 ;; ============================================================================
