@@ -19,11 +19,11 @@ alias be='bundle exec'
 # for aliases with parameters like $1, need to create functions
 
 ll() {
-    ls -l $1 && echo "" && pwd
+    ls -lh $1 && echo "" && pwd
 }
 
 lld() {
-    ls -l $1 | grep 'dr'
+    ls -lh $1 | grep 'dr'
 }
 
 alias lla="ls -al"
