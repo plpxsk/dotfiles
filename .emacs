@@ -55,6 +55,15 @@
 ;; M-x package install RET exec-path-from-shell RET
 ;; https://github.com/purcell/exec-path-from-shell
 ;; needed to find `R` location for ESS, etc
+
+;; FROM *Messages* on startup:
+;; You appear to be setting environment variables ("PATH") in your .bashrc or
+;; .zshrc: those files are only read by interactive shells, so you should
+;; instead set environment variables in startup files like .profile,
+;; .bash_profile or .zshenv.  Refer to your shell’s man page for more info.
+;; Customize ‘exec-path-from-shell-arguments’ to remove "-i" when done, or
+;; disable ‘exec-path-from-shell-check-startup-files’ to disable this message.
+
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
@@ -138,11 +147,13 @@
 ;; http://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files
 (setq backup-directory-alist `(("." . "~/.backups")))
 (setq backup-by-copying t)
+;; this apparently speeds up tramp
+(setq tramp-auto-save-directory "~/.backups/tramp/")
 
 ;; set fill column
 (setq-default fill-column 79)
 ;; requires emacs version 27+
-(setq global-display-fill-column-indicator-mode 1)
+(global-display-fill-column-indicator-mode)
 
 ;; ============================================================================
 ;; 2) Navigation + Keyboard
@@ -250,6 +261,31 @@
 (add-hook 'markdown-mode-hook 'yas-minor-mode)
 
 
+;; Update: yasnippet doesn't switch the mode inside the R chunk to evaluate it
+;; via ESS. So go back to custom function with the following code
+(defun polymode-insert-new-chunk ()
+  "Insert R code chunk when in polymode"
+  (interactive)
+  (insert "\n```{r}\n")
+  (save-excursion
+    (newline)
+    (insert "```\n")
+    (previous-line)))
+
+;; add keyboard shortcut
+;; KEEP the following snippet as a template for future
+;; (add-hook 'poly-markdown-mode-hook
+;;           (lambda () (define-key polymode-mode-map (kbd "M-n M-i") 'polymode-insert-new-chunk)))
+;; The above works. following DO NOT work:
+;; (add-hook 'polymode-mode '(define-key polymode-mode-map (kbd "M-i") 'polymode-insert-new-chunk))
+;; (add-hook 'poly-markdown-mode-hook
+;;           (lambda () (local-set-key (kbd "M-n M-i") 'polymode-insert-new-chunk)))
+;; (add-hook 'markdown-mode-hook
+;;           (lambda () (local-set-key (kbd "M-n M-i") 'polymode-insert-new-chunk)))
+;; use this:
+(add-hook 'poly-markdown-mode-hook
+          (lambda () (define-key polymode-mode-map (kbd "M-n M-i") 'polymode-insert-new-chunk)))
+
 ;; https://github.com/magnars/expand-region.el
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
@@ -318,6 +354,16 @@
   (ess-remote "*shell*" "R")
   )
 
+(defun rmd-init ()
+  "Initialize R markdown notebook with default header."
+       (interactive)
+       (insert "---\n")
+       (insert "title: ''\n")
+       (insert "output: github_document\n")
+       (insert "---")
+       (forward-line -3)
+       (forward-char 12)
+       )
 
 (defun flyit ()
   "Quickly flyspell."
@@ -369,46 +415,106 @@
 ;; ============================================================================
 ;; 5) ESS
 ;; ============================================================================
-;; https://ess.r-project.org/index.php?Section=download
-(add-to-list 'load-path "~/.emacs.d/ess-18.10.2/lisp/")
-(require 'ess-site)
 
-(setq ess-ask-for-ess-directory t)
+(eval-after-load "ess-mode"
+  '(define-key ess-mode-map (kbd "<S-return>") 'ess-eval-region-or-line-and-step))
 
-;; (setq ess-help-own-frame nil)
-;; (setq ess-help-own-frame 'one)
+;; use M-- as assignment operator
+;; https://github.com/emacs-ess/ESS/issues/809#issuecomment-469214062
+
+;; currently get error for this:
+;; Polymode error (pm--mode-setup ’ess-r-mode): Symbol’s function definition is void: ess-add-MM-keys
+;;(eval-after-load "ess-mode" '(ess-add-MM-keys))
+
+;; default in `ess-r-flymake.el` via `C-h v ess-r-flymake-linters`
+;; customize BELOW
+;; (setq ess-r-flymake-linters
+;;       '(
+;; 	"closed_curly_linter = NULL"
+;; 	"commas_linter = NULL"
+;; 	"commented_code_linter = NULL"
+;; 	"infix_spaces_linter = NULL"
+;; 	"line_length_linter = NULL"
+;; 	"object_length_linter = NULL"
+;; 	"object_name_linter = NULL"
+;; 	"object_usage_linter = NULL"
+;; 	"open_curly_linter = NULL"
+;; 	"pipe_continuation_linter = NULL"
+;; 	"single_quotes_linter = NULL"
+;; 	"spaces_inside_linter = NULL"
+;; 	"spaces_left_parentheses_linter = NULL"
+;; 	"trailing_blank_lines_linter = NULL"
+;; 	"trailing_whitespace_linter = NULL"
+;; 	)
+;;       )
+
+;; copy-paste from above list
+(setq ess-r-flymake-linters
+      '(
+	"infix_spaces_linter = NULL"
+	)
+      )
+
+;; 2021 March
+;; https://github.com/emacs-ess/ESS/issues/490#issuecomment-538682487
+(setq ess-use-flymake nil)
+
+(setq ess-ask-for-ess-directory nil)
+
+;; ESS OLD BELOW
+
+
+
+
+(setq ess-help-own-frame 'one)
 
 ;; don't auto scroll to bottom inn ess process buffers
 ;; (setq comint-scroll-to-bottom-on-input nil)
 ;; (setq comint-scroll-to-bottom-on-output nil)
 ;; (setq comint-move-point-for-output nil)
 
-;; remap "<-" key
-(setq ess-smart-S-assign-key (kbd "M--"))
-(ess-toggle-S-assign nil)
-(ess-toggle-S-assign nil)
+;;(global-set-key (kbd "M--")  (lambda () (interactive) (insert " <- ")))
+;; (ess-toggle-underscore nil)
 
-(global-set-key (kbd "M--")  (lambda () (interactive) (insert " <- ")))
-(ess-toggle-underscore nil)
+;; ;; evaluate code invisibly
+;; ;; pushing code to R sometimes significantly adds to runtime, and may be unstable
+;; ;; https://stackoverflow.com/q/2770523/3217870
+;; (setq ess-eval-visibly-p 'nil)
 
-(eval-after-load "ess-mode"
-  '(define-key ess-mode-map (kbd "<S-return>") 'ess-eval-region-or-line-and-step))
-
-;; evaluate code invisibly
-;; pushing code to R sometimes significantly adds to runtime, and may be unstable
-;; https://stackoverflow.com/q/2770523/3217870
-(setq ess-eval-visibly-p 'nil)
+;;(setq ess-r--lintr-file '("~/.lintr"))
 
 
 ;; ============================================================================
 ;; 6) Python Elpy
 ;; ============================================================================
 
-;; this changes EMACS python mode, which is then used by elpy as "interactive
+;; pyvenv needs WORKON_HOME but emacs doesn't find it, so set it here
+;; https://github.com/jorgenschaefer/pyvenv
+;; https://emacs.stackexchange.com/a/20093/11872
+(setenv "WORKON_HOME" "/Users/paczuskp/Envs")
+
+;; this changes EMACS' python mode, which is then used by elpy as "interactive
 ;; python" (see elpy-config)
 ;; put it before elpy (?)
 (setq python-shell-interpreter "python3"
       python-shell-interpreter-args "-i")
+
+;; alternative interpreter for pHPC remote server
+;; run with `M-x run-python`, see run-hpc-python below
+(defun set-hpc-py-interpreter ()
+  "Set python interpreter for working on remote pHPC"
+  (interactive)
+  ;; this variable requires a shell script
+  ;; https://adamoudad.github.io/posts/emacs/docker-python-shell-emacs/
+  (setq python-shell-interpreter "~/.tramp-emacs-python-shell.sh")
+  )
+
+(defun run-hpc-python ()
+  "Set python env then start remote python"
+  (interactive)
+  (set-hpc-py-interpreter)
+  (run-python)
+  )
 
 ;; https://realpython.com/emacs-the-best-python-editor/
 ;; install package `elpy`
@@ -434,5 +540,7 @@
 ;; ============================================================================
 ;; Last
 ;; ============================================================================
-(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/R-codesaver.R"))
-(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/sxratch.md"))
+(pop-to-buffer (find-file"~/Desktop/GD/code/R-codesaver.R"))
+(pop-to-buffer (find-file"~/Desktop/GD/code/python-codesaver.py"))
+(pop-to-buffer (find-file"~/Desktop/GD/code/sxratch.md"))
+
