@@ -38,13 +38,15 @@
     flycheck
     py-autopep8
     magit
+    expand-region
+    solarized-theme
+    elpy
+    markdown-mode
     )
   )
 
 ;; manually installed into ~/.emacs.d/
 ;; ess
-;; https://github.com/technomancy/find-file-in-project
-
 
 ;; ;; installing manually for now
 ;; (mapc #'(lambda (package)
