@@ -29,41 +29,26 @@ On macOS Terminal, new shell runs dotfiles in this order, per current setup:
 
 Install brew: https://brew.sh
 
-Install brew cask for mac applications (non-cli): https://caskroom.github.io
+Install git with brew
 
-Install Python with brew
 
 ## brew
 
+See list of apps in `brew_leaves.txt` via `brew leaves > brew_leaves.txt`.
 
-	brew install markdown pandoc
-	brew install tmux
-	brew install tree
-	brew install git bash-completion
+Install with `xargs brew install < brew_leaves.txt `
 
-	brew cask install qlstephen
+Other:
 
-	# https://github.com/sharkdp/fd/
-	brew install fd
-	
-	# the `ag` shortcut
-	# https://github.com/ggreer/the_silver_searcher
-	brew install the_silver_searcher
-
-	brew install tldr
-	
 	# inconsolata font
 	brew tap homebrew/cask-fonts                  # you only have to do this once!
 	brew install font-inconsolata
-
 
 Utils:
 
 	brew leaves
 	brew list --pinned
 
-
-Install other tools as below
 
 # Tmux
 
