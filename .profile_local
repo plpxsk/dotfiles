@@ -4,25 +4,35 @@ echo "Loading .profile_local"
 
 alias edis="c ~/Downloads/CIT"
 
+
+# see README.md
+# brew install python@3.8
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+
+
+# https://virtualenvwrapper.readthedocs.io/en/latest/install.html#python-interpreter-virtualenv-and-path
+# for python3, get it from `which python3` - it appends /bin/python3 to the brew path!
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@3.8/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+source /usr/local/bin/virtualenvwrapper.sh
+
+
 # brew info ruby
 # Homebrew says: "ruby is keg-only, which means it was not symlinked into
 # /usr/local, because macOS already provides this software and installing
 # another version in parallel can cause all kinds of trouble."
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"
-# RUBY JEKYLL
-# TODO: wrong version of bundle here??
-export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
+
+## BIG SUR comment out for now
+# export PATH="/usr/local/opt/ruby/bin:$PATH"
+# export PATH="/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"
+# # RUBY JEKYLL
+# # TODO: wrong version of bundle here??
+# export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 
 
 # This should follow ALL path updates
 export WORKON_HOME=$HOME/Envs
 export PROJECT_HOME=$HOME/Devel
-# https://virtualenvwrapper.readthedocs.io/en/latest/install.html#python-interpreter-virtualenv-and-path
-# use my python3
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-source /usr/local/bin/virtualenvwrapper.sh
 
 
 
