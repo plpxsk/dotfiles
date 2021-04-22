@@ -53,7 +53,7 @@ Install Python with brew
 	
 	# inconsolata font
 	brew tap homebrew/cask-fonts                  # you only have to do this once!
-	brew cask install font-inconsolata
+	brew install font-inconsolata
 
 
 Utils:
