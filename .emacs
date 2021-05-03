@@ -352,7 +352,6 @@
 (setq mouse-buffer-menu-maxlen 40)
 (setq mouse-buffer-menu-mode-mult 50)
 
-(put 'set-goal-column 'disabled nil)
 
 ;; M-x RET package-install RET fill-column-indicator
 (define-globalized-minor-mode
@@ -425,3 +424,4 @@
 ;; (pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/R-codesaver.R"))
 ;; (pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/python-codesaver.py"))
 ;; (pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/sxratch.txt"))
+(put 'set-goal-column 'disabled nil)
