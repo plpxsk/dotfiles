@@ -34,15 +34,18 @@ Install git with brew
 
 ## brew
 
-See list of apps in `brew_leaves.txt` via `brew leaves > brew_leaves.txt`.
+See apps in **`brew_leaves.txt`**
 
 Install with `xargs brew install < brew_leaves.txt `
 
-Other:
+Generate via `brew leaves > brew_leaves.txt`.
 
-	# inconsolata font
+Additional:
+
 	brew tap homebrew/cask-fonts                  # you only have to do this once!
 	brew install font-inconsolata
+	brew install --cask qlstephen
+	brew install --cask stats
 
 Utils:
 
@@ -105,7 +108,9 @@ Install R including CLI.
 
 # Emacs
 
-!! macOS Catalina Problems: spotlight switching and desktop file access. Resolve:
+**Update: macOS Big Sur seems to fix the following issue**
+
+macOS Catalina Problems: spotlight switching and desktop file access. Resolve:
 
 1. Install from https://emacsformacosx.com
 1. Then OPEN emacs for the first time, to overcome the "unsigned package" dialog and so that next steps work. Otherwise you may get a "Emacs package is corrupted" or similar error..

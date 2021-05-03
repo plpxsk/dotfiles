@@ -1,3 +1,4 @@
+aspell
 fd
 git
 markdown
