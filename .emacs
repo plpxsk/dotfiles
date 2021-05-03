@@ -42,6 +42,7 @@
     solarized-theme
     elpy
     markdown-mode
+    poly-R
     )
   )
 
@@ -149,13 +150,28 @@
 ;; http://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files
 (setq backup-directory-alist `(("." . "~/.backups")))
 (setq backup-by-copying t)
-;; this apparently speeds up tramp
-(setq tramp-auto-save-directory "~/.backups/tramp/")
+;; see tramp-auto-save-directory below
 
 ;; set fill column
 (setq-default fill-column 79)
 ;; requires emacs version 27+
 (global-display-fill-column-indicator-mode)
+
+
+
+;; speed up tramp
+;; https://emacs.stackexchange.com/a/37855/11872
+(setq remote-file-name-inhibit-cache nil)
+(setq vc-ignore-dir-regexp
+      (format "%s\\|%s"
+                    vc-ignore-dir-regexp
+                    tramp-file-name-regexp))
+(setq tramp-verbose 1)
+
+;; this apparently speeds up tramp
+(setq tramp-auto-save-directory "~/.backups/tramp/")
+
+
 
 ;; ============================================================================
 ;; 2) Navigation + Keyboard
@@ -417,6 +433,14 @@
 ;; ============================================================================
 ;; 5) ESS
 ;; ============================================================================
+
+
+
+;; Install this version manually. this version seems to work best with pRED HPC
+;; Remotes
+;; http://ess.r-project.org/Manual/ess.html#Installation
+(add-to-list 'load-path "~/.emacs.d/ESS-ESSRv1.5/lisp")
+(require 'ess-site)
 
 (eval-after-load "ess-mode"
   '(define-key ess-mode-map (kbd "<S-return>") 'ess-eval-region-or-line-and-step))
