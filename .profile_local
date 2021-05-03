@@ -1,12 +1,13 @@
 # -*- mode: shell-script -*-
+echo "Loading .profile_local..."
 
 # to see your current prompt, type: echo $PS1
 PS1='\[\e[1m\][HPC]\W\$ \[\e[0m\]'
 
 export PATH=/pstore/home/paczuskp/.local/bin:$PATH
 
-echo "NOTE:"
-echo "Load R with:"
-# echo "ml R/3.5.3-intel-2018b"
-echo "ml R/3.5.1-goolf-1.7.20"
+alias mlr3="ml R/3.5.1-goolf-1.7.20"
+alias mlr="ml R/4.0.1-foss-2018b"
 
+alias data="c /pstore/data/pd_biometrics"
+alias dset="source ~/virtualenvs/datasette-ecosystem/bin/activate"

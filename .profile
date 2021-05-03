@@ -1,6 +1,7 @@
 # COMMON PROFILE
 # Paul Paczuski 
 # https://github.com/pavopax/initialization-files
+echo "Loading .profile_local..."
 
 # ============================================================================
 # Link
@@ -16,7 +17,7 @@ alias be='bundle exec'
 alias ll='ls -gho && echo "" && pwd'
 alias lll="ls -lh"
 alias lld="ls -l | grep 'dr'"
-alias lla="ls -al"
+alias lla="ls -ghoa"
 alias lls="ls -CF"
 
 alias gits="git status"
@@ -39,7 +40,8 @@ alias tree="tree -C"
 function knit() {
     R -e "rmarkdown::render('$1', 'all')"
 }
-
+# https://stackoverflow.com/a/55860195/3217870
+complete -f -X '!*.Rmd' knit
 
 # ============================================================================
 # Load
