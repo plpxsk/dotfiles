@@ -8,6 +8,7 @@
 	process = git-lfs filter-process
 	required = true
 [alias]
+	check = checkout
 	s = status
 	b = branch
 	r = reflog
