@@ -2,8 +2,8 @@
 echo "Loading .profile_local"
 
 
-alias edis="c ~/Downloads/CIT"
-
+# add R to cli
+export PATH="/Library/Frameworks/R.framework/Resources/bin:$PATH"
 
 # see README.md
 # brew install python@3.8
