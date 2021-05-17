@@ -2,7 +2,6 @@
 [user]
 	name = Paul Paczuski
 	useConfigOnly = true
-	email = paczuski.paul@gene.com
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
