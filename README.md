@@ -213,6 +213,10 @@ References
 
 Manage with brew, like for python. Pin version to prevent updates: `brew pin ruby`
 
+Installed Homebrew per
+[mac.install.guide/ruby/index.html](https://mac.install.guide/ruby/index.html)
+especially [ruby/13](https://mac.install.guide/ruby/13.html).
+
 # Utils
 
 Clean up files with cli and other utils: [freespace.tdhopper.com](https://freespace.tdhopper.com)
