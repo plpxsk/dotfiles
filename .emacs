@@ -188,8 +188,8 @@
 (put 'dired-find-alternate-file 'disabled nil)
 
 ;; don't ask to create new buffer with C-x b  ; choices: always, prompt, never
-(setq ido-create-new-buffer 'never)
-(setq ido-file-extensions-order '(".txt" ".sas" ".lst"))
+(setq ido-create-new-buffer 'prompt)
+(setq ido-file-extensions-order '(".txt" ".Rmd" ".sas" ".lst"))
 
 ;; use M-s to immediately search dirs
 (setq ido-auto-merge-delay-time 3)
@@ -313,6 +313,10 @@
 (setq-default ispell-program-name "/usr/local/bin/aspell")
 
 
+;; prevent weird menu bar crashes
+;; https://github.com/polymode/poly-R/issues/15#issuecomment-622308273
+(define-key global-map [menu-bar file revert-buffer] nil)
+
 ;; ============================================================================
 ;; 3) More functions
 ;; ============================================================================
@@ -331,23 +335,35 @@
 (defun pred1-shell ()
   "Step 1 to load command-line R on pRED HPC server"
   (interactive)
-    (shell)
-    (rename-buffer "RR-pred")
-    (comint-send-string "RR-pred" "ssh pred\n")
-    ;; (comint-send-string "RR-pred" "R\n")
-    ;; (ess-remote "*shell*" "R")
-    )
+  ;; force to run shell and ssh from local directory/machine, not any connected
+  ;; remote/tramp directory https://emacs.stackexchange.com/a/64581/11872
+  (let ((default-directory "~/"))
+    (shell))
+  (rename-buffer "RR-pred")
+  (comint-send-string "RR-pred" "ssh pred\n")
+  )
 
 (defun pred2-r-load ()
   "Step 2 to load command-line R on pRED HPC server"
   (interactive)
-  (comint-send-string "RR-pred" "ml R/3.5.1-goolf-1.7.20\n")
+  (comint-send-string "RR-pred" "ml R/4.0.1-foss-2018b\n")
   ;; run via interactive job of 6 hours (default is 2)
   ;; added Thu May  7 11:49:41 EDT 2020
   (comint-send-string "RR-pred" "interactive -t 360 -c 2 -m 24G\n")
   (comint-send-string "RR-pred" "R\n")
-  (ess-remote "*shell*" "R")
+  ;; uncomment?. this seems to mess with M-p command cycling...
+  ;; (ess-remote "RR-pred" "R")
   )
+
+(defun pred ()
+  "Load remote R shell on pRED"
+  (interactive)
+  (pred1-shell)
+  ;; need to wait a bit between these steps
+  (sleep-for 5)
+  (pred2-r-load)
+  )
+
 
 (defun rescomp1-shell ()
   "Load command-line R.1 on rescomp"
@@ -436,6 +452,7 @@
 
 
 
+;; IMPORTANT:
 ;; Install this version manually. this version seems to work best with pRED HPC
 ;; Remotes
 ;; http://ess.r-project.org/Manual/ess.html#Installation
@@ -487,12 +504,17 @@
 
 (setq ess-ask-for-ess-directory nil)
 
-;; ESS OLD BELOW
-
-
-
 
 (setq ess-help-own-frame 'one)
+
+;; evaluate code invisibly
+;; pushing code to R sometimes significantly adds to runtime, and may be unstable
+;; https://stackoverflow.com/q/2770523/3217870
+(setq ess-eval-visibly 'nil)
+
+
+
+;; ESS OLD BELOW
 
 ;; don't auto scroll to bottom inn ess process buffers
 ;; (setq comint-scroll-to-bottom-on-input nil)
@@ -502,13 +524,7 @@
 ;;(global-set-key (kbd "M--")  (lambda () (interactive) (insert " <- ")))
 ;; (ess-toggle-underscore nil)
 
-;; ;; evaluate code invisibly
-;; ;; pushing code to R sometimes significantly adds to runtime, and may be unstable
-;; ;; https://stackoverflow.com/q/2770523/3217870
-;; (setq ess-eval-visibly-p 'nil)
-
 ;;(setq ess-r--lintr-file '("~/.lintr"))
-
 
 ;; ============================================================================
 ;; 6) Python Elpy
@@ -546,7 +562,7 @@
 ;; install package `elpy`
 (elpy-enable)
 
-(setq elpy-rpc-python-command "/usr/local/bin/python3")
+(setq elpy-rpc-python-command "/usr/local/opt/python@3.8/bin/python3")
 
 ;; install flycheck above
 (when (require 'flycheck nil t)
