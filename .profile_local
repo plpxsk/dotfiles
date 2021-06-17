@@ -1,6 +1,9 @@
 # -*- mode: shell-script -*-
 echo "Loading .profile_local"
 
+## ============================================================================
+## 1 of 2) SET PATHS
+## ============================================================================
 
 # add R to cli
 export PATH="/Library/Frameworks/R.framework/Resources/bin:$PATH"
@@ -17,18 +20,16 @@ export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 source /usr/local/bin/virtualenvwrapper.sh
 
 
-# brew info ruby
-# Homebrew says: "ruby is keg-only, which means it was not symlinked into
-# /usr/local, because macOS already provides this software and installing
-# another version in parallel can cause all kinds of trouble."
+# ruby - see README.md
+if [ -d "/usr/local/opt/ruby/bin" ]; then
+  export PATH=/usr/local/opt/ruby/bin:$PATH
+  export PATH=`gem environment gemdir`/bin:$PATH
+fi
 
-## BIG SUR comment out for now
-# export PATH="/usr/local/opt/ruby/bin:$PATH"
-# export PATH="/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"
-# # RUBY JEKYLL
-# # TODO: wrong version of bundle here??
-# export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 
+## ============================================================================
+## 2 of 2) USE PATHS
+## ============================================================================
 
 # This should follow ALL path updates
 export WORKON_HOME=$HOME/Envs
@@ -48,12 +49,6 @@ export PROJECT_HOME=$HOME/Devel
 # cmake, when needed
 # downloaded from https://cmake.org/download/
 # PATH="/Applications/CMake.app/Contents/bin":"$PATH"
-
-# paul: for virtualenvwrapper
-# ! PUT AFTER export PATH to python
-# WORKON_HOME first@
-# export WORKON_HOME=~/Envs
-# source /usr/local/bin/virtualenvwrapper.sh
 
 # paul: manually add this to the END of the path, so that I still have my system python first
 # `conda init` can also add a bunch of things here
