@@ -242,6 +242,13 @@ and is based on:
 Change Emacs dock icon. Use `Emacs.icns` and [follow the rest of these
 instructions](https://apple.stackexchange.com/a/276579).
 
+Add file types to Quick Look via custom plist file:
+
+  * Check diff, then rename file from/to:
+  * `qlstephen_qlgenerator_contents_info.plist`
+  * `~/Library/QuickLook/QLStephen.qlgenerator/Contents/Info.plist`
+  * Reference: [whomwah/qlstephen/issues/87#issuecomment-831399689](https://github.com/whomwah/qlstephen/issues/87#issuecomment-831399689)
+
 Safari - Vimtastic https://github.com/guyht/vimari
 
 # References
