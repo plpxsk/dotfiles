@@ -4,6 +4,8 @@ git
 markdown
 pandoc
 python@3.8
+ruby
 the_silver_searcher
 tldr
 tmux
+tree
