@@ -3,6 +3,7 @@ fd
 freetype
 git
 markdown
+openblas
 pandoc
 pkg-config
 python@3.8
