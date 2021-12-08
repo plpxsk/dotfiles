@@ -2,17 +2,10 @@
 [user]
 	name = Paul Paczuski
 	useConfigOnly = true
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
 [alias]
 	s = status
 	b = branch
 	r = reflog
-[credential]
-	helper = osxkeychain
 
 # read_remote# git pull 
 # warning: Pulling without specifying how to reconcile divergent branches is 

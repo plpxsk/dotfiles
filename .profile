@@ -10,12 +10,6 @@ alias pp="pwd"
 alias rm="rm -i"
 alias lm='less -M'
 
-alias f='open -a Finder ./'                 # macOS only
-# doens't work correctly with Emacs GUI, see README
-# alias e='open -a Emacs'			    # macOS only
-
-alias be='bundle exec'
-
 # for aliases with parameters like $1, need to create functions
 
 ll() {
@@ -29,11 +23,9 @@ lld() {
 alias lla="ls -al"
 alias lls="ls -CF"
 
-alias gits="git status"
-alias gitsu="git status --untracked-files=no"
-alias gitb="git branch"
-alias gitr="git reflog"
-
+# use git's aliases (~/.gitconfig)
+# alias gits="git status"
+# alias gitsu="git status --untracked-files=no"
 
 c() {
  builtin cd "$*" && ll
@@ -68,4 +60,3 @@ fi
 # color output
 # works in multiple shells
 export CLICOLOR=1
-

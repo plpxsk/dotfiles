@@ -5,55 +5,15 @@ echo "Loading .profile_local"
 ## 1 of 2) SET PATHS
 ## ============================================================================
 
-# add R to cli
-export PATH="/Library/Frameworks/R.framework/Resources/bin:$PATH"
-
-# see README.md
-# brew install python@3.8
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
-
-
-# https://virtualenvwrapper.readthedocs.io/en/latest/install.html#python-interpreter-virtualenv-and-path
-# for python3, get it from `which python3` - it appends /bin/python3 to the brew path!
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@3.8/bin/python3
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-source /usr/local/bin/virtualenvwrapper.sh
-
-
-# ruby - see README.md
-if [ -d "/usr/local/opt/ruby/bin" ]; then
-  export PATH=/usr/local/opt/ruby/bin:$PATH
-  export PATH=`gem environment gemdir`/bin:$PATH
-fi
 
 
 ## ============================================================================
 ## 2 of 2) USE PATHS
 ## ============================================================================
 
-# This should follow ALL path updates
-export WORKON_HOME=$HOME/Envs
-export PROJECT_HOME=$HOME/Devel
-
 
 
 ## ============================================================================
-## BEGIN DRAFTS
+## OTHER LOCAL OPTIONS
 ## ============================================================================
 
-# FROM OLD BOX:
-# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home
-# # homebrew/python
-# export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-
-# cmake, when needed
-# downloaded from https://cmake.org/download/
-# PATH="/Applications/CMake.app/Contents/bin":"$PATH"
-
-# paul: manually add this to the END of the path, so that I still have my system python first
-# `conda init` can also add a bunch of things here
-# export PATH=$PATH:~/miniconda3/bin
-
-## ============================================================================
-## END DRAFTS
-## ============================================================================
