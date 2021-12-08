@@ -7,6 +7,9 @@
 	b = branch
 	r = reflog
 
+[credential]
+	helper = cache --timeout 999999
+
 # read_remote# git pull 
 # warning: Pulling without specifying how to reconcile divergent branches is 
 # discouraged. You can squelch this message by running one of the following 
