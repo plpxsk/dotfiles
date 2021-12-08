@@ -129,7 +129,7 @@
 (global-hl-line-mode 1)
 
 ;; truncate long lines
-;; (setq default-truncate-lines t)
+(setq-default truncate-lines t)
 
 ;; make side by side buffer function the same as the main window
 ;; (setq truncate-partial-width-windows nil)
