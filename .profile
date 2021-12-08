@@ -12,11 +12,11 @@ alias lm='less -M'
 
 # for aliases with parameters like $1, need to create functions
 
-ll() {
+function ll() {
     ls -lh $1 && echo "" && pwd
 }
 
-lld() {
+function lld() {
     ls -lh $1 | grep 'dr'
 }
 
@@ -27,7 +27,7 @@ alias lls="ls -CF"
 # alias gits="git status"
 # alias gitsu="git status --untracked-files=no"
 
-c() {
+function c () {
  builtin cd "$*" && ll
 }
 
