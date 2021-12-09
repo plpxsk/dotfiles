@@ -11,7 +11,7 @@ alias rm="rm -i"
 alias lm='less -M'
 
 # for aliases with parameters like $1, need to create functions
-
+unalias ll			# exists from some global load
 function ll() {
     ls -lh $1 && echo "" && pwd
 }
