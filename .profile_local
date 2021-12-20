@@ -6,6 +6,8 @@ echo "Loading .profile_local"
 ## ============================================================================
 
 # add R to cli
+# may need to udpate symlink for "Current"
+# https://support.rstudio.com/hc/en-us/articles/200486138-Changing-R-versions-for-the-RStudio-Desktop-IDE
 export PATH="/Library/Frameworks/R.framework/Resources/bin:$PATH"
 
 # see README.md
