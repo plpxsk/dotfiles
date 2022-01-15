@@ -2,4 +2,9 @@
 echo "Loading .profile_local"
 
 # NOTE:
-# USE PROFILE_PRIVATE AND DONT COMMIT!
+# USE PROFILE_PRIVATE for most AND DONT COMMIT!
+
+# see README
+export PATH="$HOME/.local/bin:$PATH"
+
+alias data="c /projects/global/pd/mls"
