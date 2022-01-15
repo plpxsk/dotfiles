@@ -42,6 +42,11 @@ function knit() {
     R -e "rmarkdown::render('$1', 'all')"
 }
 
+function count() {
+    # usage: count 4 file.csv
+    # shows count of nth field in file
+    cut -f $1 -d , $2 | sort | uniq -c
+}
 
 # ============================================================================
 # Load
