@@ -10,7 +10,7 @@ Main docs in `master` branch
 
 `ssh` seems to log in to any locations: RKA, RID, SC1
 
-**TBD: It seems my dotfiles are ONLY in RID?**
+But, can specify location by using explicit ssh command.
 
 Use `hpcportal` as starting point
 
