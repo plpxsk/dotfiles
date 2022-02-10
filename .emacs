@@ -35,6 +35,8 @@
 ;; also install
 (defvar myPackages
   '(exec-path-from-shell
+    ess
+    find-file-in-project
     flycheck
     py-autopep8
     magit
@@ -46,8 +48,6 @@
     )
   )
 
-;; manually installed into ~/.emacs.d/
-;; ess
 
 ;; ;; installing manually for now
 ;; (mapc #'(lambda (package)
