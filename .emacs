@@ -582,7 +582,9 @@
 ;; ============================================================================
 ;; Last
 ;; ============================================================================
-(pop-to-buffer (find-file"~/Desktop/GD/code/R-codesaver.R"))
-(pop-to-buffer (find-file"~/Desktop/GD/code/python-codesaver.py"))
-(pop-to-buffer (find-file"~/Desktop/GD/code/sxratch.md"))
+(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/R-codesaver.R"))
+(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/python-codesaver.py"))
+(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/sxratch.md"))
+
+
 
