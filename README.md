@@ -150,10 +150,9 @@ Set up Emacs and Elpy to use homebrew python:
 
 ## ESS for Emacs
 
-1. Download zip
-1. Move to .emacs.d
-1. Source in .emacs.local
+Now using MELPA source, via:
 
+	M-x package-install ess
 
 Notes:
 
