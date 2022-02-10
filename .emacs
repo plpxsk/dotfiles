@@ -47,7 +47,7 @@
   )
 
 ;; manually installed into ~/.emacs.d/
-;; ess
+;; see ESS near bottom
 
 ;; ;; installing manually for now
 ;; (mapc #'(lambda (package)
@@ -332,36 +332,36 @@
     (ess-remote "*shell*" "R")
     )
 
-(defun pred1-shell ()
-  "Step 1 to load command-line R on pRED HPC server"
+(defun shpc1-shell ()
+  "Step 1 to load command-line R on sHPC server"
   (interactive)
   ;; force to run shell and ssh from local directory/machine, not any connected
   ;; remote/tramp directory https://emacs.stackexchange.com/a/64581/11872
   (let ((default-directory "~/"))
     (shell))
-  (rename-buffer "RR-pred")
-  (comint-send-string "RR-pred" "ssh pred\n")
+  (rename-buffer "RR-shpc")
+  (comint-send-string "RR-shpc" "ssh shpc\n")
   )
 
-(defun pred2-r-load ()
-  "Step 2 to load command-line R on pRED HPC server"
+(defun shpc2-r-load ()
+  "Step 2 to load command-line R on shpc server"
   (interactive)
-  (comint-send-string "RR-pred" "ml R/4.0.1-foss-2018b\n")
-  ;; run via interactive job of 6 hours (default is 2)
-  ;; added Thu May  7 11:49:41 EDT 2020
-  (comint-send-string "RR-pred" "interactive -t 360 -c 2 -m 24G\n")
-  (comint-send-string "RR-pred" "R\n")
+  (comint-send-string "RR-shpc" "source /apps/rocs/init.sh\n")
+  (comint-send-string "RR-shpc" "module load R/4.0.5-foss-2020a\n")
+  ;; see HPC portal docs
+  (comint-send-string "RR-shpc" "bsub -Is -n 8 /bin/bash\n")
+  (comint-send-string "RR-shpc" "R\n")
   ;; uncomment?. this seems to mess with M-p command cycling...
-  ;; (ess-remote "RR-pred" "R")
+  ;; (ess-remote "RR-shpc" "R")
   )
 
-(defun pred ()
-  "Load remote R shell on pRED"
+(defun shpc ()
+  "Load remote R shell on shpc"
   (interactive)
-  (pred1-shell)
+  (shpc1-shell)
   ;; need to wait a bit between these steps
   (sleep-for 5)
-  (pred2-r-load)
+  (shpc2-r-load)
   )
 
 
@@ -450,14 +450,15 @@
 ;; 5) ESS
 ;; ============================================================================
 
+;; ;; BEFORE DECEMBER 2021
+;; ;; Install this version manually. this version seems to work best with pRED HPC
+;; ;; Remotes
+;; ;; http://ess.r-project.org/Manual/ess.html#Installation
+;; (add-to-list 'load-path "~/.emacs.d/ESS-ESSRv1.5/lisp")
+;; (require 'ess-site)
 
-
-;; IMPORTANT:
-;; Install this version manually. this version seems to work best with pRED HPC
-;; Remotes
-;; http://ess.r-project.org/Manual/ess.html#Installation
-(add-to-list 'load-path "~/.emacs.d/ESS-ESSRv1.5/lisp")
-(require 'ess-site)
+;; AFTER DECEMBER 2021
+;; try to use newest ESS
 
 (eval-after-load "ess-mode"
   '(define-key ess-mode-map (kbd "<S-return>") 'ess-eval-region-or-line-and-step))
