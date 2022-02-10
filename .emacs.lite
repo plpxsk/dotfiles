@@ -1,0 +1,220 @@
+;; -*- mode: lisp -*-
+;; LIGHTWEIGHT default .emacs
+;; should work on any box - just make sure last line is commented out (see bottom)
+;; Paul Paczuski / https://github.com/pavopax/dotfiles
+
+;; ============================================================================
+;; Up-front matter
+;; ============================================================================
+;; confirm emacs quit
+(setq confirm-kill-emacs 'yes-or-no-p)
+
+;; package management
+;; https://github.com/melpa/melpa
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
+
+;; ============================================================================
+;; 1) Look + Behavior
+;; ============================================================================
+;; Remove the toolbar
+(tool-bar-mode -1)
+
+;; remove scroll
+(scroll-bar-mode -1)
+
+(setq initial-frame-alist
+      '(
+	(top . 0) (left . 0)
+	(width . 110) (height . 65)
+	)
+)
+
+(setq default-frame-alist '( (left . 0) (top . 0) (height . 65) (width . 100) ))
+
+;;(set-face-attribute 'default nil :height 100)
+
+;; change title bar display to show buffer name and file location
+(setq frame-title-format "%b - %+ %f")
+;; or file name if available, otherwise buffer name
+;; (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+
+;; Show column number at bottom of screen
+(column-number-mode 1)
+
+;; disable the bell/alarm completely
+(setq ring-bell-function 'ignore)
+
+;; disable system beep (eg, during C-g), and replace with visual
+(setq visible-bell 1)
+
+;; Turn highlighting on (when marking region with C-SPC)
+;; default on?
+;; (transient-mark-mode t)
+
+;; replace highlighted text with typed text
+;; and enable C-d to delete highlighted text
+(delete-selection-mode t)
+
+;; Autosave every 500 typed characters
+(setq auto-save-interval 500)
+
+;; Autosave after 5 seconds of idle time
+(setq auto-save-timeout 5)		;set low, in case freezes and have to kill
+
+;; increase messages log size
+(setq message-log-max 500)
+
+;; line numbers
+;; (global-linum-mode)
+
+;; Highlight the current line
+(global-hl-line-mode 1)
+
+;; truncate long lines
+;; (setq default-truncate-lines t)
+
+;; make side by side buffer function the same as the main window
+;; (setq truncate-partial-width-windows nil)
+;; toggle with F12
+(global-set-key (kbd "<f12>") 'toggle-truncate-lines)
+
+;; show matching paren in color (in addition to highlight)
+(show-paren-mode t)
+
+;; "ctrl - left click" buffer menu increase number of items
+(setq mouse-buffer-menu-maxlen 40)
+(setq mouse-buffer-menu-mode-mult 50)
+
+(put 'set-goal-column 'disabled nil)
+
+
+;; put backup files in separate location
+;; http://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files
+(setq backup-directory-alist `(("." . "~/.backups")))
+(setq backup-by-copying t)
+
+;; set fill column
+(setq-default fill-column 79)
+
+
+;; ============================================================================
+;; 2) Navigation + Keyboard
+;; ============================================================================
+
+;; IDO-MODE
+;; enhanced behavior for opening files and switching buffers, etc
+;; http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+
+;; don't ask to create new buffer with C-x b  ; choices: always, prompt, never
+(setq ido-create-new-buffer 'never)
+(setq ido-file-extensions-order '(".txt" ".sas" ".lst"))
+
+;; use M-s to immediately search dirs
+(setq ido-auto-merge-delay-time 3)
+
+;; redefine ctrl-z to undo. see link for other options about suspend
+;; http://stackoverflow.com/questions/7243155/cant-seem-to-get-rid-of-ctrl-x-ctrl-z-key-binding-in-emacs-for-minimizing-windo
+(global-set-key (kbd "C-z") 'undo)
+
+;; quickly jump between windows
+;; https://emacs.stackexchange.com/a/3471
+(defun prev-window ()
+  (interactive)
+  (other-window -1))
+
+(global-set-key (kbd "C-.") #'other-window)
+(global-set-key (kbd "C-,") #'prev-window)
+
+
+;; faster  C-x 1 || C-x 2
+;; (global-set-key [f1] 'delete-other-windows)
+(global-set-key [f2] 'split-window-below)
+(global-set-key [f3] 'split-window-right)
+
+
+(defun switch-to-scratch ()
+  "Pop to *scratch* buffer"
+  (interactive)
+  (switch-to-buffer '"*scratch*"))
+
+(global-set-key [f9] 'switch-to-scratch)
+
+;; cmd-b to switch buffers
+(global-set-key (kbd "s-b") 'ido-switch-buffer)
+
+;; cmd-o to open files with ido instead of GUI (default)
+(global-set-key (kbd "s-o") 'ido-find-file)
+
+
+;; default is F11
+(global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)
+;; errors:
+;;(global-set-key [268632070] 'toggle-frame-fullscreen)
+;;(global-set-key (kbd "C-s-268632070") 'toggle-frame-fullscreen)
+
+
+;; c-a to back to indent or BOL
+(defun beginning-of-line-or-indentation ()
+  "Move to beginning of line, or indentation."
+  (interactive)
+  (if (bolp)
+      (back-to-indentation)
+    (beginning-of-line)))
+
+(global-set-key (kbd "C-a") 'beginning-of-line-or-indentation)
+
+;; recent files: see emacs wiki
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+(global-set-key (kbd "C-x C-r") 'recentf-open-files)
+
+;; by default, it is C-x C-r, but see recentf above
+(global-set-key (kbd "C-x r f") 'find-file-read-only)
+
+;; hide other windows with macOS CMD-OPT-h
+;; https://github.com/syl20bnr/spacemacs/issues/7464
+;; https://github.com/syl20bnr/spacemacs/pull/7536/files
+(global-set-key (kbd "M-s-h") 'ns-do-hide-others)
+(global-set-key [142607065] 'ns-do-hide-others)
+
+(defun flyit ()
+  "Quickly flyspell."
+  (interactive)
+  (flyspell-mode)
+  (flyspell-buffer)
+  )
+
+(defun insert-comblk ()
+  "Insert comment block."
+       (interactive)
+       (insert "## ============================================================================\n")
+       (insert "## \n")
+       (insert "## ============================================================================")
+       (forward-line -1)
+       (forward-char 3)			;NICE!!!!!!
+       )
+;; (global-set-key (kbd "C-c b") 'insert-comblk)
+
+(defun rmd-init ()
+  "Initialize R markdown notebook with default header."
+       (interactive)
+       (insert "---\n")
+       (insert "title: ''\n")
+       (insert "output: github_document\n")
+       (insert "---")
+       (forward-line -3)
+       (forward-char 12)
+       )  
+
+
+;; ============================================================================
+;; 3) Load box-specific customizations
+;; ============================================================================
+;; (load "~/.emacs.d/.emacs.local")

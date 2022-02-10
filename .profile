@@ -1,7 +1,7 @@
 echo "Loading .profile"
 # COMMON PROFILE
 # Paul Paczuski 
-# https://github.com/pavopax/initialization-files
+# https://github.com/pavopax/dotfiles
 
 # ============================================================================
 # Link
@@ -10,25 +10,25 @@ alias pp="pwd"
 alias rm="rm -i"
 alias lm='less -M'
 
-alias f='open -a Finder ./'                 # macOS only
-alias e='open -a Emacs'			    # macOS only
+# for aliases with parameters like $1, need to create functions
 
-alias be='bundle exec'
+ll() {
+    ls -lh $1 && echo "" && pwd
+}
 
-alias ll='ls -gho && echo "" && pwd'
-alias lll="ls -lh"
-alias lld="ls -l | grep 'dr'"
+lld() {
+    ls -lh $1 | grep 'dr'
+}
+
 alias lla="ls -al"
 alias lls="ls -CF"
 
-alias gits="git status"
-alias gitsu="git status --untracked-files=no"
-alias gitb="git branch"
-alias gitr="git reflog"
+# use git's aliases (~/.gitconfig)
+# alias gits="git status"
+# alias gitsu="git status --untracked-files=no"
 
-function c()
-{
- builtin cd "$*" && ls -gho && echo "" && pwd
+c() {
+ builtin cd "$*" && ll
 }
 
 alias b="c ../"
@@ -46,8 +46,6 @@ function knit() {
 # ============================================================================
 # Load
 # ============================================================================
-# brew install git bash-completion
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 # local settings (checkout from different git branch)
 if [ -f ~/.profile_local ]; then
@@ -60,5 +58,6 @@ if [ -f ~/.profile_private ]; then
 fi
 
 # color output
+# works in multiple shells
 export CLICOLOR=1
 

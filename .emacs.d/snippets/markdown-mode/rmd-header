@@ -1,0 +1,7 @@
+# key: rh
+# name: rmd-header
+# --
+---
+title: '$1'
+output: github_document
+---

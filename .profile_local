@@ -1,23 +1,70 @@
 # -*- mode: shell-script -*-
 echo "Loading .profile_local"
 
-# to see your current prompt, type: echo $PS1
-PS1='\[\e[1m\]\W\$ \[\e[0m\]'
+## ============================================================================
+## 1 of 2) SET PATHS
+## ============================================================================
 
-alias juno="jupyter lab &"
+# add R to cli
+# may need to udpate symlink for "Current"
+# https://support.rstudio.com/hc/en-us/articles/200486138-Changing-R-versions-for-the-RStudio-Desktop-IDE
+export PATH="/Library/Frameworks/R.framework/Resources/bin:$PATH"
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home
+# see README.md
+# brew install python@3.8
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 
-# homebrew/python
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+# https://virtualenvwrapper.readthedocs.io/en/latest/install.html#python-interpreter-virtualenv-and-path
+# for python3, get it from `which python3` - it appends /bin/python3 to the brew path!
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@3.8/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+source /usr/local/bin/virtualenvwrapper.sh
+
+
+# ruby - see README.md
+if [ -d "/usr/local/opt/ruby/bin" ]; then
+  export PATH=/usr/local/opt/ruby/bin:$PATH
+  export PATH=`gem environment gemdir`/bin:$PATH
+fi
+
+
+## ============================================================================
+## 2 of 2) USE PATHS
+## ============================================================================
+
+# This should follow ALL path updates
+export WORKON_HOME=$HOME/Envs
+export PROJECT_HOME=$HOME/Devel
+
+
+## ============================================================================
+## OTHER LOCAL OPTIONS
+## ============================================================================
+alias f='open -a Finder ./'                 # macOS only
+# doens't work correctly with Emacs GUI, see README
+# alias e='open -a Emacs'			    # macOS only
+
+alias be='bundle exec'
+
+
+## ============================================================================
+## BEGIN DRAFTS
+## ============================================================================
+
+# FROM OLD BOX:
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home
+# # homebrew/python
+# export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 # cmake, when needed
 # downloaded from https://cmake.org/download/
 # PATH="/Applications/CMake.app/Contents/bin":"$PATH"
 
-# paul: for virtualenvwrapper
-# ! PUT AFTER export PATH to python
-# WORKON_HOME first@
-export WORKON_HOME=~/Envs
-source /usr/local/bin/virtualenvwrapper.sh
+# paul: manually add this to the END of the path, so that I still have my system python first
+# `conda init` can also add a bunch of things here
+# export PATH=$PATH:~/miniconda3/bin
 
+## ============================================================================
+## END DRAFTS
+## ============================================================================
