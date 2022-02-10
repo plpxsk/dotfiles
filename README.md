@@ -104,7 +104,7 @@ References
 
 # R
 
-Install R including CLI.
+R installation should install it for Terminal at `/usr/local/bin/R`
 
 # Emacs
 
