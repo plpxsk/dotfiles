@@ -5,14 +5,13 @@ echo "Loading .profile_local"
 ## 1 of 2) SET PATHS
 ## ============================================================================
 
-# add R to cli
-# may need to udpate symlink for "Current"
-# https://support.rstudio.com/hc/en-us/articles/200486138-Changing-R-versions-for-the-RStudio-Desktop-IDE
-export PATH="/Library/Frameworks/R.framework/Resources/bin:$PATH"
+# brew installation recommends this
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # see README.md
 # brew install python@3.8
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+# UPDATE: comment out after recent brew install. need to comment back?
+# export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 
 
 # https://virtualenvwrapper.readthedocs.io/en/latest/install.html#python-interpreter-virtualenv-and-path
