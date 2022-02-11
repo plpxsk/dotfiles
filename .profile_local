@@ -8,24 +8,13 @@ echo "Loading .profile_local"
 # brew installation recommends this
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# see README.md
-# brew install python@3.8
-# UPDATE: comment out after recent brew install. need to comment back?
-# export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 
-
-# https://virtualenvwrapper.readthedocs.io/en/latest/install.html#python-interpreter-virtualenv-and-path
-# for python3, get it from `which python3` - it appends /bin/python3 to the brew path!
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@3.8/bin/python3
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-source /usr/local/bin/virtualenvwrapper.sh
-
-
-# ruby - see README.md
-if [ -d "/usr/local/opt/ruby/bin" ]; then
-  export PATH=/usr/local/opt/ruby/bin:$PATH
-  export PATH=`gem environment gemdir`/bin:$PATH
-fi
+# update: new install with brew. may need to uncomment
+# # ruby - see README.md
+# if [ -d "/usr/local/opt/ruby/bin" ]; then
+#   export PATH=/usr/local/opt/ruby/bin:$PATH
+#   export PATH=`gem environment gemdir`/bin:$PATH
+# fi
 
 
 ## ============================================================================
