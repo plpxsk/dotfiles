@@ -6,6 +6,7 @@ markdown
 openblas
 pandoc
 pkg-config
+python@3.9
 ruby
 the_silver_searcher
 tldr
