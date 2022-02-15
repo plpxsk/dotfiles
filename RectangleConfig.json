@@ -3,17 +3,17 @@
     "almostMaximizeWidth" : {
       "float" : 0
     },
-    "curtainChangeSize" : {
-      "int" : 0
-    },
-    "ignoredSnapAreas" : {
-      "int" : 0
-    },
     "centerHalfCycles" : {
       "int" : 0
     },
     "allowAnyShortcut" : {
       "bool" : false
+    },
+    "ignoredSnapAreas" : {
+      "int" : 0
+    },
+    "curtainChangeSize" : {
+      "int" : 0
     },
     "screenEdgeGapBottom" : {
       "float" : 0
@@ -27,26 +27,26 @@
     "screenEdgeGapTop" : {
       "float" : 0
     },
-    "todoSidebarWidth" : {
-      "float" : 400
-    },
-    "gapSize" : {
-      "float" : 0
-    },
-    "disabledApps" : {
-
-    },
     "SUEnableAutomaticChecks" : {
       "bool" : false
     },
-    "todoApplication" : {
+    "todoSidebarWidth" : {
+      "float" : 400
+    },
+    "fullIgnoreBundleIds" : {
 
     },
     "specifiedHeight" : {
       "float" : 1050
     },
-    "fullIgnoreBundleIds" : {
+    "todoApplication" : {
 
+    },
+    "disabledApps" : {
+
+    },
+    "gapSize" : {
+      "float" : 0
     },
     "centeredDirectionalMove" : {
       "int" : 0
@@ -54,8 +54,8 @@
     "unsnapRestore" : {
       "int" : 0
     },
-    "applyGapsToMaximize" : {
-      "int" : 0
+    "snapEdgeMarginTop" : {
+      "float" : 5
     },
     "autoMaximize" : {
       "int" : 0
@@ -63,10 +63,7 @@
     "snapModifiers" : {
       "int" : 0
     },
-    "snapEdgeMarginTop" : {
-      "float" : 5
-    },
-    "altThirdCycle" : {
+    "applyGapsToMaximize" : {
       "int" : 0
     },
     "moveCursorAcrossDisplays" : {
@@ -75,26 +72,29 @@
     "applyGapsToMaximizeHeight" : {
       "int" : 0
     },
+    "altThirdCycle" : {
+      "int" : 0
+    },
     "launchOnLogin" : {
       "bool" : true
     },
     "hideMenubarIcon" : {
       "bool" : false
     },
-    "traverseSingleScreen" : {
-      "int" : 0
-    },
     "minimumWindowHeight" : {
       "float" : 0
     },
-    "snapEdgeMarginBottom" : {
-      "float" : 5
+    "footprintFade" : {
+      "int" : 0
     },
     "specifiedWidth" : {
       "float" : 1680
     },
-    "footprintFade" : {
+    "traverseSingleScreen" : {
       "int" : 0
+    },
+    "snapEdgeMarginBottom" : {
+      "float" : 5
     },
     "screenEdgeGapRight" : {
       "float" : 0
@@ -121,7 +121,7 @@
       "bool" : false
     },
     "windowSnapping" : {
-      "int" : 1
+      "int" : 2
     },
     "todo" : {
       "int" : 0
@@ -141,11 +141,11 @@
     "footprintAlpha" : {
       "float" : 0.30000001192092896
     },
-    "attemptMatchOnNextPrevDisplay" : {
-      "int" : 0
-    },
     "minimumWindowWidth" : {
       "float" : 0
+    },
+    "attemptMatchOnNextPrevDisplay" : {
+      "int" : 0
     },
     "almostMaximizeHeight" : {
       "float" : 0
@@ -170,17 +170,17 @@
       "keyCode" : 123,
       "modifierFlags" : 1572864
     },
-    "maximize" : {
-      "keyCode" : 126,
-      "modifierFlags" : 1572864
+    "restore" : {
+      "keyCode" : 51,
+      "modifierFlags" : 1835008
     },
     "nextDisplay" : {
       "keyCode" : 124,
       "modifierFlags" : 1835008
     },
-    "restore" : {
-      "keyCode" : 51,
-      "modifierFlags" : 1835008
+    "maximize" : {
+      "keyCode" : 126,
+      "modifierFlags" : 1572864
     }
   },
   "bundleId" : "com.knollsoft.Rectangle",
