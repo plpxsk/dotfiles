@@ -1,7 +1,5 @@
 ;; -*- mode: emacs-lisp -*-
-;; LIGHTWEIGHT default .emacs
-;; should work on any box - just make sure last line is commented out (see bottom)
-;; Paul Paczuski / https://github.com/pavopax/dotfiles
+;; Paul Paczuski / https://github.com/plpxsk/dotfiles
 
 ;; ============================================================================
 ;; Up-front matter
@@ -321,73 +319,6 @@
 ;; 3) More functions
 ;; ============================================================================
 
-;; also see https://emacs.stackexchange.com/a/47432/11872
-(defun bee-shell ()
-  "Load command-line R on BEE server"
-  (interactive)
-    (shell)
-    (rename-buffer "RR-bee")
-    (comint-send-string "RR-bee" "ssh bee\n")
-    (comint-send-string "RR-bee" "R-3.6.1\n")
-    (ess-remote "*shell*" "R")
-    )
-
-(defun shpc1-shell ()
-  "Step 1 to load command-line R on sHPC server"
-  (interactive)
-  ;; force to run shell and ssh from local directory/machine, not any connected
-  ;; remote/tramp directory https://emacs.stackexchange.com/a/64581/11872
-  (let ((default-directory "~/"))
-    (shell))
-  (rename-buffer "RR-shpc")
-  (comint-send-string "RR-shpc" "ssh shpc\n")
-  )
-
-(defun shpc2-r-load ()
-  "Step 2 to load command-line R on shpc server"
-  (interactive)
-  (comint-send-string "RR-shpc" "source /apps/rocs/init.sh\n")
-  (comint-send-string "RR-shpc" "module load R/4.0.5-foss-2020a\n")
-  ;; see HPC portal docs
-  (comint-send-string "RR-shpc" "bsub -Is -n 8 /bin/bash\n")
-  (comint-send-string "RR-shpc" "R\n")
-  ;; uncomment?. this seems to mess with M-p command cycling...
-  ;; (ess-remote "RR-shpc" "R")
-  )
-
-(defun shpc ()
-  "Load remote R shell on shpc"
-  (interactive)
-  (shpc1-shell)
-  ;; need to wait a bit between these steps
-  (sleep-for 5)
-  (shpc2-r-load)
-  )
-
-
-(defun rescomp1-shell ()
-  "Load command-line R.1 on rescomp"
-  (interactive)
-  (shell)
-  (rename-buffer "RR-rescomp")
-  (comint-send-string "RR-rescomp" "ssh rosalind.gene.com\n")
-  ;; (comint-send-string "RR-rescomp" "module load apps/R/3.5.1-Bioc-3.7-prd/prd\n")
-  ;; (comint-send-string "RR-rescomp" "R\n")
-  ;; (ess-remote "*shell*" "R")
-  )
-
-
-(defun rescomp2-r-load()
-  "Load R in rescomp shell"
-  (interactive)
-  (comint-send-string "RR-rescomp" "module load R\n")
-  ;; run interactive job
-  ;; added Thu May  7 11:49:41 EDT 2020
-  (comint-send-string "RR-rescomp" "interactive\n")
-  (comint-send-string "RR-rescomp" "R\n")
-  (ess-remote "*shell*" "R")
-  )
-
 (defun rmd-init ()
   "Initialize R markdown notebook with default header."
        (interactive)
@@ -580,10 +511,4 @@
 (add-to-list 'load-path "~/.emacs.d/find-file-in-project/")
 (require 'find-file-in-project)
 
-;; ============================================================================
-;; Last
-;; ============================================================================
-(pop-to-buffer (find-file"~/Desktop/GD/code/R-codesaver.R"))
-(pop-to-buffer (find-file"~/Desktop/GD/code/python-codesaver.py"))
-(pop-to-buffer (find-file"~/Desktop/GD/code/sxratch.md"))
-
+(load-file "~/.emacs.private.el")
