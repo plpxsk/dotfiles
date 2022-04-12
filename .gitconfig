@@ -13,7 +13,7 @@
 	s = status
 	b = branch
 	r = reflog
-	u = --untracked-files=no
+	su = status -uno
 
 [credential]
 	helper = osxkeychain
