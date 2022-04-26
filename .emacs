@@ -349,6 +349,21 @@
 (global-set-key (kbd "C-c b") 'insert-comblk)
 
 
+(defun generic-remote-R-ess-shell ()
+  "Generic function to log in to remote cloud and start up an R session using ess-remote"
+  (interactive)
+  ;; force to run shell and ssh from local directory/machine, not any connected
+  ;; remote/tramp directory https://emacs.stackexchange.com/a/64581/11872
+  (let ((default-directory "~/"))
+    (shell))
+  (rename-buffer "r-shell")
+  (comint-send-string "r-shell" "ssh generic.server.com\n")
+  (comint-send-string "r-shell" "module load R\n")
+  (comint-send-string "r-shell" "R\n")
+  (sleep-for 5)
+  (ess-remote "r-shell" "R")
+  )
+
 ;; ============================================================================
 ;; 4) Theme
 ;; ============================================================================
