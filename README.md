@@ -241,7 +241,9 @@ and is based on:
 
 For new macOS 12 Monterey ++
 
-Use: [sbarex/QLMarkdown](https://github.com/sbarex/QLMarkdown)
+_Future: consider reverting to qlstephen to just render Rmd/md as plain text_
+
+Currently, using: [sbarex/QLMarkdown](https://github.com/sbarex/QLMarkdown)
 
 `brew install --cask qlmarkdown`
 
