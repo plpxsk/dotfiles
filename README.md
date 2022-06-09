@@ -237,10 +237,20 @@ and is based on:
 2. `Fn` key customizations from "You can still access the control strip" at
    [alexw.me/2017/01/what-if-you-could-customize-your-new-touch-bar/](https://alexw.me/2017/01/what-if-you-could-customize-your-new-touch-bar/)
 
-# Misc
+# QuickLook
 
-Change Emacs dock icon. Use `Emacs.icns` and [follow the rest of these
-instructions](https://apple.stackexchange.com/a/276579).
+For new macOS 12 Monterey ++
+
+Use: [sbarex/QLMarkdown](https://github.com/sbarex/QLMarkdown)
+
+`brew install --cask qlmarkdown`
+
+See `brew_list__casks.txt`
+
+
+## Previously
+
+Before macOS 12, ie, before Monterey, I used qlstepehen
 
 Add file types to Quick Look via custom plist file:
 
@@ -248,6 +258,13 @@ Add file types to Quick Look via custom plist file:
   * `qlstephen_qlgenerator_contents_info.plist`
   * `~/Library/QuickLook/QLStephen.qlgenerator/Contents/Info.plist`
   * Reference: [whomwah/qlstephen/issues/87#issuecomment-831399689](https://github.com/whomwah/qlstephen/issues/87#issuecomment-831399689)
+
+
+# Misc
+
+Change Emacs dock icon. Use `Emacs.icns` and [follow the rest of these
+instructions](https://apple.stackexchange.com/a/276579).
+
 
 Safari - Vimtastic https://github.com/guyht/vimari
 
