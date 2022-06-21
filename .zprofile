@@ -6,7 +6,8 @@ autoload -U select-word-style
 select-word-style bash
 
 # git autocomplete is available by default in zsh. replaces bash-completion
-autoload -Uz compinit && compinit
+# COMMENT out b/c slow git autocompplete. Use git aliases in git config for git
+# autoload -Uz compinit && compinit
 
 ## ============================================================================
 ## load cross-platform dotfiles
