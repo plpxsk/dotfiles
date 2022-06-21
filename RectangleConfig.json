@@ -1,7 +1,7 @@
 {
   "defaults" : {
-    "centerHalfCycles" : {
-      "int" : 0
+    "almostMaximizeWidth" : {
+      "float" : 0
     },
     "curtainChangeSize" : {
       "int" : 0
@@ -12,8 +12,8 @@
     "ignoredSnapAreas" : {
       "int" : 0
     },
-    "almostMaximizeWidth" : {
-      "float" : 0
+    "centerHalfCycles" : {
+      "int" : 0
     },
     "screenEdgeGapBottom" : {
       "float" : 0
@@ -27,25 +27,25 @@
     "screenEdgeGapTop" : {
       "float" : 0
     },
+    "SUEnableAutomaticChecks" : {
+      "bool" : false
+    },
     "todoSidebarWidth" : {
       "float" : 400
     },
     "gapSize" : {
       "float" : 0
     },
-    "disabledApps" : {
+    "fullIgnoreBundleIds" : {
 
     },
     "specifiedHeight" : {
       "float" : 1050
     },
     "todoApplication" : {
-
+      "string" : "com.apple.Safari"
     },
-    "SUEnableAutomaticChecks" : {
-      "bool" : false
-    },
-    "fullIgnoreBundleIds" : {
+    "disabledApps" : {
 
     },
     "centeredDirectionalMove" : {
@@ -60,19 +60,19 @@
     "autoMaximize" : {
       "int" : 0
     },
-    "unsnapRestore" : {
-      "int" : 0
-    },
     "snapModifiers" : {
       "int" : 0
     },
-    "moveCursorAcrossDisplays" : {
+    "unsnapRestore" : {
+      "int" : 0
+    },
+    "altThirdCycle" : {
       "int" : 0
     },
     "applyGapsToMaximizeHeight" : {
       "int" : 0
     },
-    "altThirdCycle" : {
+    "moveCursorAcrossDisplays" : {
       "int" : 0
     },
     "launchOnLogin" : {
@@ -81,8 +81,8 @@
     "hideMenubarIcon" : {
       "bool" : false
     },
-    "footprintFade" : {
-      "int" : 0
+    "minimumWindowHeight" : {
+      "float" : 0
     },
     "snapEdgeMarginBottom" : {
       "float" : 5
@@ -90,8 +90,8 @@
     "specifiedWidth" : {
       "float" : 1680
     },
-    "minimumWindowHeight" : {
-      "float" : 0
+    "footprintFade" : {
+      "int" : 0
     },
     "traverseSingleScreen" : {
       "int" : 0
@@ -99,17 +99,17 @@
     "screenEdgeGapRight" : {
       "float" : 0
     },
+    "notifiedOfProblemApps" : {
+      "bool" : false
+    },
     "screenEdgeGapLeft" : {
       "float" : 0
     },
-    "notifiedOfProblemApps" : {
+    "alternateDefaultShortcuts" : {
       "bool" : false
     },
     "showAllActionsInMenu" : {
       "int" : 0
-    },
-    "alternateDefaultShortcuts" : {
-      "bool" : false
     },
     "subsequentExecutionMode" : {
       "int" : 0
@@ -123,20 +123,17 @@
     "windowSnapping" : {
       "int" : 2
     },
-    "todo" : {
-      "int" : 0
-    },
     "snapEdgeMarginLeft" : {
       "float" : 5
+    },
+    "todo" : {
+      "int" : 1
     },
     "obtainWindowOnClick" : {
       "int" : 0
     },
     "snapEdgeMarginRight" : {
       "float" : 5
-    },
-    "footprintColor" : {
-
     },
     "footprintAlpha" : {
       "float" : 0.30000001192092896
@@ -146,6 +143,9 @@
     },
     "attemptMatchOnNextPrevDisplay" : {
       "int" : 0
+    },
+    "footprintColor" : {
+
     },
     "almostMaximizeHeight" : {
       "float" : 0
@@ -158,16 +158,16 @@
     }
   },
   "shortcuts" : {
-    "restore" : {
-      "keyCode" : 51,
-      "modifierFlags" : 1835008
-    },
-    "rightHalf" : {
-      "keyCode" : 124,
-      "modifierFlags" : 1572864
-    },
     "larger" : {
       "keyCode" : 124,
+      "modifierFlags" : 917504
+    },
+    "smaller" : {
+      "keyCode" : 123,
+      "modifierFlags" : 917504
+    },
+    "maximizeHeight" : {
+      "keyCode" : 126,
       "modifierFlags" : 917504
     },
     "previousDisplay" : {
@@ -178,25 +178,21 @@
       "keyCode" : 126,
       "modifierFlags" : 1572864
     },
-    "maximizeHeight" : {
-      "keyCode" : 126,
-      "modifierFlags" : 917504
-    },
-    "center" : {
-      "keyCode" : 8,
-      "modifierFlags" : 1572864
+    "restore" : {
+      "keyCode" : 51,
+      "modifierFlags" : 1835008
     },
     "leftHalf" : {
       "keyCode" : 123,
       "modifierFlags" : 1572864
     },
+    "rightHalf" : {
+      "keyCode" : 124,
+      "modifierFlags" : 1572864
+    },
     "nextDisplay" : {
       "keyCode" : 124,
       "modifierFlags" : 1835008
-    },
-    "smaller" : {
-      "keyCode" : 123,
-      "modifierFlags" : 917504
     }
   },
   "bundleId" : "com.knollsoft.Rectangle",
