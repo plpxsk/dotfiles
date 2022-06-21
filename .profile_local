@@ -30,8 +30,7 @@ export PROJECT_HOME=$HOME/Devel
 ## OTHER LOCAL OPTIONS
 ## ============================================================================
 alias f='open -a Finder ./'                 # macOS only
-# doens't work correctly with Emacs GUI, see README
-# alias e='open -a Emacs'			    # macOS only
+alias e='open -a Emacs'			    # macOS only
 
 alias be='bundle exec'
 
