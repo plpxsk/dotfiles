@@ -2,15 +2,19 @@
 [user]
 	name = Paul Paczuski
 	useConfigOnly = true
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [alias]
 	s = status
 	b = branch
 	r = reflog
+	su = status -uno
+
 [credential]
 	helper = osxkeychain
 
@@ -29,3 +33,5 @@
 # invocation. 
 [pull]
 	rebase = false
+[init]
+	defaultBranch = main
