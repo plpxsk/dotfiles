@@ -1,3 +1,2 @@
 font-inconsolata
 qlmarkdown
-qlstephen
