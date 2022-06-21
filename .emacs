@@ -349,6 +349,7 @@
 (global-set-key (kbd "C-c b") 'insert-comblk)
 
 
+;; also see https://emacs.stackexchange.com/a/47432/11872
 (defun generic-remote-R-ess-shell ()
   "Generic function to log in to remote cloud and start up an R session using ess-remote"
   (interactive)
