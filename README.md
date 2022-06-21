@@ -52,6 +52,12 @@ Utils:
 	brew leaves
 	brew list --pinned
 
+### brew's git
+
+I am using brew's git (`which -a git`) which seems to have trouble with
+autocomplete (it hangs on `git add ...`, eg)
+
+Not sure how to resolve.
 
 # Tmux
 
