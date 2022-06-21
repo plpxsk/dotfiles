@@ -8,6 +8,7 @@ pandoc
 pkg-config
 python@3.9
 ruby
+tcl-tk
 the_silver_searcher
 tldr
 tmux
