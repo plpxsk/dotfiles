@@ -1,5 +1,17 @@
 # -*- mode: shell-script -*-
 
+
+# put this BEFORE alias ls=... to prevent doubling
+# overwrite from .profile with --color=auto
+function c()
+{
+ builtin cd "$*" && ls --color=auto -gho && echo "" && pwd
+}
+
+# add color on apollo
+alias ls='ls --color=auto'
+
+
 # to see your current prompt, type: echo $PS1
 PS1='\[\e[1m\][Apollo]\W\$ \[\e[0m\]'
 
