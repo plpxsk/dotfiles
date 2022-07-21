@@ -47,6 +47,10 @@ alias e='open -a Emacs'			    # macOS only
 alias be='bundle exec'
 
 
+# backup local macOS notes
+alias backup_notes='zip -r ~/Desktop/GD/macOS_Notes_backup.zip /Users/paczuskp/Library/Group\ Containers/group.com.apple.notes'
+
+
 ## ============================================================================
 ## BEGIN DRAFTS
 ## ============================================================================
