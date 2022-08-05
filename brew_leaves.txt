@@ -1,3 +1,4 @@
+apache-spark
 aspell
 colima
 docker
@@ -10,6 +11,7 @@ openblas
 pandoc
 python@3.8
 ruby
+sbt
 the_silver_searcher
 tldr
 tmux
