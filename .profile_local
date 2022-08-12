@@ -26,6 +26,10 @@ export WORKON_HOME=$HOME/Envs
 export PROJECT_HOME=$HOME/Devel
 
 
+export VIRTUALENVWRAPPER_PYTHON=/opt/homebrew/bin/python3
+source /opt/homebrew/bin/virtualenvwrapper.sh
+
+
 ## ============================================================================
 ## OTHER LOCAL OPTIONS
 ## ============================================================================
