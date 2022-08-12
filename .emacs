@@ -562,7 +562,7 @@
 ;; install package `elpy`
 (elpy-enable)
 
-(setq elpy-rpc-python-command "/usr/local/opt/python@3.8/bin/python3")
+(setq elpy-rpc-python-command "/opt/homebrew/bin/python3")
 
 ;; install flycheck above
 (when (require 'flycheck nil t)
