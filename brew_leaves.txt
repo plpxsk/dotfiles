@@ -5,7 +5,7 @@ git
 markdown
 openblas
 pandoc
-pkg-config
+pyenv
 python@3.9
 ruby
 tcl-tk
