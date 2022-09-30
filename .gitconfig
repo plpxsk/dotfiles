@@ -19,3 +19,5 @@
 # https://stackoverflow.com/a/56757026/3217870
 [completion]
 	commands = -check-mailmap
+[core]
+	editor = vim
