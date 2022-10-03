@@ -2,14 +2,12 @@
 [user]
 	name = Paul Paczuski
 	useConfigOnly = true
+
 [alias]
 	s = status
 	b = branch
 	r = reflog
-
-[credential]
-	helper = cache --timeout 999999
-
+	su = status -uno
 
 # read_remote# git pull 
 # warning: Pulling without specifying how to reconcile divergent branches is 
@@ -26,3 +24,5 @@
 # invocation. 
 [pull]
 	rebase = false
+[init]
+	defaultBranch = main
