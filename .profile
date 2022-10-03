@@ -48,6 +48,13 @@ function count() {
     cut -f $1 -d , $2 | sort | uniq -c
 }
 
+function hdrs() {
+    # usage hdrs file.csv
+    # number the columns from header, for use with count()
+    head -n 1 $1 | tr ',' '\n' | nl
+}
+
+
 # ============================================================================
 # Load
 # ============================================================================
