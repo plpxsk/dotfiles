@@ -44,8 +44,8 @@ ncurses 6.3
 nettle 3.7.3
 node 17.8.0
 openblas 0.3.20
-openjdk 18.0.2
 openjdk@11 11.0.15
+openjdk@17 17.0.4
 openssl@1.1 1.1.1n
 p11-kit 0.24.1
 pandoc 2.13
@@ -58,7 +58,6 @@ python@3.9 3.9.12
 qemu 6.2.0_1
 readline 8.1.2
 ruby 3.1.1
-sbt 1.7.1
 snappy 1.1.9
 sqlite 3.38.2
 tcl-tk 8.6.11_1
