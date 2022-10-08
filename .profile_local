@@ -9,6 +9,13 @@ echo "Loading .profile_local"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
+# see README ruby and https://mac.install.guide/ruby/13.html
+if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
+  export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+  export PATH=`gem environment gemdir`/bin:$PATH
+fi
+
+
 # update: new install with brew. may need to uncomment
 # # ruby - see README.md
 # if [ -d "/usr/local/opt/ruby/bin" ]; then
