@@ -74,7 +74,6 @@ Manage python with Brew
 To upgrade to 3.8.x, use `brew reinstall python@3.8`. Otherwise, `brew upgrade`
 will update python to latest version (eg, 3.9). Also see pin above.
 
-
 Use Python 2 kernel in Jupyter:
 http://ipython.readthedocs.io/en/stable/install/kernel_install.html
 
@@ -107,6 +106,25 @@ Jupyter:
 References
 
   * PROJECT_HOME, virtualenv projects: https://stackoverflow.com/a/9425560/3217870
+
+## Conda
+
+Conda is not used by default. Activate only as needed:
+
+	source ~/miniforge3/bin/activate
+
+This was installed into `~/miniforge3` with:
+
+	You have chosen to not have conda modify your shell scripts at all.
+	To activate conda's base environment in your current shell session:
+
+	eval "$(/Users/paul/miniforge3/bin/conda shell.YOUR_SHELL_NAME hook)" 
+
+... per https://developer.apple.com/metal/tensorflow-plugin 
+
+## Tensorflow
+
+Install(ed) per https://developer.apple.com/metal/tensorflow-plugin/
 
 # R
 
