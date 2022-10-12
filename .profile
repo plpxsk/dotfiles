@@ -42,6 +42,11 @@ function knit() {
     R -e "rmarkdown::render('$1', 'all')"
 }
 
+function cutx() {
+    # usage: cutx 8 file.csv
+    cut -f $1 -d , $2    
+}
+
 function count() {
     # usage: count 4 file.csv
     # shows count of nth field in file
@@ -49,7 +54,7 @@ function count() {
 }
 
 function hdrs() {
-    # usage hdrs file.csv
+    # usage: hdrs file.csv
     # number the columns from header, for use with count()
     head -n 1 $1 | tr ',' '\n' | nl
 }
