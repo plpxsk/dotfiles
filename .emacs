@@ -533,7 +533,7 @@
 ;; pyvenv needs WORKON_HOME but emacs doesn't find it, so set it here
 ;; https://github.com/jorgenschaefer/pyvenv
 ;; https://emacs.stackexchange.com/a/20093/11872
-(setenv "WORKON_HOME" "/Users/paczuskp/Envs")
+(setenv "WORKON_HOME" "/Users/paul/Envs")
 
 ;; this changes EMACS' python mode, which is then used by elpy as "interactive
 ;; python" (see elpy-config)
@@ -582,9 +582,10 @@
 ;; ============================================================================
 ;; Last
 ;; ============================================================================
-(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/R-codesaver.R"))
-(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/python-codesaver.py"))
-(pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/sxratch.md"))
+;; TODO: move to plpxsk/wiki
+;; (pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/R-codesaver.R"))
+;; (pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/python-codesaver.py"))
+;; (pop-to-buffer (find-file"~/icloud/CODE/CODESAVERS/sxratch.md"))
 
 
 
