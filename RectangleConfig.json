@@ -65,7 +65,7 @@
       "float" : 0
     },
     "hideMenubarIcon" : {
-      "bool" : false
+      "bool" : true
     },
     "ignoredSnapAreas" : {
       "int" : 0
@@ -152,7 +152,7 @@
       "bool" : false
     },
     "todo" : {
-      "int" : 1
+      "int" : 2
     },
     "todoApplication" : {
       "string" : "com.apple.Safari"
@@ -174,9 +174,9 @@
     }
   },
   "shortcuts" : {
-    "center" : {
+    "bottomHalf" : {
       "keyCode" : 125,
-      "modifierFlags" : 1572864
+      "modifierFlags" : 1835008
     },
     "leftHalf" : {
       "keyCode" : 123,
@@ -196,11 +196,15 @@
     },
     "restore" : {
       "keyCode" : 125,
-      "modifierFlags" : 1835008
+      "modifierFlags" : 1572864
     },
     "rightHalf" : {
       "keyCode" : 124,
       "modifierFlags" : 1572864
+    },
+    "topHalf" : {
+      "keyCode" : 126,
+      "modifierFlags" : 1835008
     }
   },
   "version" : "62"
