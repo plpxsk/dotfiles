@@ -408,10 +408,18 @@
 ;; try to use newest ESS
 
 (eval-after-load "ess-mode"
-  '(define-key ess-mode-map (kbd "<S-return>") 'ess-eval-region-or-line-and-step))
+  '(define-key ess-mode-map (kbd "<s-return>") 'ess-eval-region-or-line-and-step)
+  )
 
 ;; use M-- as assignment operator
-;; https://github.com/emacs-ess/ESS/issues/809#issuecomment-469214062
+;; search ess-s-lang.el for ess-add-MM-keys to get snippet for the following:
+(eval-after-load "ess-mode"
+  '(define-key ess-mode-map          [?\M--] #'ess-insert-assign)
+  )
+
+(eval-after-load "ess-mode"
+  '(define-key inferior-ess-mode-map [?\M--] #'ess-insert-assign)
+  )
 
 ;; currently get error for this:
 ;; Polymode error (pm--mode-setup ’ess-r-mode): Symbol’s function definition is void: ess-add-MM-keys
@@ -453,12 +461,21 @@
 (setq ess-ask-for-ess-directory nil)
 
 
-(setq ess-help-own-frame 'one)
+;; commented out october 27 2022. trying to delete previous help buffers
+;; (setq ess-help-own-frame 'one)
 
 ;; evaluate code invisibly
 ;; pushing code to R sometimes significantly adds to runtime, and may be unstable
 ;; https://stackoverflow.com/q/2770523/3217870
 (setq ess-eval-visibly 'nil)
+
+;; TBD, maybe don't need
+;; fix font colors in ESS output
+;; https://github.com/emacs-ess/ESS/issues/1193#issuecomment-1144182009
+;; (defun my-inferior-ess-init ()
+;;   (setq-local ansi-color-for-comint-mode 'filter)
+;;   (smartparens-mode 1))
+;; (add-hook 'inferior-ess-mode-hook 'my-inferior-ess-init)
 
 
 
@@ -518,8 +535,9 @@
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 
+;; disabled for now for other ppls code
 (require 'py-autopep8)
-(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+;;(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
 
 
 ;; installed manually
