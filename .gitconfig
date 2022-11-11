@@ -2,22 +2,27 @@
 [user]
 	name = Paul Paczuski
 	useConfigOnly = true
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [alias]
 	s = status
 	b = branch
 	r = reflog
-[push]
-	default = simple
+	su = status -uno
+
 [credential]
 	helper = cache --timeout 999999
 
-# https://stackoverflow.com/a/56757026/3217870
-[completion]
-	commands = -check-mailmap
-[core]
-	editor = vim
+# [core]
+# 	editor = vim
+
+[pull]
+
+	rebase = false
+[init]
+	defaultBranch = main
