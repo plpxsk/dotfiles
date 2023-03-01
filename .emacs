@@ -41,6 +41,7 @@
     elpy
     markdown-mode
     poly-R
+    projectile
     )
   )
 
@@ -506,6 +507,12 @@
 (setq python-shell-interpreter "python3"
       python-shell-interpreter-args "-i")
 
+
+;; silence indent offset messages
+;; https://stackoverflow.com/a/51966682/3217870
+(setq python-indent-guess-indent-offset t)  
+(setq python-indent-guess-indent-offset-verbose nil)
+
 ;; alternative interpreter for pHPC remote server
 ;; run with `M-x run-python`, see run-hpc-python below
 (defun set-hpc-py-interpreter ()
@@ -527,7 +534,19 @@
 ;; install package `elpy`
 (elpy-enable)
 
-(setq elpy-rpc-python-command "/usr/local/opt/python@3.8/bin/python3")
+;; no longer set this
+;; will use "python" -> but from the RPC
+;; (setq elpy-rpc-python-command "python")
+
+;; check this with C-h v ..
+;; if not set, it goes as follows...
+;; elpy-rpc-pythonpath is a variable defined in ‘elpy-rpc.el’.
+;; Its value is "/Users/paczuskp/.emacs.d/elpa/elpy-20220922.2253/"
+;; ... but that is wrong (?) b/c i want it in a fixed place:
+;; (setq elpy-rpc-pythonpath "~/.emacs.d/elpy/rpc-venv")
+
+;; redefine to mirror R ESS
+(define-key elpy-mode-map (kbd "C-c C-c") 'elpy-shell-send-group-and-step)
 
 ;; install flycheck above
 (when (require 'flycheck nil t)
@@ -535,14 +554,16 @@
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 
-;; disabled for now for other ppls code
+;; disabled for now due to other ppls CRAZY code
 (require 'py-autopep8)
-;;(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+(add-hook 'python-mode-hook 'py-autopep8-mode)
 
 
 ;; installed manually
+;; elpy uses this
 ;; https://github.com/technomancy/find-file-in-project
-(add-to-list 'load-path "~/.emacs.d/find-file-in-project/")
-(require 'find-file-in-project)
+;; UPDATE: use PROJECTILE
+;; (add-to-list 'load-path "~/.emacs.d/find-file-in-project/")
+;; (require 'find-file-in-project)
 
 (load-file "~/.emacs.private.el")
