@@ -57,6 +57,12 @@ function hdrs() {
     head -n 1 $1 | tr ',' '\n' | nl
 }
 
+function tabit() {
+    # usage: tabit file.csv | head
+    # usage: cutx 5-8 file.csv | tabit | head
+    column -s, -t $1
+}
+
 # ============================================================================
 # Load
 # ============================================================================
