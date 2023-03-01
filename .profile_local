@@ -12,7 +12,7 @@ export PATH="/Library/Frameworks/R.framework/Resources/bin:$PATH"
 
 # see README.md
 # brew install python@3.8
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+# export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 
 
 # https://virtualenvwrapper.readthedocs.io/en/latest/install.html#python-interpreter-virtualenv-and-path
@@ -48,8 +48,9 @@ alias be='bundle exec'
 
 
 # backup local macOS notes
-alias backup_notes='zip -r ~/Desktop/GD/macOS_Notes_backup.zip /Users/paczuskp/Library/Group\ Containers/group.com.apple.notes'
-
+alias backup_notes='zip -r ~/GD_3yr_sync/macOS_Notes_backup.zip /Users/paczuskp/Library/Group\ Containers/group.com.apple.notes'
+alias backup_keynotes='zip ~/GD_3yr_sync/macOS_Keynotes_backup.zip /Users/paczuskp/Documents/Keynote/*.key'
+alias backup_all='backup_notes && backup_keynotes'
 
 ## ============================================================================
 ## BEGIN DRAFTS
