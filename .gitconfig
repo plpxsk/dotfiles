@@ -11,6 +11,7 @@
 	s = status
 	b = branch
 	r = reflog
+	su = status -uno
 [push]
 	default = simple
 [credential]
