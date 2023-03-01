@@ -173,6 +173,13 @@ use a remote python session, interactively.
 
 See helpers in `.emacs` that set up and load python shell interpreter.
 
+Notes
+
+  * try opening remote file, then C-c C-z via elpy. should work. possibly
+    restart python process
+  * if SSH manually to remote, it may not work. Need to change mode of shell
+    buffer, but not sure how. perhaps try `comint-mode` or similar
+
 ## Tramp
 
 Working with tramp with remote files could be very slow due to the backups on
