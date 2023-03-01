@@ -9,9 +9,15 @@
 options("width"=120)
 options(max.print = 2000)
 
-## fix unreadabl font color on ESS
+## 1 of 2
+## fix unreadable font color on ESS
 ## https://github.com/emacs-ess/ESS/issues/1193#issuecomment-1123885357
 options(pillar.subtle = FALSE)
+
+## 2 of 2
+## Run in ESS buffer, even after starting:
+## M-x ansi-color-for-comint-mode-filter
+## https://github.com/emacs-ess/ESS/issues/1193#issuecomment-1144182009
 
 ## applies to emacs only
 local({
