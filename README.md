@@ -118,6 +118,8 @@ Briefly, `pyspark` comes with apache spark. But then, you also need the python m
 
 Install R including CLI.
 
+For CLI availability, update path in `~/.profile_local`.
+
 # Emacs
 
 **Update: macOS Big Sur seems to fix the following issue**
