@@ -90,7 +90,7 @@ Use either:
 
   * For global/shared envs, use `virtualenvwrapper` such as
     `mkvirtualenv`. Pass python version with `-p`
-  * To store at project root, use `python3 -m venv env`
+  * To store at project root, use `python3 -m venv venv`
 
 Jupyter:
 
@@ -106,13 +106,33 @@ References
 
 Python is installed as above, with `brew`.
 
-Briefly, `pyspark` comes with apache spark. But then, you also need the python module via `pip install pyspark`.
+Briefly, `pyspark` comes with apache spark from brew. But then, you also need
+the python module via `pip install pyspark`.
 
 1. Install `pyspark` with brew (formula is `apache-spark`)
 1. Now, `pyspark` will work on command line, globally.
 1. Should _not_ need to set environment variables.
 
-(WIP) However, to use in virtual environment, need to do more, such as pip install etc. 
+However, to use in virtual environment, need to do more.
+
+  * Set up venv
+  * Then, it seems, only `pip install pyspark` (eg, in requirements) is sufficient
+  * use `spark-submit test.py` to check. it should work
+
+### Paths
+
+If needed, can use the following path, eg, in `venv`
+
+Note: uses `openjdk@11` -  not `openjdk@17`
+
+
+```
+export JAVA_HOME=/usr/local/Cellar/openjdk@11/11.0.15/libexec/openjdk.jdk/Contents/Home
+export SPARK_HOME=/usr/local/Cellar/apache-spark/3.2.1/libexec/
+export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.9.3-src.zip:$PYTHONPATH
+export PATH=$SPARK_HOME/python:$PATH
+```
+
 
 # R
 
