@@ -102,6 +102,18 @@ References
 
   * PROJECT_HOME, virtualenv projects: https://stackoverflow.com/a/9425560/3217870
 
+# Pyspark
+
+Python is installed as above, with `brew`.
+
+Briefly, `pyspark` comes with apache spark. But then, you also need the python module via `pip install pyspark`.
+
+1. Install `pyspark` with brew (formula is `apache-spark`)
+1. Now, `pyspark` will work on command line, globally.
+1. Should _not_ need to set environment variables.
+
+(WIP) However, to use in virtual environment, need to do more, such as pip install etc. 
+
 # R
 
 Install R including CLI.
@@ -224,6 +236,7 @@ Installed Homebrew per
 [mac.install.guide/ruby/index.html](https://mac.install.guide/ruby/index.html)
 especially [ruby/13](https://mac.install.guide/ruby/13.html).
 
+# 
 # Utils
 
 Clean up files with cli and other utils: [freespace.tdhopper.com](https://freespace.tdhopper.com)
