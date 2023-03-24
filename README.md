@@ -128,7 +128,7 @@ Note: uses `openjdk@11` -  not `openjdk@17`
 
 ```
 export JAVA_HOME=/usr/local/Cellar/openjdk@11/11.0.15/libexec/openjdk.jdk/Contents/Home
-export SPARK_HOME=/usr/local/Cellar/apache-spark/3.2.1/libexec/
+export SPARK_HOME=/usr/local/Cellar/apache-spark/3.2.1/libexec
 export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.9.3-src.zip:$PYTHONPATH
 export PATH=$SPARK_HOME/python:$PATH
 ```
