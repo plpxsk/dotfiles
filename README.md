@@ -61,6 +61,9 @@ Then install tmux resurrect, etc
 
 # Python 
 
+UPDATE: macOS ventura now has its own python3 (3.9.12?)
+  * use this for airflow install as of June 2023
+
 Manage python with Brew
 
 `brew pin python@3.8` to prevent automatic upgrades. See pins with `brew list --pinned`
