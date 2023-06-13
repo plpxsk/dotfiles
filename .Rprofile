@@ -9,6 +9,11 @@
 options("width"=120)
 options(max.print = 2000)
 
+## fix unreadabl font color on ESS
+## https://github.com/emacs-ess/ESS/issues/1193#issuecomment-1123885357
+options(pillar.subtle = FALSE)
+
+
 ## utility functions (only used in R console)
 h <- function(x) head(x)
 g <- function(x) glimpse(x)
