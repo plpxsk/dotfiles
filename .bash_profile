@@ -4,6 +4,3 @@
 if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
-
-# User specific environment and startup programs
-[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
