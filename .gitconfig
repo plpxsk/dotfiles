@@ -2,6 +2,7 @@
 [user]
 	name = Paul Paczuski
 	useConfigOnly = true
+	email = 6165713+plpxsk@users.noreply.github.com
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
