@@ -72,3 +72,4 @@ fi
 # works in multiple shells
 export CLICOLOR=1
 
+. "$HOME/.cargo/env"

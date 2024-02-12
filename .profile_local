@@ -16,14 +16,6 @@ if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
 fi
 
 
-# update: new install with brew. may need to uncomment
-# # ruby - see README.md
-# if [ -d "/usr/local/opt/ruby/bin" ]; then
-#   export PATH=/usr/local/opt/ruby/bin:$PATH
-#   export PATH=`gem environment gemdir`/bin:$PATH
-# fi
-
-
 ## ============================================================================
 ## 2 of 2) USE PATHS
 ## ============================================================================
@@ -44,6 +36,37 @@ alias f='open -a Finder ./'                 # macOS only
 alias e='open -a Emacs'			    # macOS only
 
 alias be='bundle exec'
+
+# tldr
+# Local database is older than two weeks, attempting to update it...
+# To prevent automatic updates, set the environment variable TLDR_AUTO_UPDATE_DISABLED.
+export TLDR_AUTO_UPDATE_DISABLED
+
+
+# miniconda
+# see: https://docs.anaconda.com/free/miniconda/#quick-command-line-install
+# load ad-hoc:
+
+# UNCOMMENT and RECOMMENT:
+# miniconda put the following into my .zshrc:
+
+# # >>> conda initialize >>>
+# # !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/Users/paul/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/Users/paul/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/Users/paul/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/Users/paul/miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# # <<< conda initialize <<<
+
+
+
 
 
 ## ============================================================================

@@ -7,3 +7,4 @@ PROMPT='%B%1~#%b '
 # The next line enables shell command completion for gcloud.
 ## not installed
 ## if [ -f '/Users/paczuskp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/paczuskp/google-cloud-sdk/completion.zsh.inc'; fi
+
